@@ -14,3 +14,4 @@ Thanks [Lee Rob](https://github.com/leerob) and his blog for inspiration.
 
 - Projects
 - Uses page
+- Add footer info

@@ -54,6 +54,7 @@ export default function Home({ posts }) {
         </h3>
         {posts.map(({ title, description, slug, date }) => (
           <BlogPost
+            key={title}
             title={title}
             summary={description}
             slug={slug}

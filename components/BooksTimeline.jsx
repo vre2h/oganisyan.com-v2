@@ -261,14 +261,18 @@ const FullTimeline = () => (
     <Year>2018</Year>
     <ul>
       {books2018.map((b) => (
-        <Step title={b.title}>{b.author}</Step>
+        <Step key={b.title} title={b.title}>
+          {b.author}
+        </Step>
       ))}
     </ul>
     <Divider />
     <Year>2017</Year>
     <ul>
       {books2017.map((b) => (
-        <Step title={b.title}>{b.author}</Step>
+        <Step key={b.title} title={b.title}>
+          {b.author}
+        </Step>
       ))}
     </ul>
   </>
@@ -285,14 +289,18 @@ export default function Timeline() {
       <Year>2020</Year>
       <ul>
         {books2020.map((b) => (
-          <Step title={b.title}>{b.author}</Step>
+          <Step key={b.title} title={b.title}>
+            {b.author}
+          </Step>
         ))}
       </ul>
       <Divider />
       <Year>2019</Year>
       <ul>
         {books2019.map((b) => (
-          <Step title={b.title}>{b.author}</Step>
+          <Step key={b.title} title={b.title}>
+            {b.author}
+          </Step>
         ))}
       </ul>
 

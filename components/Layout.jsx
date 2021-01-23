@@ -47,7 +47,7 @@ export default function Container({ children }) {
                 : history.pathname === href;
 
             return (
-              <NextLink href={href}>
+              <NextLink key={href} href={href}>
                 <a
                   className={cn(
                     "transition duration-500 p-2 text-base sm:p-4 sm:text-lg hover:text-gray-900",

@@ -5,7 +5,7 @@ import format from "comma-number";
 import fetcher from "../lib/fetcher";
 
 export default function ViewCounter({ slug }) {
-  const { data } = useSWR([`/api/views`, slug], fetcher);
+  const { data } = useSWR(`/api/views?slug=${slug}`, fetcher);
   const views = data?.total;
 
   useEffect(() => {
