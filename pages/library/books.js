@@ -20,10 +20,10 @@ export default function Books() {
         </h1>
         <div className="flex justify-center w-full my-8">
           <Image
-            width="800"
-            height="600"
+            width="680"
+            height="343"
             alt="Vrezh Oganisyan"
-            src="/images/about-avatar.jpg"
+            src="/images/books.jpg"
           />
         </div>
 
