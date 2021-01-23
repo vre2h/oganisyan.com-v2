@@ -1,5 +1,7 @@
 # oganisyan.com
 
+Thanks [Lee Rob](https://github.com/leerob) and his blog for inspiration.
+
 # Stack
 
 - Next.js
