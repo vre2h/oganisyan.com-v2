@@ -1,65 +1,74 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { NextSeo } from "next-seo";
+import Image from "next/image";
+import Layout from "../components/Layout";
+import BlogPost from "../components/BlogPost";
+import { getAllFilesFrontMatter } from "../lib/mdx";
 
-export default function Home() {
+const ExternalLink = ({ href, children }) => (
+  <a
+    className="transition duration-500 inline-block text-base font-medium mt-4 text-gray-900 hover:text-gray-900 dark:text-gray-100 border-b-2 p-b-4 dark:border-gray-700 dark:hover:border-gray-100 border-gray-300 hover:border-gray-900"
+    target="_blank"
+    rel="noopener noreferrer"
+    href={href}
+  >
+    {children}
+  </a>
+);
+
+export default function Home({ posts }) {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+    <Layout>
+      <NextSeo
+        title="Home – Vrezh Oganisyan"
+        canonical="https://oganisyan.com"
+        openGraph={{
+          url: "https://oganisyan.com",
+          title: "Home – Vrezh Oganisyan",
+        }}
+      />
+      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+          Hey, I’m Vrezh Oganisyan
         </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className="flex items-center mb-16 mt-4">
+          <div className="flex-shrink-0 w-16 sm:w-24">
+            <Image
+              alt="Vrezh Oganisyan"
+              height={110}
+              width={110}
+              src="/images/avatar.jpg"
+              className="rounded-full cursor-pointer"
+            />
+          </div>
+          <h2 className="ml-4 text-gray-600 dark:text-gray-400">
+            I’m a software engineer, lecturer, and rebel. Here I write about
+            education, management, and the art of non-conformity.
+            <br />
+            <ExternalLink href="https://t.me/oganisyancom">
+              Follow Telegram channel
+            </ExternalLink>
+          </h2>
         </div>
-      </main>
+        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-16 text-black dark:text-white">
+          Blog Posts
+        </h3>
+        {posts.map(({ title, description, slug, date }) => (
+          <BlogPost
+            title={title}
+            summary={description}
+            slug={slug}
+            date={date}
+          />
+        ))}
+      </div>
+    </Layout>
+  );
+}
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter("blog");
+
+  const sortedPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  return { props: { posts: sortedPosts } };
 }
