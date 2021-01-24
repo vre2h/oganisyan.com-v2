@@ -1,7 +1,7 @@
 const { spacing, fontFamily } = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  purge: ["./pages/**/*.jsx", "./components/**/*.jsx", "./layouts/**/*.jsx"],
+  purge: ["./pages/**/*.js", "./components/**/*.jsx", "./layouts/**/*.jsx"],
   darkMode: "class",
   theme: {
     extend: {

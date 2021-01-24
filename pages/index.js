@@ -27,8 +27,8 @@ export default function Home({ posts }) {
         }}
       />
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          Hey, I’m Vrezh Oganisyan
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-0 sm:mb-2 text-black dark:text-white">
+          Hey, I’m Vrezh
         </h1>
         <div className="flex items-center mb-16 mt-4">
           <div className="flex-shrink-0 w-16 sm:w-24">
@@ -49,8 +49,8 @@ export default function Home({ posts }) {
             </ExternalLink>
           </h2>
         </div>
-        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-16 text-black dark:text-white">
-          Blog Posts
+        <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-8 text-black dark:text-white">
+          Articles
         </h3>
         {posts.map(({ title, description, slug, date }) => (
           <BlogPost

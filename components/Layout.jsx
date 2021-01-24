@@ -50,7 +50,7 @@ export default function Container({ children }) {
               <NextLink key={href} href={href}>
                 <a
                   className={cn(
-                    "transition duration-500 p-2 text-base sm:p-4 sm:text-lg hover:text-gray-900",
+                    "transition-property-border-color duration-500 p-2 text-base sm:p-4 sm:text-lg hover:text-gray-900",
                     {
                       "text-gray-900 dark:text-gray-100": isActiveLink,
                       "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100": !isActiveLink,
@@ -59,7 +59,7 @@ export default function Container({ children }) {
                 >
                   <span
                     className={cn({
-                      "transition duration-500 inline-block border-b-2 p-b-1 dark:border-gray-100 border-gray-900": isActiveLink,
+                      "transition-property-border-color duration-500 inline-block border-b-2 p-b-1 dark:border-gray-100 border-gray-900": isActiveLink,
                     })}
                   >
                     {text}
@@ -103,7 +103,7 @@ export default function Container({ children }) {
           )}
         </button>
       </nav>
-      <main className="flex flex-col justify-center bg-white dark:bg-black px-8">
+      <main className="flex flex-col bg-white dark:bg-black px-6 min-h-screen">
         {children}
         <Footer />
       </main>
