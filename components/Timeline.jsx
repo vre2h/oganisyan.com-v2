@@ -44,15 +44,24 @@ const FullTimeline = () => (
     <Year>2017</Year>
     <ul>
       <Step title="First Internship">
-        Reading a lot of literature. Mostly, Russian.
+        I was learning Web Design at Kojoyan Design Studio in Yerevan.
       </Step>
-      <Step title="Graduated High School">
-        Reading a lot of literature. Mostly, Russian.
-      </Step>
-      <Step title="Started at Moscow State university after Lomonosov">
-        Reading a lot of literature. Mostly, Russian.
+      <Step title="HTML / CSS">
+        I was thinking that HTML / CSS is a programming language and started to
+        learn it.
       </Step>
     </ul>
+    <Divider />
+    <Year>2015-2016</Year>
+    <ul>
+      <Step title="University">
+        It was really hard for me to study Computer Science. We had a lot of
+        math there. I was depressed and very close to give up and switch to
+        another faculty. But after really hard work during the summer, I managed
+        to pass exams and decided to give it a shot.
+      </Step>
+    </ul>
+
     <Divider />
     <Year>2014</Year>
     <ul>
@@ -60,10 +69,12 @@ const FullTimeline = () => (
         Reading a lot of literature. Mostly, Russian.
       </Step>
       <Step title="Graduated High School">
-        Reading a lot of literature. Mostly, Russian.
+        Graduated from school with honors.
       </Step>
       <Step title="Started at Moscow State university after Lomonosov">
-        Reading a lot of literature. Mostly, Russian.
+        I was preparing for the admission to university for the last year and it
+        was really hard because I decided switch from Management and Marketing
+        to Computer Science.
       </Step>
     </ul>
     <Divider />
@@ -81,7 +92,7 @@ const FullTimeline = () => (
     <Divider />
     <Year>1998</Year>
     <ul>
-      <Step title="Born 👶🏼🍼" />
+      <Step title="Born on 11th of February 👶🏼🍼" />
     </ul>
   </>
 );
@@ -97,48 +108,63 @@ export default function Timeline() {
       <Year>2020</Year>
       <ul>
         <Step title="Joined Armenian Code Academy as a CTO">
-          I'm excited to help grow the Next.js community and continue building
-          the optimal workflow for front-end developers.
+          I joined Armenian Code Academy team as a Chief Technology Officer and
+          Principal Lecturer.
         </Step>
         <Step title="Launched Blog">
-          Building a real SaaS application, from zero to production.
+          I launched this blog during the quarantine and wrote articles I was
+          planning to write for years.
         </Step>
-        <Step title="Taught Advanced Javascript Course">
-          I was extremely honored to be one of five finalists nominated for this
-          award at the 2020 Prometheus Awards.
+        <Step title="Taught Frontend Developer Course">
+          Armenian Code Academy invited me to create and lead my own Advanced
+          Frontend Developer Course (6 months). I taught more than 20 students
+          and some of them are working as a Frontend Engineers in different
+          companies.
         </Step>
       </ul>
       <Divider />
       <Year>2019</Year>
       <ul>
         <Step title="Joined Armenian Code Academy as a TA">
-          Led design system architecture at Hy-Vee, building new components with
-          React, Storybook, and styled-components.
+          Armenian Code Academy invited me to join their team as a Teacher
+          Assistant during the 6 months Advanced Javascript Course. I was
+          leading seminars and helping students with coding.
         </Step>
-        <Step title="Mentored Internship course at Simply Technologies">
-          Led design system architecture at Hy-Vee, building new components with
-          React, Storybook, and styled-components.
+        <Step title="Mentored Internship program at Simply Technologies">
+          Simply Technologies organized an Internship program and I was selected
+          as a mentor. I was leading the team of four trainees during their
+          learning process and reviewing code of their final project.
         </Step>
         <Step title="Started Masters of Human Psychology">
-          Led design system architecture at Hy-Vee, building new components with
-          React, Storybook, and styled-components.
+          Past years I was really interested in Psychology and Neurobiology so I
+          decided to take Masters in this field.
+        </Step>
+        <Step title="Interview Experience">
+          I have interviewed a lot of Junior Developers and created my list of
+          questions and tasks for interview process.
+        </Step>
+        <Step title="Moscow Urban.Tech">
+          With the team of friends I've won "Moscow Urban.Tech" hackaton in
+          Armenia.
         </Step>
       </ul>
       <Divider />
       <Year>2018</Year>
       <ul>
         <Step title="Joined Simply Technologies">
-          Reflecting on my recent job search, I realized there wasn't a
-          centralized listing of all the Des Moines tech companies. So...I
-          created it.
+          I joined Simply Technologies great team as a Junior Frontend
+          Developer. I was writing code a loooooot.
         </Step>
-        <Step title="Finished Internship at Armenian Code Academy">
-          It was time for a change in my career, and Hy-Vee came calling. The
-          best part was reducing my commute time by an hour/day.
+        <Step title="Internship at Armenian Code Academy">
+          I was selected to internship program (technical and hr interviews)
+          among 800 applicants. I was learning Frontend Development for 6 months
+          with really great lecturers who taught me how to code and how to love
+          programming.
         </Step>
-        <Step title="Graduated from University">
-          It was time for a change in my career, and Hy-Vee came calling. The
-          best part was reducing my commute time by an hour/day.
+        <Step title="Graduated from University 👨🏻‍🎓">
+          As I've mentioned I had really hard times at the beginning of the
+          journey but at the end I managed to cope with all difficulties. I
+          consider graduation as one of the best achievements in my life.
         </Step>
       </ul>
 
