@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import cn from "classnames";
-
+import Link from "next/link";
+import { ExternalIcon } from "./Icons";
 import Footer from "./Footer";
+import useOutsideClick from "../lib/useOutsideClick";
 
 const links = [
   {
@@ -19,25 +21,27 @@ const links = [
     text: "About",
     href: "/about",
   },
-  {
-    text: "Library",
-    href: "/library",
-  },
 ];
 
 export default function Container({ children }) {
   const history = useRouter();
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [dropDown, showDropdown] = useState();
+  const dropDownRef = useRef();
+
+  useOutsideClick(dropDownRef, () => {
+    showDropdown(false);
+  });
 
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="bg-white dark:bg-black">
-      <nav className="sticky-nav flex justify-between items-center max-w-3xl w-full p-4 py-8 sm:p-8 my-0 md:my-8 mx-auto bg-white dark:bg-black bg-opacity-60">
+    <div className="bg-white dark:bg-black py-4 px-8">
+      <nav className=" flex  justify-between items-center max-w-3xl w-full py-4 pb-8 sm:py-8 my-0 md:my-8 mx-auto bg-white dark:bg-black bg-opacity-60">
         <div>
-          {links.map(({ href, text }) => {
+          {links.map(({ href, text }, idx) => {
             const isActiveLink =
               href === "/"
                 ? history.pathname === href || history.pathname.includes("blog")
@@ -54,6 +58,7 @@ export default function Container({ children }) {
                     {
                       "text-gray-900 dark:text-gray-100": isActiveLink,
                       "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100": !isActiveLink,
+                      "pl-0 sm:pl-0": idx === 0,
                     }
                   )}
                 >
@@ -68,6 +73,62 @@ export default function Container({ children }) {
               </NextLink>
             );
           })}
+          <span ref={dropDownRef} className="relative">
+            <span
+              onClick={() => showDropdown((d) => !d)}
+              className={cn(
+                "transition-property-border-color duration-500 p-2 text-base sm:p-4 sm:text-lg hover:text-gray-900 cursor-pointer",
+                {
+                  "text-gray-900 dark:text-gray-100": history.pathname.includes(
+                    "library"
+                  ),
+                  "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100": !history.pathname.includes(
+                    "library"
+                  ),
+                }
+              )}
+            >
+              Library
+            </span>
+            {dropDown && (
+              <div class="shadow-2xl absolute right-0 mt-2 py-2 w-32 sm:w-48 bg-white dark:bg-gray-500 rounded-md shadow-xl z-20">
+                <Link href="/library/slides">
+                  <a
+                    class="block px-4 py-2 dark:text-white text-sm capitalize text-gray-700
+                hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
+                  >
+                    Slides
+                  </a>
+                </Link>
+                <Link href="/library/books">
+                  <a
+                    class="block px-4 py-2 dark:text-white text-sm capitalize text-gray-700
+                hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
+                  >
+                    Books
+                  </a>
+                </Link>
+                <a
+                  href="https://letterboxd.com/vre2h"
+                  target="_blank"
+                  class="flex justify-between px-4 dark:text-white py-2 text-sm capitalize text-gray-700
+                  hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
+                >
+                  Movies
+                  <ExternalIcon />
+                </a>
+                <a
+                  href="https://myshows.me/m/Vrezh10"
+                  target="_blank"
+                  class="flex justify-between px-4 dark:text-white py-2 text-sm capitalize text-gray-700
+                  hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
+                >
+                  TV Shows
+                  <ExternalIcon />
+                </a>
+              </div>
+            )}
+          </span>
         </div>
 
         <button
@@ -103,7 +164,7 @@ export default function Container({ children }) {
           )}
         </button>
       </nav>
-      <main className="flex flex-col bg-white dark:bg-black px-6 min-h-screen">
+      <main className="flex flex-col max-w-3xl mx-auto w-full bg-white dark:bg-black min-h-screen">
         {children}
         <Footer />
       </main>
