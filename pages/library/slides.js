@@ -66,40 +66,41 @@ export default function Slides({ isCheckListVisible }) {
           </button>
 
           {checklist && (
-            <button
+            <a
+              download
+              href="/static/Slides Checklist.pdf"
               type="button"
               className="flex border items-center text-sm my-4 px-4 py-2 rounded-md font-medium text-gray-900 dark:text-gray-100"
             >
               Export PDF
-            </button>
+            </a>
           )}
         </div>
 
         {checklist && (
-          <div className="select-none">
+          <div className="">
             <Step defaultState={true} title="Find checklist" />
             <Step title="Send Materials before slide">
               <div className="inline-flex items-start flex-col">
-                <p className="mb-2">— Books</p>
-                <p className="mb-2">— Videos</p>
-                <p className="mb-2">— Articles</p>
+                <p className="mb-2">Books / Videos / Articles</p>
               </div>
             </Step>
-            <Step title="Pick Platform for template">
-              <div className="inline-flex items-start flex-col">
+            <Step title="Pick template platform">
+              <div className="">
                 <BasicLink
                   className="mb-2"
                   href="https://canva.com"
                   target="_blank"
                 >
-                  — Canva
-                </BasicLink>
+                  Canva
+                </BasicLink>{" "}
+                /{" "}
                 <BasicLink
                   className="mb-2"
                   href="https://slides.google.com"
                   target="_blank"
                 >
-                  — Google Slides
+                  Google Slides
                 </BasicLink>
               </div>
             </Step>
@@ -111,46 +112,33 @@ export default function Slides({ isCheckListVisible }) {
               </p>
             </Step>
             <Step title="Maybe some data visualization?">
-              <p className="mb-2">
-                Use small amount of visual content instead of text
-              </p>
               <div className="inline-flex items-start flex-col">
-                <p className="mb-2">— Charts</p>
-                <p className="mb-2">— Maps</p>
-                <p className="mb-2">— Tables</p>
-                <p className="mb-2">— Lists</p>
+                <p className="mb-2">Charts / Maps / Tables / Lists</p>
               </div>
             </Step>
             <Step title="Don't forget about Graphic content!">
               <div className="inline-flex items-start flex-col">
-                <p className="mb-2">— Pictures</p>
-                <p className="mb-2">— Emojis</p>
-                <p className="mb-2">— Gifs</p>
+                <p className="mb-2">Pictures / Emojis / Gifs</p>
               </div>
             </Step>
             <Step title="[Maybe there's a way to include interactive material?]">
               <div className="inline-flex items-start flex-col">
-                <p className="mb-2">— Tests</p>
-                <p className="mb-2">— Collect emails or other contacts 🙃</p>
+                <p className="mb-2">Tests / Quizes</p>
+                <p className="mb-2">Collect emails or other contacts 🙃</p>
               </div>
             </Step>
             <Step title="Contacts Section">
               <div className="inline-flex items-start flex-col">
-                <p className="mb-2">— Website</p>
-                <p className="mb-2">— Phone</p>
-                <p className="mb-2">— Email</p>
-                <p className="mb-2">— Github</p>
-                <p className="mb-2">— Twitter</p>
-                <p className="mb-2">— Facebook</p>
-                <p className="mb-2">— Telegram</p>
+                <p className="mb-2">
+                  Website / Phone / Email / Github / Twitter / Facebook /
+                  Telegram
+                </p>
               </div>
             </Step>
             <Step title="Credits for used resources" />
             <Step title="Additional Materials Section">
               <div className="inline-flex items-start flex-col">
-                <p className="mb-2">— Books</p>
-                <p className="mb-2">— Videos</p>
-                <p className="mb-2">— Articles</p>
+                <p className="mb-2">Books / Videos / Articles</p>
               </div>
             </Step>
             <Step title="Q & A section" />
@@ -162,9 +150,10 @@ export default function Slides({ isCheckListVisible }) {
             </Step>
             <Step title="Prepare materials after the slide">
               <div className="inline-flex items-start flex-col">
-                <p className="mb-2">— [Send thanks note]</p>
-                <p className="mb-2">— [Send homework]</p>
-                <p className="mb-2">— [Send form for collecting Responses]</p>
+                <p className="mb-2">
+                  [Send thanks note] / [Send homework] / [Send form for
+                  collecting Responses]
+                </p>
               </div>
             </Step>
           </div>

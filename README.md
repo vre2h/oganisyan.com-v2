@@ -13,6 +13,8 @@ Thanks [Lee Rob](https://github.com/leerob) and his blog for inspiration.
 ## TODO
 
 - Projects
+  - aca course 1
+  - aca course 2
+  - simply
 - Uses page
 - Add footer info
-- color change on dark mode tranisition
