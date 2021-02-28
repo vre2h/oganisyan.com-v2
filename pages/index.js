@@ -26,7 +26,7 @@ export default function Home({ posts }) {
           title: "Home – Vrezh Oganisyan",
         }}
       />
-      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
+      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-0 sm:mb-2 text-black dark:text-white">
           Hey, I’m Vrezh
         </h1>
