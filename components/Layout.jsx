@@ -77,7 +77,7 @@ export default function Container({ children }) {
             <span
               onClick={() => showDropdown((d) => !d)}
               className={cn(
-                "transition-property-border-color duration-500 m-2 text-base m:p-4 pb-1 sm:text-lg hover:text-gray-900 cursor-pointer",
+                "transition-property-border-color duration-500 m-2 sm:ml-4 text-base m:p-4 pb-1 sm:text-lg hover:text-gray-900 cursor-pointer",
                 {
                   "border-b-2 text-gray-900 border-gray-900 dark:text-gray-100": history.pathname.includes(
                     "library"
