@@ -34,7 +34,13 @@ export default function Slides({ isCheckListVisible }) {
           <p>
             Press "See Slides Checklist" to see and download checklist example.
           </p>
-          <p>Scroll down to see my slides.</p>
+          <p>
+            Scroll down to see{" "}
+            <BasicLink className="mb-2" href="#my-slides">
+              my slides
+            </BasicLink>
+            .
+          </p>
         </div>
 
         <div className="flex flex-wrap">
@@ -68,7 +74,7 @@ export default function Slides({ isCheckListVisible }) {
           {checklist && (
             <a
               download
-              href="/static/Slides Checklist.pdf"
+              href="/static/slides/Slides Checklist.pdf"
               type="button"
               className="flex border items-center text-sm my-4 px-4 py-2 rounded-md font-medium text-gray-900 dark:text-gray-100"
             >
@@ -79,6 +85,8 @@ export default function Slides({ isCheckListVisible }) {
 
         {checklist && (
           <div className="">
+            <p className="text-gray-400">— Click on item to make it done</p>
+
             <Step defaultState={true} title="Find checklist" />
             <Step title="Send Materials before slide">
               <div className="inline-flex items-start flex-col">
@@ -158,6 +166,53 @@ export default function Slides({ isCheckListVisible }) {
             </Step>
           </div>
         )}
+
+        <section id="my-slides" className="mt-4">
+          <div className="mt-8">
+            <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
+              HTML / CSS
+            </h3>
+            <BasicLink download href="/static/slides/HTML_CSS.pdf">
+              Intro to HTML/CSS
+            </BasicLink>
+          </div>
+
+          <div className="mt-8">
+            <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
+              Tech for non-tech
+            </h3>
+            <div className="flex flex-col items-start">
+              <BasicLink
+                download
+                href="/static/slides/tfnt/TFNT. Lecture #1. General Computer Architecture.pdf"
+                className="mb-2"
+              >
+                Lecture #1. General Computer Architecture
+              </BasicLink>
+              <BasicLink
+                download
+                href="/static/slides/tfnt/TFNT. Lecture #2. Basic Concepts of Programming.pdf"
+                className="mb-2"
+              >
+                Lecture #2. Basic Concepts of Programming
+              </BasicLink>
+              <BasicLink
+                download
+                href="/static/slides/tfnt/TFNT. Lecture #3. Different Types of Software Applications.pdf"
+                className="mb-2"
+              >
+                Lecture #3. Different Types of Software Applications
+              </BasicLink>
+              <BasicLink
+                download
+                href="/static/slides/tfnt/TFNT. Lecture #5. The Anatomy of the Internet.pdf"
+                className="mb-2"
+              >
+                Lecture #4. The Anatomy of the Internet
+              </BasicLink>
+            </div>
+          </div>
+        </section>
       </div>
     </Layout>
   );
