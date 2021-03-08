@@ -75,7 +75,7 @@ export default function Slides({ isCheckListVisible }) {
             <a
               download
               href="/static/slides/Slides Checklist.pdf"
-              type="button"
+              target="_blank"
               className="flex border items-center text-sm my-4 px-4 py-2 rounded-md font-medium text-gray-900 dark:text-gray-100"
             >
               Export PDF
