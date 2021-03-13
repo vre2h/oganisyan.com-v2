@@ -170,7 +170,7 @@ export default function Slides({ isCheckListVisible }) {
         <section id="my-slides" className="mt-4">
           <div className="mt-8">
             <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
-              HTML / CSS
+              HTML / CSS Workshop (2019)
             </h3>
             <BasicLink download href="/static/slides/HTML_CSS.pdf">
               Intro to HTML/CSS
@@ -179,36 +179,43 @@ export default function Slides({ isCheckListVisible }) {
 
           <div className="mt-8">
             <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
-              Tech for non-tech
+              Tech for non-tech for Product Managers (2020)
             </h3>
             <div className="flex flex-col items-start">
               <BasicLink
                 download
-                href="/static/slides/tfnt/TFNT. Lecture #1. General Computer Architecture.pdf"
+                href="/static/slides/tfnt/General_Computer_Architecture.pdf"
                 className="mb-2"
               >
                 Lecture #1. General Computer Architecture
               </BasicLink>
               <BasicLink
                 download
-                href="/static/slides/tfnt/TFNT. Lecture #2. Basic Concepts of Programming.pdf"
+                href="/static/slides/tfnt/Basic_Concepts_of_Programming.pdf"
                 className="mb-2"
               >
                 Lecture #2. Basic Concepts of Programming
               </BasicLink>
               <BasicLink
                 download
-                href="/static/slides/tfnt/TFNT. Lecture #3. Different Types of Software Applications.pdf"
+                href="/static/slides/tfnt/Different_Types_of_Software_Applications.pdf"
                 className="mb-2"
               >
                 Lecture #3. Different Types of Software Applications
               </BasicLink>
               <BasicLink
                 download
-                href="/static/slides/tfnt/TFNT. Lecture #5. The Anatomy of the Internet.pdf"
+                href="/static/slides/tfnt/The_Anatomy_of_the_Internet.pdf"
                 className="mb-2"
               >
                 Lecture #4. The Anatomy of the Internet
+              </BasicLink>
+              <BasicLink
+                download
+                href="/static/slides/tfnt/What_are_Databases.pdf"
+                className="mb-2"
+              >
+                Lecture #5. What Are Databases?
               </BasicLink>
             </div>
           </div>
