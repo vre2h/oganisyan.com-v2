@@ -309,7 +309,7 @@ export default function Timeline() {
       ) : (
         <button
           type="button"
-          className="flex items-center text-sm my-4 mx-auto px-4 py-2 rounded-md font-medium text-gray-900 dark:text-gray-100"
+          className="flex border items-center text-sm my-4 mx-auto px-4 py-2 rounded-md font-medium text-gray-900 dark:text-gray-100"
           onClick={() => showFullTimeline(true)}
         >
           See More
