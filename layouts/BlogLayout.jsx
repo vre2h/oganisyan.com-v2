@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import ViewCounter from "../components/ViewCounter";
 import BlogSeo from "../components/BlogSeo";
+import Bio from "../components/Bio";
 
 const siteUrl = "https://oganisyan.com";
 

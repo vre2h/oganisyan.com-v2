@@ -44,8 +44,8 @@ export default function Slides({ isCheckListVisible }) {
             Scroll down to see{" "}
             <BasicLink className="mb-2" href="#my-slides">
               my slides
-            </BasicLink>
-            .
+            </BasicLink>{" " }
+            for different courses.
           </p>
         </div>
 
@@ -160,6 +160,12 @@ export default function Slides({ isCheckListVisible }) {
               <p>
                 Add total number of slides so audience can understand the
                 progress!
+              </p>
+            </Step>
+            <Step title="Maybe some fun?">
+              <p>
+                Add some mems, videos or even sarcastic quotes about the topic.
+                That'll make the topic more interesting.
               </p>
             </Step>
             <Step title="Prepare materials after the slide">

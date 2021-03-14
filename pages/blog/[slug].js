@@ -1,10 +1,15 @@
 import hydrate from "next-mdx-remote/hydrate";
+import Link from "next/link";
 
 import { getFileBySlug, getPostsFolders } from "../../lib/mdx";
 import BlogLayout from "../../layouts/BlogLayout";
 
+const components = {
+  Link,
+};
+
 export default function Blog({ mdxSource, frontMatter }) {
-  const content = hydrate(mdxSource, {});
+  const content = hydrate(mdxSource, { components });
 
   return <BlogLayout frontMatter={frontMatter}>{content}</BlogLayout>;
 }
