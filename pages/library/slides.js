@@ -23,6 +23,12 @@ export default function Slides({ isCheckListVisible }) {
         openGraph={{
           url: "https://oganisyan.com/about",
           title: "Slides – Vrezh Oganisyan",
+          images: [
+            {
+              url: `https://oganisyan.com/static/images/seo-image.png`,
+              alt: title,
+            },
+          ],
         }}
       />
       <div className="flex w-full flex-col justify-center items-start max-w-3xl mx-auto mb-16">

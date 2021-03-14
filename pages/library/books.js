@@ -12,6 +12,12 @@ export default function Books() {
         openGraph={{
           url: "https://oganisyan.com/library/books",
           title: "Books – Vrezh Oganisyan",
+          images: [
+            {
+              url: `https://oganisyan.com/static/images/seo-image.png`,
+              alt: title,
+            },
+          ],
         }}
       />
       <div className="flex w-full flex-col justify-center items-start max-w-3xl mx-auto mb-16">

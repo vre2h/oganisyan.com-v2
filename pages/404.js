@@ -12,6 +12,12 @@ export default function NotFound() {
         openGraph={{
           url: "https://oganisyan.com/404",
           title: "404 – Vrezh Oganisyan",
+          images: [
+            {
+              url: `https://oganisyan.com/static/images/seo-image.png`,
+              alt: title,
+            },
+          ],
         }}
       />
       <div className="flex w-full flex-col justify-center items-start max-w-3xl mx-auto mb-16">

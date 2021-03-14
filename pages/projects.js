@@ -11,6 +11,12 @@ export default function Projects() {
         openGraph={{
           url: "https://oganisyan.com/about",
           title: "Projects – Vrezh Oganisyan",
+          images: [
+            {
+              url: `https://oganisyan.com/static/images/seo-image.png`,
+              alt: title,
+            },
+          ],
         }}
       />
       <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
