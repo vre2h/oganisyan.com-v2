@@ -25,8 +25,8 @@ export default function Slides({ isCheckListVisible }) {
           title: "Slides – Vrezh Oganisyan",
           images: [
             {
-              url: `https://oganisyan.com/static/images/seo-image.png`,
-              alt: title,
+              url: `https://oganisyan.com/images/seo-image.png`,
+              alt: "Slides – Vrezh Oganisyan",
             },
           ],
         }}

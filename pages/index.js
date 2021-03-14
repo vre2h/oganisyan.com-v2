@@ -24,7 +24,12 @@ export default function Home({ posts }) {
         openGraph={{
           url: "https://oganisyan.com",
           title: "Home – Vrezh Oganisyan",
-         <
+          images: [
+            {
+              url: `https://oganisyan.com/images/seo-image.png`,
+              alt: "Vrezh",
+            },
+          ],
         }}
       />
       <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">

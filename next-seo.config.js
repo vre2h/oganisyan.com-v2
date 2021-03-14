@@ -13,10 +13,10 @@ const SEO = {
     description,
     images: [
       {
-        url: "https://oganisyan.com/images/about-avatar.jpg",
+        url: "https://oganisyan.com/images/seo-image.png",
         alt: title,
-        width: 1264,
-        height: 948,
+        width: 1200,
+        height: 630,
       },
     ],
   },
@@ -24,6 +24,13 @@ const SEO = {
     handle: "@vre2h",
     site: "@vre2h",
     cardType: "summary_large_image",
+    title: title,
+    ImageData: {
+      url: "https://oganisyan.com/images/seo-image.png",
+      alt: title,
+      width: 1200,
+      height: 630,
+    },
   },
 };
 

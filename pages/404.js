@@ -14,8 +14,8 @@ export default function NotFound() {
           title: "404 – Vrezh Oganisyan",
           images: [
             {
-              url: `https://oganisyan.com/static/images/seo-image.png`,
-              alt: title,
+              url: `https://oganisyan.com/images/seo-image.png`,
+              alt: "404 – Vrezh Oganisyan",
             },
           ],
         }}

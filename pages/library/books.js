@@ -14,8 +14,8 @@ export default function Books() {
           title: "Books – Vrezh Oganisyan",
           images: [
             {
-              url: `https://oganisyan.com/static/images/seo-image.png`,
-              alt: title,
+              url: `https://oganisyan.com/images/seo-image.png`,
+              alt: "Books – Vrezh Oganisyan",
             },
           ],
         }}

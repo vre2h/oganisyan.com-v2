@@ -7,8 +7,8 @@ const BlogSeo = ({ title, summary, date, url, featuredImage }) => {
     alt: title,
   };
 
-  const defaultImage = {
-    url: `https://oganisyan.com/static/images/seo-image.png`,
+  const blogImage = {
+    url: `https://oganisyan.com/images/seo-image.png`,
     alt: title,
   };
 
@@ -26,7 +26,7 @@ const BlogSeo = ({ title, summary, date, url, featuredImage }) => {
           url,
           title,
           description: summary,
-          images: [defaultImage],
+          images: [blogImage, defaultImage],
         }}
       />
       <ArticleJsonLd
@@ -34,7 +34,7 @@ const BlogSeo = ({ title, summary, date, url, featuredImage }) => {
         dateModified={date}
         datePublished={date}
         description={summary}
-        images={[defaultImage]}
+        images={[blogImage, defaultImage]}
         publisherLogo="/favicons/android-chrome-192x192.png"
         publisherName="Vrezh Oganisyan"
         title={title}

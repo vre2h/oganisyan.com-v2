@@ -14,8 +14,8 @@ export default function About() {
           title: "About Me – Vrezh Oganisyan",
           images: [
             {
-              url: `https://oganisyan.com/static/images/seo-image.png`,
-              alt: title,
+              url: `https://oganisyan.com/images/seo-image.png`,
+              alt: "About Me – Vrezh Oganisyan",
             },
           ],
         }}
