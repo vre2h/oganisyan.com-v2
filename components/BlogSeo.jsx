@@ -1,6 +1,6 @@
 import { NextSeo, ArticleJsonLd } from "next-seo";
 
-const BlogSeo = ({ title, summary, date, url, featuredImage, hasOwnImage }) => {
+const BlogSeo = ({ title, summary, date, url, featuredImage }) => {
   const isoDate = new Date(date).toISOString();
   const blogImage = {
     url: `https://oganisyan.com/images/blog/${featuredImage}`,
@@ -12,9 +12,7 @@ const BlogSeo = ({ title, summary, date, url, featuredImage, hasOwnImage }) => {
     alt: title,
   };
 
-  console.log(hasOwnImage);
-
-  const seoImages = hasOwnImage ? [blogImage] : [defaultImage];
+  const seoImages = featuredImage ? [blogImage] : [defaultImage];
 
   return (
     <>
