@@ -1,16 +1,20 @@
 import { NextSeo, ArticleJsonLd } from "next-seo";
 
-const BlogSeo = ({ title, summary, date, url, featuredImage }) => {
+const BlogSeo = ({ title, summary, date, url, featuredImage, hasOwnImage }) => {
   const isoDate = new Date(date).toISOString();
-  const defaultImage = {
-    url: `https://oganisyan.com/static/images/blog/${featuredImage}`,
+  const blogImage = {
+    url: `https://oganisyan.com/images/blog/${featuredImage}`,
     alt: title,
   };
 
-  const blogImage = {
+  const defaultImage = {
     url: `https://oganisyan.com/images/seo-image.png`,
     alt: title,
   };
+
+  console.log(hasOwnImage);
+
+  const seoImages = hasOwnImage ? [blogImage] : [defaultImage];
 
   return (
     <>
@@ -21,20 +25,20 @@ const BlogSeo = ({ title, summary, date, url, featuredImage }) => {
         openGraph={{
           type: "article",
           article: {
-            publishedTime: date,
+            publishedTime: isoDate,
           },
           url,
           title,
           description: summary,
-          images: [blogImage, defaultImage],
+          images: seoImages,
         }}
       />
       <ArticleJsonLd
         authorName="Vrezh Oganisyan"
-        dateModified={date}
-        datePublished={date}
+        dateModified={isoDate}
+        datePublished={isoDate}
         description={summary}
-        images={[blogImage, defaultImage]}
+        images={seoImages}
         publisherLogo="/favicons/android-chrome-192x192.png"
         publisherName="Vrezh Oganisyan"
         title={title}
