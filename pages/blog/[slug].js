@@ -1,11 +1,13 @@
 import hydrate from "next-mdx-remote/hydrate";
 import Link from "next/link";
+import Image from "next/image";
 
 import { getFileBySlug, getPostsFolders } from "../../lib/mdx";
 import BlogLayout from "../../layouts/BlogLayout";
 
 const components = {
   Link,
+  Image,
 };
 
 export default function Blog({ mdxSource, frontMatter }) {
