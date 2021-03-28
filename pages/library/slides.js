@@ -44,7 +44,7 @@ export default function Slides({ isCheckListVisible }) {
             Scroll down to see{" "}
             <BasicLink className="mb-2" href="#my-slides">
               my slides
-            </BasicLink>{" " }
+            </BasicLink>{" "}
             for different courses.
           </p>
         </div>
@@ -182,10 +182,13 @@ export default function Slides({ isCheckListVisible }) {
         <section id="my-slides" className="mt-4">
           <div className="mt-8">
             <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
-              HTML / CSS Workshop (2019)
+              Webinars (2021)
             </h3>
-            <BasicLink download href="/static/slides/HTML_CSS.pdf">
-              Intro to HTML/CSS
+            <BasicLink
+              download
+              href="/static/slides/how-to-choose-language.pdf"
+            >
+              March 27: How to choose a programming language?
             </BasicLink>
           </div>
 
@@ -230,6 +233,15 @@ export default function Slides({ isCheckListVisible }) {
                 Lecture #5. What Are Databases?
               </BasicLink>
             </div>
+          </div>
+
+          <div className="mt-8">
+            <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
+              HTML / CSS Workshop (2019)
+            </h3>
+            <BasicLink download href="/static/slides/HTML_CSS.pdf">
+              Intro to HTML/CSS
+            </BasicLink>
           </div>
         </section>
       </div>

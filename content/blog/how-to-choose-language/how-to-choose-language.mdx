@@ -1,0 +1,193 @@
+---
+title: How to choose a programming language?
+date: "2021-03-29"
+description: "Text version of a webinar that I've been giving on 27th of March, 2021."
+---
+
+Recently I had a webinar (in Armenian) where I was talking about programming languages and stacks, their differences, and how to choose one.
+
+<Image
+  alt={`Preview`}
+  src={`/images/blog/how-to-choose/how-to-choose.png`}
+  priority
+  width="1920"
+  height="1080"
+  class="border"
+/>
+
+In the article we're going to speak about five major software application types and ecosystems (languages, frameworks, libraries they have):
+
+## Table of contents
+
+- Part 1. Software Application Types
+  - [Web Applications](#web-applications)
+  - [Mobile Applications](#mobile-applications)
+  - [Desktop Applications](#desktop-applications)
+  - [Machile Learning](#machine-learning)
+- Part 2. Algorithm for choosing a language
+  - [Tips](#tips)
+  - [Experience](#experience)
+- Part 3. [Materials](#materials)
+
+<span class="text-red-400">Note,</span> I've created also a <a
+  target="_blank"
+  href="https://mm.tt/1772184228?t=1vsSDGshVQ"
+>
+  Mind Map
+</a> for the information I'm going to tell below. Make sure to follow mind map using
+the link or images that I've attached to each chapter.
+
+## Web Applications
+
+When speaking of web apps one should imagine sites that he is using every day. They usually consist of two parts: frontend and backend.
+
+> Frontend — is the practice of converting data to a graphical interface, through the use of HTML, CSS, and JavaScript, so that users can view and interact with that data. (Wikipedia)
+
+<Image
+  alt={`Preview`}
+  src={`/images/blog/how-to-choose/frontend.png`}
+  priority
+  width="1654"
+  height="2024"
+  class="border"
+/>
+
+HTML stands for hypertext markup language — the backbone of every page that lives on the web.
+
+> Hypertext is the text which contains links to other texts. (Ted Nelson, 1965)
+
+CSS stands for Cascading Style Sheets and its main purpose is to make sites look gorgeous.
+
+And JS stands for the most popular language that millions of people use daily.
+
+> The front end is an interface between the user and the backend. The backend has three parts to it: server, application, and database. To handle the backend of given applications, programmers or backend developers have to deal with backend technologies that include languages like Java, C#, Python, Ruby, Node.js, PHP, and many others.
+
+<Image
+  alt={`Preview`}
+  src={`/images/blog/how-to-choose/backend.png`}
+  priority
+  width="1434"
+  height="1958"
+  class="border"
+/>
+
+One of the groups of backend languages includes those that have a strict type system and tight coupling with OOP ideas. These languages are Java, C#, C++, and many others. They are very popular among big enterprise companies due to their strictness and safety. Usually, newbies find them hard as a first language because of the high entry threshold.
+
+Another group of languages includes those that have a dynamic type system, mostly they are multiparadigm with a low entry threshold. They are easier for learners because you can jump into the language very fast and see the result. JS (Node.js), Python, Ruby, PHP are the most famous languages. Big tech companies, like Twitter, Github, Basecamp are using Ruby (and Ruby on Rails framework) for backend development. Facebook and VK have been created using PHP (at least first versions).
+
+Pros of web apps:
+
+- One development team for all Operating Systems (user only needs browser)
+
+- Development speed due to the infrastructure of libraries and frameworks which allow solving almost all problems.
+
+- Low entry threshold
+
+Cons of web apps:
+
+- They lose to native apps because of the lack of access to hosting platforms (for example, Notifications, GPS, Cameras). Although I hope that Web 2.0 and PWA's will change the situation and WEB will be great again.
+
+- There's no way to create high GPU-consuming apps (like big games) in WEB.
+
+## Mobile Applications
+
+<Image
+  alt={`Preview`}
+  src={`/images/blog/how-to-choose/mobile.png`}
+  priority
+  width="1580"
+  height="1360"
+  class="border"
+/>
+
+Researches by Statista are showing that in the third quarter of 2020 the half of the traffic worldwide came from mobile devices. I'm almost sure that half of the readers are also using mobiles so there is no need to describe what mobile applications are.
+
+What is not clear when we're speaking about mobiles is their types and what languages one should master to start coding. To clarify that, let's explore three approaches to mobile development.
+
+### 1. Hybrid applications
+
+> A hybrid app is essentially a combination of a native app and a web app. Although this type of app can be installed on a device like a native app, it technically is a web app. These types of apps are built with HTML, CSS, or JavaScript and run in a web view.
+
+So technically you still are writing your HTML, CSS, and JS
+ code like you was doing in the case of web apps but now you're running the code in a web view.
+
+One might think that this is brilliant technology and we should use it as a standard because now we can share the code between web and mobile, but things are not that easy. Hybrid apps are not showing good performance: apps are freezing and their UX suffers a lot (you can sense that even physically that the app is written for the web, not the mobile world).
+
+### 2. Native Applications
+
+When speaking about native apps, we should mention that there are two major operating systems for mobile: iOS and Android and both of them have their languages with big ecosystems.
+
+For many years in the iOS world, the main language was Objective-C but then apple presented Swift which is easier for developers and now it's a de-facto standard for iOS applications.
+
+In the case of Android, there's the same scenario, Java was the main language but then JetBrains presented Kotlin which took part in the market.
+
+Native Apps had better UX due to their connection with host OS and direct access to the Notification, Camera, and other APIs.
+
+At the same time, companies need two development teams to handle both Operating systems because it's not frequent when one developer knows both languages. It's the main disadvantage of native applications.
+
+### 3. React Native
+
+React Native combines the best parts of these worlds: it allows to write code that runs on both Operating Systems (actually 70-80% of the code), it allows companies to use frontend developers and their knowledge of JS and React and during the parts where React (and js) are close to their limits (GPU-consuming operations), you can write code on Swift or Kotlin and connect it with React Native via the so-called bridge (see RN docs for more info, it's really interesting. I promise).
+
+## Desktop Applications
+
+<Image
+  alt={`Preview`}
+  src={`/images/blog/how-to-choose/desktop.png`}
+  priority
+  width="1002"
+  height="464"
+  class="border"
+/>
+
+The desktop world is similar to mobile. As the main advantage, we can see better UX because of the access to the Host Environment.
+
+And as in mobile, here in Desktop, there are two popular approaches to development.
+
+1. Native Applications
+   Here we can use a lot of languages, like C# (created by Microsoft and works great on Windows), C++, Java, etc. The only problem is that in some cases we need multiple languages for different Operating Systems.
+
+2. Electron Applications
+   JS Ecosystem has reached even this point and using HTML, CSS, and JS we can build cross-platform desktop apps. VS Code, Facebook Messenger, Figma, WhatsApp have been created with Electron. Also, it worth mentioning that Electron applications are cross-platform which means the code can be run in different OS environments.
+
+## Machine Learning
+
+<Image
+  alt={`Preview`}
+  src={`/images/blog/how-to-choose/ml.png`}
+  priority
+  width="928"
+  height="368"
+  class="border"
+/>
+
+There are many languages that one can use for creating ml products: Python, R, JS, C, C++, Java, C# but the big part of the market are developing the products using Python because of its big infrastructure: tons of libraries and platforms like Tensorflow are available for Python (also for JS). That's why Python is the number one choice for ML.
+
+## Tips
+
+Finally, we know about most software application types and now we can create an algorithm for picking a language and our algorithm will base on three criteria.
+
+### Skills and interests
+
+If you are interested in visual information representation and working with the product that end-users are gonna face, then maybe frontend, mobile or desktop stacks are for you. Elsewhere, if you're not interested in visual and more in data processing and manipulation then you should consider Back End or ML stack is right for you.
+
+### Mentors and Environments
+
+Mentors and people who surround you are also very important. So if most of your colleagues and friends know any programming language, then you should consider that one because their role in your first steps will be crucial.
+
+### Languages by market
+
+The one thing that newbies should also take into consideration is the market. If there's no need for developers for the language that you consider then maybe it's not the best option. That's why it's really important to check what the market needs. I'd recommend to stard with [Stack Overflow survey](https://insights.stackoverflow.com/survey/2020) to understand market needs better.
+
+## Experience
+
+I chose JS and React Ecosystem because of their cross-environmental approach. JS and React are being used in Web, Mobile, Desktop, and even ML which allows me to focus not on technologies but on creating applications. I also understand that JS Ecosystem is not the best performance-wise and sometimes reaches its limits but in most cases, it gives me tons of other benefits.
+
+I hope that I helped to create a framework that will help you to find your language and most importantly, your ecosystem.
+
+## Materials
+
+1. [Mind Map for different languages and their infrastructure](https://mm.tt/1772184228?t=1vsSDGshVQ)
+2. <a target="_blank" href="/static/slides/how-to-choose-language.pdf">
+     Get Slides
+   </a>
