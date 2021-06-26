@@ -2,15 +2,18 @@ import Link from "next/link";
 import useSWR from "swr";
 import formatNumber from "comma-number";
 import { parseISO, format } from "date-fns";
+import { useRouter } from "next/router";
 
 import fetcher from "../lib/fetcher";
+import { Locales } from "../helpers/locale.helpers";
 
 const BlogPost = ({ title, summary, slug, date }) => {
   const { data } = useSWR(`/api/views?slug=${slug}`, fetcher);
   const views = data?.total;
+  const { locale } = useRouter();
 
   return (
-    <Link href={`/blog/${slug}`}>
+    <Link locale={locale} href={`/blog/${slug}`}>
       <a className="w-full blog-post">
         <div className="mb-16 w-full">
           <div className="flex flex-col items-start sm:flex-row justify-between">

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ExternalIcon } from "./Icons";
 import Footer from "./Footer";
 import useOutsideClick from "../lib/useOutsideClick";
+import { Locales } from "../helpers/locale.helpers";
 
 const links = [
   {
@@ -29,6 +30,8 @@ export default function Container({ children }) {
   const { theme, setTheme } = useTheme();
   const [dropDown, showDropdown] = useState();
   const dropDownRef = useRef();
+  const router = useRouter();
+  const { locale } = router;
 
   useOutsideClick(dropDownRef, () => {
     showDropdown(false);
@@ -37,9 +40,40 @@ export default function Container({ children }) {
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
+  const changeLang = (locale) => () => {
+    router.push(router.asPath, router.asPath, { locale });
+  };
+
   return (
-    <div className="bg-white dark:bg-black py-4 px-8">
-      <nav className=" flex  justify-between items-center max-w-3xl w-full py-4 pb-8 sm:py-8 my-0 md:my-4 mx-auto bg-white dark:bg-black bg-opacity-60">
+    <div className="bg-white dark:bg-black py-2 px-8">
+      <div className="flex justify-end items-center max-w-3xl w-full mx-auto bg-white dark:bg-black">
+        <a
+          className={cn(
+            "p-1 duration-300 text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer",
+            {
+              "text-gray-900 dark:text-gray-100": locale === Locales.en,
+              "text-opacity-40": locale !== Locales.en,
+            }
+          )}
+          onClick={changeLang(Locales.en)}
+        >
+          en
+        </a>
+        <span className="dark:text-white">/</span>
+        <a
+          className={cn(
+            "p-1 duration-300 pr-0 text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer",
+            {
+              "text-gray-900 dark:text-gray-100": locale === Locales.am,
+              "text-opacity-40": locale !== Locales.am,
+            }
+          )}
+          onClick={changeLang(Locales.am)}
+        >
+          հայ
+        </a>
+      </div>
+      <nav className=" flex  justify-between items-center max-w-3xl w-full py-4 pt-2 pb-8 sm:py-8 my-0 md:my-2 mx-auto bg-white dark:bg-black bg-opacity-60">
         <div>
           {links.map(({ href, text }, idx) => {
             const isActiveLink =
@@ -57,14 +91,16 @@ export default function Container({ children }) {
                     "transition-property-border-color duration-500 p-2 text-base sm:p-4 sm:text-lg hover:text-gray-900",
                     {
                       "text-gray-900 dark:text-gray-100": isActiveLink,
-                      "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100": !isActiveLink,
+                      "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100":
+                        !isActiveLink,
                       "pl-0 sm:pl-0": idx === 0,
                     }
                   )}
                 >
                   <span
                     className={cn({
-                      "transition-property-border-color duration-500 inline-block border-b-2 p-b-1 dark:border-gray-100 border-gray-900": isActiveLink,
+                      "transition-property-border-color duration-500 inline-block border-b-2 p-b-1 dark:border-gray-100 border-gray-900":
+                        isActiveLink,
                     })}
                   >
                     {text}
@@ -79,12 +115,10 @@ export default function Container({ children }) {
               className={cn(
                 "transition-property-border-color duration-500 m-2 sm:ml-4 text-base m:p-4 pb-1 sm:text-lg hover:text-gray-900 cursor-pointer",
                 {
-                  "border-b-2 text-gray-900 border-gray-900 dark:text-gray-100": history.pathname.includes(
-                    "library"
-                  ),
-                  "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100": !history.pathname.includes(
-                    "library"
-                  ),
+                  "border-b-2 text-gray-900 border-gray-900 dark:text-gray-100":
+                    history.pathname.includes("library"),
+                  "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100":
+                    !history.pathname.includes("library"),
                 }
               )}
             >
@@ -92,7 +126,7 @@ export default function Container({ children }) {
             </span>
             {dropDown && (
               <div class="shadow-2xl absolute right-0 mt-2 py-2 w-32 sm:w-48 bg-white dark:bg-gray-500 rounded-md shadow-xl z-20">
-                <Link href="/library/slides">
+                <Link locale={locale} href="/library/slides">
                   <a
                     class="block px-4 py-2 dark:text-white text-sm capitalize text-gray-700
                 hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
@@ -100,7 +134,7 @@ export default function Container({ children }) {
                     Slides
                   </a>
                 </Link>
-                <Link href="/library/books">
+                <Link locale={locale} href="/library/books">
                   <a
                     class="block px-4 py-2 dark:text-white text-sm capitalize text-gray-700
                 hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"

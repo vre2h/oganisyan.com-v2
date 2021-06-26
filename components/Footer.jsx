@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import BasicLink from "./BasicLink";
 
 const ExternalLink = ({ href, children }) => (
@@ -13,22 +14,24 @@ const ExternalLink = ({ href, children }) => (
 );
 
 export default function Footer() {
+  const { locale } = useRouter();
+
   return (
     <footer className="flex flex-col justify-center items-start max-w-3xl mx-auto w-full mb-8">
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
       {/* <NowPlaying /> */}
       <div className="w-full max-w-3xl grid grid-cols-1 gap-4 pb-16 grid-cols-2 sm:grid-cols-3">
         <div className="flex justify-start items-start transition flex-col space-y-4">
-          <Link href="/">
+          <Link locale={locale} href="/">
             <BasicLink>Home</BasicLink>
           </Link>
-          <Link href="/about">
+          <Link locale={locale} href="/about">
             <BasicLink>About</BasicLink>
           </Link>
-          <Link href="/projects">
+          <Link locale={locale} href="/projects">
             <BasicLink>Projects</BasicLink>
           </Link>
-          <Link href="/uses">
+          <Link locale={locale} href="/uses">
             <BasicLink>Uses</BasicLink>
           </Link>
         </div>
@@ -44,7 +47,7 @@ export default function Footer() {
           </ExternalLink>
         </div>
         <div className="flex items-start flex-col space-y-4">
-          {/* <Link href="/uses">
+          {/* <Link locale={locale} href="/uses">
 <BasicLink>
               Uses
 </BasicLink>
