@@ -19,9 +19,9 @@ export default function Slides({ isCheckListVisible }) {
     <Layout>
       <NextSeo
         title="Talks – Vrezh Oganisyan"
-        canonical="https://oganisyan.com/library/talks"
+        canonical="https://oganisyan.com/talks"
         openGraph={{
-          url: "https://oganisyan.com/library/talks",
+          url: "https://oganisyan.com/talks",
           title: "Talks – Vrezh Oganisyan",
           images: [
             {
