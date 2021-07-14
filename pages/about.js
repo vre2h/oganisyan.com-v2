@@ -29,7 +29,7 @@ export default function About() {
             width="800"
             height="600"
             alt="Vrezh Oganisyan"
-            src="/images/about-avatar.jpg"
+            src="/images/about.jpg"
           />
         </div>
         <div className="mb-4 prose leading-6 text-gray-600 dark:text-gray-400">
