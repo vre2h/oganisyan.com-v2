@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { ExternalIcon } from "./Icons";
 
 export default function ProjectCard({
@@ -8,8 +9,10 @@ export default function ProjectCard({
   isExternal,
   icon,
 }) {
+  const { locale } = useRouter();
+
   if (!isExternal) {
-    <Link href={href}>
+    <Link locale={locale} href={href}>
       <a
         className="w-full mb-4 hover:shadow cursor-pointer transition duration-400"
         aria-label={title}
