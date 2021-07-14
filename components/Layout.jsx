@@ -14,10 +14,10 @@ const links = [
     text: "Blog",
     href: "/",
   },
-  // {
-  //   text: "Projects",
-  //   href: "/projects",
-  // },
+  {
+    text: "Talks",
+    href: "/talks",
+  },
   {
     text: "About",
     href: "/about",

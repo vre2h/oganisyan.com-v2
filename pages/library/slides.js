@@ -19,9 +19,9 @@ export default function Slides({ isCheckListVisible }) {
     <Layout>
       <NextSeo
         title="Slides – Vrezh Oganisyan"
-        canonical="https://oganisyan.com/about"
+        canonical="https://oganisyan.com/library/slides"
         openGraph={{
-          url: "https://oganisyan.com/about",
+          url: "https://oganisyan.com/library/slides",
           title: "Slides – Vrezh Oganisyan",
           images: [
             {
@@ -180,6 +180,16 @@ export default function Slides({ isCheckListVisible }) {
         )}
 
         <section id="my-slides" className="mt-4">
+          <div className="mt-8">
+            <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
+              Talks (2021)
+            </h3>
+            <BasicLink download href="/static/slides/talks/how-to-become.pdf">
+              July 3-5: How to become an engineer: most common mistakes by
+              learners.
+            </BasicLink>
+          </div>
+
           <div className="mt-8">
             <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
               Webinars (2021)
