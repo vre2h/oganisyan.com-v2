@@ -37,7 +37,7 @@ export default function Slides({ isCheckListVisible }) {
         </h1>
 
         <section id="my-slides" className="mt-4">
-          <div className="flex mt-8">
+          <div className="flex flex-col md:flex-row mt-8">
             <iframe
               src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Farmcodeacademy%2Fvideos%2F163543322499386%2F&show_text=false&width=267&t=0"
               width="320"
@@ -45,9 +45,6 @@ export default function Slides({ isCheckListVisible }) {
               style={{
                 border: "none",
                 overflow: "hidden",
-                // width: "80%",
-                // minWidth: 320,
-                // minHeight: 300,
               }}
               scrolling="no"
               frameborder="0"
@@ -55,7 +52,7 @@ export default function Slides({ isCheckListVisible }) {
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               allowFullScreen="true"
             ></iframe>
-            <div className="ml-4">
+            <div className="mt-4 md:ml-4 md:mt-0">
               <h3 className="text-2xl md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
                 Artsakh Tech Week 2021
               </h3>
