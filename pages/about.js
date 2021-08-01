@@ -26,10 +26,10 @@ export default function About() {
         </h1>
         <div className="flex justify-center w-full my-8">
           <Image
-            width="800"
-            height="600"
+            width="960"
+            height="640"
             alt="Vrezh Oganisyan"
-            src="/images/about.jpg"
+            src="/images/burnout.jpg"
           />
         </div>
         <div className="mb-4 prose leading-6 text-gray-600 dark:text-gray-400">

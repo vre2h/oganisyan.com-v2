@@ -1,4 +1,4 @@
-const { spacing, fontFamily } = require("tailwindcss/defaultTheme");
+const { spacing, fontFamily, screens } = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: [
@@ -10,6 +10,7 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      screens: { xs: { max: "415px" }, ...screens },
       colors: {
         "blue-opaque": "rgb(13 42 148 / 18%)",
         "link-color": "#005ea5",
