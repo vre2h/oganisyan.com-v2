@@ -92,7 +92,7 @@ export default function Container({ children }) {
               <NextLink key={href} href={href}>
                 <a
                   className={cn(
-                    "transition-property-border-color duration-500 p-2 xs:text-xs text-base sm:p-4 sm:text-lg hover:text-gray-900",
+                    "transition-property-border-color duration-500 p-2 xs:px-1 xs:text-sm text-base sm:p-4 sm:text-lg hover:text-gray-900",
                     {
                       "text-gray-900 dark:text-gray-100": isActiveLink,
                       "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100":
@@ -117,7 +117,7 @@ export default function Container({ children }) {
             <span
               onClick={() => showDropdown((d) => !d)}
               className={cn(
-                "transition-property-border-color duration-500 m-2 sm:ml-4 xs:text-xs text-base m:p-4 pb-1 sm:text-lg hover:text-gray-900 cursor-pointer",
+                "transition-property-border-color duration-500 m-2 sm:ml-4 xs:mx-1 xs:text-sm text-base m:p-4 pb-1 sm:text-lg hover:text-gray-900 cursor-pointer",
                 {
                   "border-b-2 text-gray-900 border-gray-900 dark:text-gray-100":
                     history.pathname.includes("library"),
