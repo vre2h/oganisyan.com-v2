@@ -43,7 +43,7 @@ export default function Footer() {
             Facebook
           </ExternalLink>
           <ExternalLink href="https://www.linkedin.com/in/vre2h">
-            Linkedin
+            LinkedIn
           </ExternalLink>
         </div>
         <div className="flex items-start flex-col space-y-4">

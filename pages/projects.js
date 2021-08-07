@@ -197,22 +197,23 @@ export default function Projects() {
         >
           Ahoooy!
         </h3>
-        <p className="mb-2">
+        <p className="dark:text-white">
           I’m Vrezh, Software Engineer with a huge experience in education,
           human psychology and building scalable products.
         </p>
-        <p>
+        <p className="dark:text-white">
           I help turning ideas into finished working products with support at
           all stages.
         </p>
 
-        <h1 className="font-bold text-2xl md:text-3xl tracking-tight mt-16 mb-8 text-black dark:text-white">
+        <h1 className="font-bold text-2xl md:text-3xl tracking-tight mt-14 mb-8 text-black dark:text-white">
           Projects (newest to oldest)
         </h1>
 
         <div className="w-full flex items-center justify-center mb-4">
           {Object.values(ProjectTypes).map((type) => (
             <button
+              key={type}
               type="button"
               className={cn(
                 {
@@ -244,7 +245,7 @@ export default function Projects() {
             reviews,
           }) => {
             return (
-              <section className="my-8">
+              <section key={title} className="my-8">
                 {image && (
                   <Image
                     width="1200"
@@ -313,9 +314,8 @@ export default function Projects() {
                   {reviews?.length &&
                     reviews.length !== 0 &&
                     reviews.map(({ text, author }) => {
-                      console.log(typeof text, author);
                       return (
-                        <div className="mb-4 border-l-4 border-gray-300 pl-4 text-gray-500">
+                        <div key={author} className="mb-4 border-l-4 border-gray-300 pl-4 text-gray-500">
                           <div
                             dangerouslySetInnerHTML={{
                               __html: text.replaceAll("\n", "<br />"),

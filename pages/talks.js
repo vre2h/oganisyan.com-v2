@@ -47,10 +47,9 @@ export default function Slides({ isCheckListVisible }) {
                 overflow: "hidden",
               }}
               scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
+              frameBorder="0"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              allowFullScreen="true"
+              allowFullScreen
             ></iframe>
             <div className="mt-4 md:ml-4 md:mt-0">
               <h3 className="text-2xl md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">

@@ -77,7 +77,7 @@ export default function Container({ children }) {
           հայ
         </a>
       </div>
-      <nav className=" flex  justify-between items-center max-w-3xl w-full py-4 pt-2 pb-8 sm:py-8 my-0 md:my-2 mx-auto bg-white dark:bg-black bg-opacity-60">
+      <nav className="flex justify-between items-center max-w-3xl w-full py-4 pt-2 pb-8 sm:py-8 my-0 md:my-2 mx-auto bg-white dark:bg-black bg-opacity-60">
         <div>
           {links.map(({ href, text }, idx) => {
             const isActiveLink =

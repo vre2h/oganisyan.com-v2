@@ -39,7 +39,7 @@ export default function About() {
           </p>
           <p>
             As a Software Engineer I am working a lot with Javascript (React,
-            Node.js and ecosystem). I have experience with architecturing big
+            Node.js and ecosystem). I have experience with designing big
             and scalable applications.
           </p>
           <p>
