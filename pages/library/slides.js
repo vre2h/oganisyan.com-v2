@@ -6,6 +6,49 @@ import BasicLink from "../../components/BasicLink";
 import cn from "classnames";
 import { useRouter } from "next/router";
 
+const tfnt2021slides = [
+  {
+    link: "https://www.canva.com/design/DAEY3DpreIY/8el0Zg5d86I7Fc1nkNyJFg/view?utm_content=DAEY3DpreIY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+    text: "General Computer Architecture",
+  },
+  {
+    link: "https://www.canva.com/design/DAEZtBOq8uI/oox6T5yadq3fgR9XSIqHLg/view?utm_content=DAEZtBOq8uI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+    text: "The Anatomy of the Internet",
+  },
+  {
+    link: "https://www.canva.com/design/DAEcMmOQ4gI/caJ9qQ_uF6QKPuGp-DykTA/view?utm_content=DAEcMmOQ4gI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+    text: "Basic Concepts of Programming and Machine Learning",
+  },
+  {
+    text: "Frontend",
+    link: "https://www.canva.com/design/DAEa08YcjuY/ajHloPhH5bmgtbD4pOxmKw/view?utm_content=DAEa08YcjuY&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+  },
+  {
+    link: "https://www.canva.com/design/DAEczL83bDU/m-dy0ltLDY1ifbWNEDddgg/view?utm_content=DAEczL83bDU&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+    text: "Terminal, GIT, Github",
+  },
+  {
+    link: "https://www.canva.com/design/DAEYKbtLjZg/eiBcT49TqWmrjvtoNLYdXQ/view?utm_content=DAEYKbtLjZg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+    text: "What are databases?",
+  },
+  {
+    link: "https://www.canva.com/design/DAEg_oLNq2g/l8ug0lMEY-qkim1P1qkWwA/view?utm_content=DAEg_oLNq2g&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+    text: "Backend",
+  },
+  {
+    link: "https://www.canva.com/design/DAEj_ixOGZc/wB9xtR6libkGGkrdvFAcBA/view?utm_content=DAEj_ixOGZc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+    text: "Testing",
+  },
+  {
+    link: "https://www.canva.com/design/DAEdsQZvFDI/GJE5n_U5NF4_bcjA__qhEw/view?utm_content=DAEdsQZvFDI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+    text: "APIs, VMs and other interesting words",
+  },
+  {
+    link: "https://www.canva.com/design/DAEbh7cd7Og/__Z_YM-sCN2F6fZB6UdMIQ/view?utm_content=DAEbh7cd7Og&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+    text: "Developer Experience",
+  },
+];
+
 export default function Slides({ isCheckListVisible }) {
   const [checklist, showChecklist] = useState(isCheckListVisible);
   const router = useRouter();
@@ -178,6 +221,21 @@ export default function Slides({ isCheckListVisible }) {
             </Step>
           </div>
         )}
+
+        <div className="mt-8">
+          <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
+            Tech for non-tech (2021)
+          </h3>
+          <div className="flex flex-col items-start">
+            {tfnt2021slides.map(({ link, text }, idx) => {
+              return (
+                <BasicLink target="_blank" href={link} className="mb-2">
+                  Lecture #{idx + 1}. {text}
+                </BasicLink>
+              );
+            })}
+          </div>
+        </div>
 
         <section id="my-slides" className="mt-4">
           <div className="mt-8">

@@ -5,7 +5,6 @@ import { parseISO, format } from "date-fns";
 import { useRouter } from "next/router";
 
 import fetcher from "../lib/fetcher";
-import { Locales } from "../helpers/locale.helpers";
 
 const BlogPost = ({ title, summary, slug, date }) => {
   const { data } = useSWR(`/api/views?slug=${slug}`, fetcher);
