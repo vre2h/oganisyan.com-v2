@@ -1,12 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { useTheme } from "next-themes";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import cn from "classnames";
 import Link from "next/link";
-import { ExternalIcon } from "./Icons";
+import { Burger, Close, ExternalIcon } from "./Icons";
 import Footer from "./Footer";
 import useOutsideClick from "../lib/useOutsideClick";
+import useWindowSize from "../lib/useWindowSize";
 import { Locales } from "../helpers/locale.helpers";
 
 const links = [
@@ -29,23 +30,142 @@ const links = [
 ];
 
 export default function Container({ children }) {
-  const history = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [isMenuVisible, setMenuVisibility] = useState(false);
   const { theme, setTheme } = useTheme();
-  const [dropDown, showDropdown] = useState();
+  const [dropDown, showDropdown] = useState(false);
   const dropDownRef = useRef();
-  const router = useRouter();
-  const { locale } = router;
+  const mobileMenuRef = useRef();
+  const history = useRouter();
+
+  const { locale } = history;
+
+  const { width } = useWindowSize();
+
+  useEffect(() => {
+    if (width < 640) {
+      showDropdown(true);
+    } else {
+      showDropdown(false);
+      setMenuVisibility(false);
+    }
+  }, [width]);
+
+  const toggleMenuVisibility = () => setMenuVisibility((v) => !v);
+  const toggleLibraryDropDown = () => {
+    showDropdown((d) => !d);
+  };
+
+  const changeLang = (locale) => () => {
+    history.push(router.asPath, router.asPath, { locale });
+  };
 
   useOutsideClick(dropDownRef, () => {
-    showDropdown(false);
+    if (width > 648) {
+      showDropdown(false);
+    }
+  });
+
+  useOutsideClick(mobileMenuRef, () => {
+    setMenuVisibility(false);
   });
 
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
-  const changeLang = (locale) => () => {
-    router.push(router.asPath, router.asPath, { locale });
+  const Menu = ({ classNames }) => {
+    return (
+      <div ref={mobileMenuRef} className={cn(classNames, "overflow-visible")}>
+        {links.map(({ href, text }, idx) => {
+          const isActiveLink =
+            href === "/"
+              ? history.pathname === href || history.pathname.includes("blog")
+              : href === "/library"
+              ? history.pathname === href ||
+                history.pathname.includes("library")
+              : history.pathname === href;
+
+          return (
+            <NextLink key={href} href={href}>
+              <a
+                className={cn(
+                  "transition-property-border-color duration-500 p-2 text-base sm:p-4 sm:text-lg hover:text-gray-900",
+                  {
+                    "text-gray-900 dark:text-gray-100": isActiveLink,
+                    "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100":
+                      !isActiveLink,
+                    "sm:pl-0": idx === 0,
+                  }
+                )}
+              >
+                <span
+                  className={cn({
+                    "transition-property-border-color duration-500 inline-block border-b-2 p-b-1 dark:border-gray-100 border-gray-900":
+                      isActiveLink,
+                  })}
+                >
+                  {text}
+                </span>
+              </a>
+            </NextLink>
+          );
+        })}
+        <span ref={dropDownRef} className="relative p-2 md:p-0">
+          <span
+            onClick={toggleLibraryDropDown}
+            className={cn(
+              "transition-property-border-color duration-500 my-2 text-base m:p-4 pb-1 sm:text-lg hover:text-gray-900 cursor-pointer",
+              {
+                "border-b-2 text-gray-900 border-gray-900 dark:text-gray-100":
+                  history.pathname.includes("library"),
+                "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100":
+                  !history.pathname.includes("library"),
+              }
+            )}
+          >
+            Library
+          </span>
+          {dropDown && (
+            <div class="sm:shadow-2xl sm:absolute right-0 mt-2 py-2 w-32 w-full sm:w-48 sm:bg-white dark:bg-gray-500 sm:rounded-md sm:shadow-xl z-20">
+              <Link locale={locale} href="/library/slides">
+                <a
+                  class="block px-4 py-2 dark:text-white text-sm capitalize text-gray-700
+                hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
+                >
+                  Slides
+                </a>
+              </Link>
+              <Link locale={locale} href="/library/books">
+                <a
+                  class="block px-4 py-2 dark:text-white text-sm capitalize text-gray-700
+                hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
+                >
+                  Books
+                </a>
+              </Link>
+              <a
+                href="https://letterboxd.com/vre2h"
+                target="_blank"
+                class="flex justify-between px-4 dark:text-white py-2 text-sm capitalize text-gray-700
+                  hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
+              >
+                Movies
+                <ExternalIcon />
+              </a>
+              <a
+                href="https://myshows.me/m/Vrezh10"
+                target="_blank"
+                class="flex justify-between px-4 dark:text-white py-2 text-sm capitalize text-gray-700
+                  hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
+              >
+                TV Shows
+                <ExternalIcon />
+              </a>
+            </div>
+          )}
+        </span>
+      </div>
+    );
   };
 
   return (
@@ -77,97 +197,25 @@ export default function Container({ children }) {
           հայ
         </a>
       </div>
-      <nav className="flex justify-between items-center max-w-3xl w-full py-4 pt-2 pb-8 sm:py-8 my-0 md:my-2 mx-auto bg-white dark:bg-black bg-opacity-60">
-        <div>
-          {links.map(({ href, text }, idx) => {
-            const isActiveLink =
-              href === "/"
-                ? history.pathname === href || history.pathname.includes("blog")
-                : href === "/library"
-                ? history.pathname === href ||
-                  history.pathname.includes("library")
-                : history.pathname === href;
+      <nav className="flex justify-between items-center max-w-3xl w-full py-4 pt-2 pb-8 my-0 mx-auto bg-white dark:bg-black bg-opacity-60">
+        <button
+          onClick={toggleMenuVisibility}
+          type="button"
+          className="sm:hidden bg-gray-200 dark:bg-gray-800 rounded p-2 h-10 w-10"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          {isMenuVisible ? <Close /> : <Burger />}
+        </button>
 
-            return (
-              <NextLink key={href} href={href}>
-                <a
-                  className={cn(
-                    "transition-property-border-color duration-500 p-2 xs:px-1 xs:text-sm text-base sm:p-4 sm:text-lg hover:text-gray-900",
-                    {
-                      "text-gray-900 dark:text-gray-100": isActiveLink,
-                      "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100":
-                        !isActiveLink,
-                      "pl-0 sm:pl-0": idx === 0,
-                    }
-                  )}
-                >
-                  <span
-                    className={cn({
-                      "transition-property-border-color duration-500 inline-block border-b-2 p-b-1 dark:border-gray-100 border-gray-900":
-                        isActiveLink,
-                    })}
-                  >
-                    {text}
-                  </span>
-                </a>
-              </NextLink>
-            );
-          })}
-          <span ref={dropDownRef} className="relative">
-            <span
-              onClick={() => showDropdown((d) => !d)}
-              className={cn(
-                "transition-property-border-color duration-500 m-2 sm:ml-4 xs:mx-1 xs:text-sm text-base m:p-4 pb-1 sm:text-lg hover:text-gray-900 cursor-pointer",
-                {
-                  "border-b-2 text-gray-900 border-gray-900 dark:text-gray-100":
-                    history.pathname.includes("library"),
-                  "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100":
-                    !history.pathname.includes("library"),
-                }
-              )}
-            >
-              Library
-            </span>
-            {dropDown && (
-              <div class="shadow-2xl absolute right-0 mt-2 py-2 w-32 sm:w-48 bg-white dark:bg-gray-500 rounded-md shadow-xl z-20">
-                <Link locale={locale} href="/library/slides">
-                  <a
-                    class="block px-4 py-2 dark:text-white text-sm capitalize text-gray-700
-                hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
-                  >
-                    Slides
-                  </a>
-                </Link>
-                <Link locale={locale} href="/library/books">
-                  <a
-                    class="block px-4 py-2 dark:text-white text-sm capitalize text-gray-700
-                hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
-                  >
-                    Books
-                  </a>
-                </Link>
-                <a
-                  href="https://letterboxd.com/vre2h"
-                  target="_blank"
-                  class="flex justify-between px-4 dark:text-white py-2 text-sm capitalize text-gray-700
-                  hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
-                >
-                  Movies
-                  <ExternalIcon />
-                </a>
-                <a
-                  href="https://myshows.me/m/Vrezh10"
-                  target="_blank"
-                  class="flex justify-between px-4 dark:text-white py-2 text-sm capitalize text-gray-700
-                  hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
-                >
-                  TV Shows
-                  <ExternalIcon />
-                </a>
-              </div>
+        <Menu classNames={cn("hidden sm:block")} />
+        {isMenuVisible && (
+          <Menu
+            classNames={cn(
+              "flex flex-col z-30 rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden absolute top-0 inset-x-0 mt-24 mx-8 p-1 transition transform origin-top-right"
             )}
-          </span>
-        </div>
+          />
+        )}
 
         <button
           aria-label="Toggle Dark Mode"
