@@ -43,7 +43,7 @@ export function Burger({ color }) {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke={color}
+      stroke="currentColor"
       aria-hidden="true"
       width="20"
     >
@@ -68,7 +68,7 @@ export function Close({ color }) {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke={color}
+      stroke="currentColor"
       aria-hidden="true"
       width="20"
     >

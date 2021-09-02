@@ -201,7 +201,7 @@ export default function Container({ children }) {
         <button
           onClick={toggleMenuVisibility}
           type="button"
-          className="sm:hidden bg-gray-200 dark:bg-gray-800 rounded p-2 h-10 w-10"
+          className="sm:hidden bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded p-2 h-10 w-10"
           aria-expanded="false"
         >
           <span class="sr-only">Open main menu</span>
