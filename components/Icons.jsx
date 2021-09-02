@@ -36,7 +36,7 @@ export function Bottom() {
   );
 }
 
-export function Burger({ color }) {
+export function Burger() {
   return (
     <svg
       className="h-6 w-6"
@@ -61,7 +61,7 @@ Burger.defaultProps = {
   color: "#000",
 };
 
-export function Close({ color }) {
+export function Close() {
   return (
     <svg
       className="h-6 w-6"

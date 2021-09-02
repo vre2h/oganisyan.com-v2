@@ -1,18 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { NextSeo } from "next-seo";
 import Layout from "../components/Layout";
 import BasicLink from "../components/BasicLink";
-import { useRouter } from "next/router";
 
-export default function Slides({ isCheckListVisible }) {
-  const [checklist, showChecklist] = useState(isCheckListVisible);
-  const router = useRouter();
-
-  const toggleChecklist = () => {
-    showChecklist((c) => !c);
-    router.push(`?checklist=${checklist ? "hide" : "show"}`);
-  };
-
+export default function Talks() {
   return (
     <Layout>
       <NextSeo
@@ -71,7 +62,7 @@ export default function Slides({ isCheckListVisible }) {
   );
 }
 
-Slides.getInitialProps = ({ query: { checklist } }) => {
+Talks.getInitialProps = ({ query: { checklist } }) => {
   const isCheckListVisible = checklist === "show";
 
   return {
