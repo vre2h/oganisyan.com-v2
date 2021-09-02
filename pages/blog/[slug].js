@@ -19,22 +19,22 @@ export default function Blog({ mdxSource, frontMatter }) {
 
 export async function getStaticPaths() {
   const posts = getPostsFolders("blog");
-  const paths = [
-    ...posts.map((p) => ({
+  const technicalPosts = getPostsFolders("technical-blog");
+  const mapPostToLocale = (locale) => (post) => {
+    return {
       params: {
-        slug: p.filename.replace(/\.mdx/, ""),
+        slug: post.filename.replace(/\.mdx/, ""),
+        locale,
       },
       locale: Locales.en,
-    })),
-    ...posts.map((p) => ({
-      params: {
-        slug: p.filename.replace(/\.mdx/, ""),
-      },
-      locale: Locales.am,
-    })),
+    };
+  };
+  const paths = [
+    ...posts.map(mapPostToLocale(Locales.en)),
+    ...posts.map(mapPostToLocale(Locales.am)),
+    ...technicalPosts.map(mapPostToLocale(Locales.en)),
+    ...technicalPosts.map(mapPostToLocale(Locales.am)),
   ];
-
-  console.log(paths);
 
   return {
     paths,
@@ -43,6 +43,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, locale }) {
-  const post = await getFileBySlug("blog", params.slug, locale);
+  let post;
+  try {
+    post = await getFileBySlug("blog", params.slug, locale);
+  } catch (e) {
+    post = await getFileBySlug("technical-blog", params.slug, locale);
+  }
+
   return { props: post };
 }

@@ -18,8 +18,6 @@ export default function Home({ posts, technicalPosts }) {
     return articlesType === ArticleTypes.NonTech ? posts : technicalPosts;
   }, [articlesType]);
 
-  console.log(posts.map((p) => p.title));
-
   return (
     <Layout>
       <NextSeo
