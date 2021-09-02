@@ -16,7 +16,7 @@ export default function Home({ posts, technicalPosts }) {
 
   const allPosts = useMemo(() => {
     return articlesType === ArticleTypes.NonTech ? posts : technicalPosts;
-  }, [articlesType]);
+  }, [articlesType, posts, technicalPosts]);
 
   return (
     <Layout>

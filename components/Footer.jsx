@@ -22,16 +22,16 @@ export default function Footer() {
       {/* <NowPlaying /> */}
       <div className="w-full max-w-3xl grid grid-cols-1 gap-4 pb-16 grid-cols-2 sm:grid-cols-3">
         <div className="flex justify-start items-start transition flex-col space-y-4">
-          <Link locale={locale} href="/">
+          <Link locale={locale} href="/" passHref>
             <BasicLink>Home</BasicLink>
           </Link>
-          <Link locale={locale} href="/about">
+          <Link locale={locale} href="/about" passHref>
             <BasicLink>About</BasicLink>
           </Link>
-          <Link locale={locale} href="/projects">
+          <Link locale={locale} href="/projects" passHref>
             <BasicLink>Projects</BasicLink>
           </Link>
-          <Link locale={locale} href="/uses">
+          <Link locale={locale} href="/uses" passHref>
             <BasicLink>Uses</BasicLink>
           </Link>
         </div>

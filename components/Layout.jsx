@@ -110,7 +110,7 @@ export default function Container({ children }) {
             </NextLink>
           );
         })}
-        <span ref={dropDownRef} className="relative p-2 md:p-0">
+        <span ref={dropDownRef} className="relative p-2 md:p-4">
           <span
             onClick={toggleLibraryDropDown}
             className={cn(
@@ -126,10 +126,10 @@ export default function Container({ children }) {
             Library
           </span>
           {dropDown && (
-            <div class="sm:shadow-2xl sm:absolute right-0 mt-2 py-2 w-32 w-full sm:w-48 sm:bg-white dark:bg-gray-700 sm:rounded-md sm:shadow-xl z-20">
+            <div className="sm:shadow-2xl sm:absolute right-0 mt-2 py-2 w-32 w-full sm:w-48 sm:bg-white dark:bg-gray-700 sm:rounded-md sm:shadow-xl z-20">
               <Link locale={locale} href="/library/slides">
                 <a
-                  class="block px-4 py-2 dark:prose-dark text-sm capitalize text-gray-700
+                  className="block px-4 py-2 dark:prose-dark text-sm capitalize text-gray-700
                 hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
                 >
                   Slides
@@ -137,25 +137,27 @@ export default function Container({ children }) {
               </Link>
               <Link locale={locale} href="/library/books">
                 <a
-                  class="block px-4 py-2 dark:prose-dark text-sm capitalize text-gray-700
+                  className="block px-4 py-2 dark:prose-dark text-sm capitalize text-gray-700
                 hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
                 >
                   Books
                 </a>
               </Link>
               <a
+                rel="noreferrer"
                 href="https://letterboxd.com/vre2h"
                 target="_blank"
-                class="flex justify-between px-4 dark:prose-dark py-2 text-sm capitalize text-gray-700
+                className="flex justify-between px-4 dark:prose-dark py-2 text-sm capitalize text-gray-700
                   hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
               >
                 Movies
                 <ExternalIcon />
               </a>
               <a
+                rel="noreferrer"
                 href="https://myshows.me/m/Vrezh10"
                 target="_blank"
-                class="flex justify-between px-4 dark:prose-dark py-2 text-sm capitalize text-gray-700
+                className="flex justify-between px-4 dark:prose-dark py-2 text-sm capitalize text-gray-700
                   hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
               >
                 TV Shows
@@ -204,7 +206,7 @@ export default function Container({ children }) {
           className="sm:hidden bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded p-2 h-10 w-10"
           aria-expanded="false"
         >
-          <span class="sr-only">Open main menu</span>
+          <span className="sr-only">Open main menu</span>
           {isMenuVisible ? <Close /> : <Burger />}
         </button>
 

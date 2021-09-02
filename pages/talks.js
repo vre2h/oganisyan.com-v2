@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { NextSeo } from "next-seo";
 import Layout from "../components/Layout";
-import { Step } from "../components/CheckBoxStep";
 import BasicLink from "../components/BasicLink";
-import cn from "classnames";
 import { useRouter } from "next/router";
 
 export default function Slides({ isCheckListVisible }) {

@@ -107,11 +107,11 @@ export default function Uses() {
         </div> */}
         <div className="mb-4 prose leading-6 text-gray-600 dark:text-gray-400">
           {uses.map(({ title, children }) => (
-            <div className="mb-16">
+            <div key={title} className="mb-16">
               <p className="text-lg font-bold">{title}</p>
               <ul>
                 {children.map(({ text }) => (
-                  <li dangerouslySetInnerHTML={{ __html: text }} />
+                  <li key={text} dangerouslySetInnerHTML={{ __html: text }} />
                 ))}
               </ul>
             </div>

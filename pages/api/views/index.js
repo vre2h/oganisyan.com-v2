@@ -1,7 +1,7 @@
 import { cleanKey } from "../../../helpers/helpers";
 import db from "../../../lib/firebase";
 
-export default async (req, res) => {
+export default async function getViews(req, res) {
   if (req.method === "POST") {
     const { slug } = req?.body ? JSON.parse(req.body) : {};
     const ref = db.ref("views").child(cleanKey(slug));
@@ -25,4 +25,4 @@ export default async (req, res) => {
 
     return res.status(200).json({ total: views });
   }
-};
+}

@@ -229,7 +229,12 @@ export default function Slides({ isCheckListVisible }) {
           <div className="flex flex-col items-start">
             {tfnt2021slides.map(({ link, text }, idx) => {
               return (
-                <BasicLink target="_blank" href={link} className="mb-2">
+                <BasicLink
+                  key={idx}
+                  target="_blank"
+                  href={link}
+                  className="mb-2"
+                >
                   Lecture #{idx + 1}. {text}
                 </BasicLink>
               );

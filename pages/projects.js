@@ -256,6 +256,7 @@ export default function Projects() {
                 )}
                 {link ? (
                   <a
+                    rel="noreferrer"
                     className={cn("project py-2 duration-150", {
                       "mt-2 block": !!image,
                     })}
@@ -315,7 +316,10 @@ export default function Projects() {
                     reviews.length !== 0 &&
                     reviews.map(({ text, author }) => {
                       return (
-                        <div key={author} className="mb-4 border-l-4 border-gray-300 pl-4 text-gray-500">
+                        <div
+                          key={author}
+                          className="mb-4 border-l-4 border-gray-300 pl-4 text-gray-500"
+                        >
                           <div
                             dangerouslySetInnerHTML={{
                               __html: text.replaceAll("\n", "<br />"),
