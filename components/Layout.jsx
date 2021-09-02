@@ -57,7 +57,7 @@ export default function Container({ children }) {
   };
 
   const changeLang = (locale) => () => {
-    history.push(router.asPath, router.asPath, { locale });
+    history.push(history.asPath, history.asPath, { locale });
   };
 
   useOutsideClick(dropDownRef, () => {
