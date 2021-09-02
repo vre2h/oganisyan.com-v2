@@ -92,7 +92,7 @@ export default function Container({ children }) {
                   "transition-property-border-color duration-500 p-2 text-base sm:p-4 sm:text-lg hover:text-gray-900",
                   {
                     "text-gray-900 dark:text-gray-100": isActiveLink,
-                    "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100":
+                    "text-gray-900 text-opacity-30 dark:prose-dark dark:hover:text-gray-100":
                       !isActiveLink,
                     "sm:pl-0": idx === 0,
                   }
@@ -118,7 +118,7 @@ export default function Container({ children }) {
               {
                 "border-b-2 text-gray-900 border-gray-900 dark:text-gray-100":
                   history.pathname.includes("library"),
-                "text-gray-900 text-opacity-30 dark:text-gray-600 dark:hover:text-gray-100":
+                "text-gray-900 text-opacity-30 dark:prose-dark dark:hover:text-gray-100":
                   !history.pathname.includes("library"),
               }
             )}
@@ -126,10 +126,10 @@ export default function Container({ children }) {
             Library
           </span>
           {dropDown && (
-            <div class="sm:shadow-2xl sm:absolute right-0 mt-2 py-2 w-32 w-full sm:w-48 sm:bg-white dark:bg-gray-500 sm:rounded-md sm:shadow-xl z-20">
+            <div class="sm:shadow-2xl sm:absolute right-0 mt-2 py-2 w-32 w-full sm:w-48 sm:bg-white dark:bg-gray-700 sm:rounded-md sm:shadow-xl z-20">
               <Link locale={locale} href="/library/slides">
                 <a
-                  class="block px-4 py-2 dark:text-white text-sm capitalize text-gray-700
+                  class="block px-4 py-2 dark:prose-dark text-sm capitalize text-gray-700
                 hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
                 >
                   Slides
@@ -137,7 +137,7 @@ export default function Container({ children }) {
               </Link>
               <Link locale={locale} href="/library/books">
                 <a
-                  class="block px-4 py-2 dark:text-white text-sm capitalize text-gray-700
+                  class="block px-4 py-2 dark:prose-dark text-sm capitalize text-gray-700
                 hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
                 >
                   Books
@@ -146,7 +146,7 @@ export default function Container({ children }) {
               <a
                 href="https://letterboxd.com/vre2h"
                 target="_blank"
-                class="flex justify-between px-4 dark:text-white py-2 text-sm capitalize text-gray-700
+                class="flex justify-between px-4 dark:prose-dark py-2 text-sm capitalize text-gray-700
                   hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
               >
                 Movies
@@ -155,7 +155,7 @@ export default function Container({ children }) {
               <a
                 href="https://myshows.me/m/Vrezh10"
                 target="_blank"
-                class="flex justify-between px-4 dark:text-white py-2 text-sm capitalize text-gray-700
+                class="flex justify-between px-4 dark:prose-dark py-2 text-sm capitalize text-gray-700
                   hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
               >
                 TV Shows
@@ -212,7 +212,7 @@ export default function Container({ children }) {
         {isMenuVisible && (
           <Menu
             classNames={cn(
-              "flex flex-col z-30 rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden absolute top-0 inset-x-0 mt-24 mx-8 p-1 transition transform origin-top-right"
+              "flex flex-col z-30 rounded-lg shadow-md bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 overflow-hidden absolute top-0 inset-x-0 mt-24 mx-8 p-1 transition transform origin-top-right"
             )}
           />
         )}
