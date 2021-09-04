@@ -2,6 +2,7 @@ import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import BooksTimeline from "../../components/BooksTimeline";
+import booksImg from "../../assets/img/general/books.jpg";
 
 export default function Books() {
   return (
@@ -29,7 +30,8 @@ export default function Books() {
             width="680"
             height="343"
             alt="Vrezh Oganisyan"
-            src="/images/books.jpg"
+            src={booksImg}
+            placeholder="blur"
           />
         </div>
 

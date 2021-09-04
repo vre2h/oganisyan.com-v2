@@ -2,6 +2,7 @@ import Link from "next/link";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Layout from "../components/Layout";
+import notFoundImg from "../assets/img/general/additional-avatar.jpg";
 
 export default function NotFound() {
   return (
@@ -29,7 +30,8 @@ export default function NotFound() {
             width="600"
             height="400"
             alt="Vrezh Oganisyan"
-            src="/images/random-avatar.jpg"
+            src={notFoundImg}
+            placeholder="blur"
           />
         </div>
         <p className="text-gray-600 dark:text-gray-400 mb-8">

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import avatarImg from "../assets/img/general/avatar.jpg";
 
 const ExternalLink = ({ href, children }) => (
   <a
@@ -19,7 +20,8 @@ export default function Bio() {
           alt="Vrezh Oganisyan"
           height={110}
           width={110}
-          src="/images/avatar.jpg"
+          src={avatarImg}
+          placeholder="blur"
           className="rounded-full cursor-pointer"
         />
       </div>

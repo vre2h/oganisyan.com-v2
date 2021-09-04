@@ -2,6 +2,7 @@ import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Layout from "../components/Layout";
 import Timeline from "../components/Timeline";
+import burnoutImg from "../assets/img/general/burnout.jpg";
 
 export default function About() {
   return (
@@ -26,10 +27,12 @@ export default function About() {
         </h1>
         <div className="flex justify-center w-full my-8">
           <Image
+            placeholder="blur"
             width="960"
             height="640"
             alt="Vrezh Oganisyan"
-            src="/images/burnout.jpg"
+            src={burnoutImg}
+            priority
           />
         </div>
         <div className="mb-4 prose leading-6 text-gray-600 dark:text-gray-400">
@@ -39,8 +42,8 @@ export default function About() {
           </p>
           <p>
             As a Software Engineer I am working a lot with Javascript (React,
-            Node.js and ecosystem). I have experience with designing big
-            and scalable applications.
+            Node.js and ecosystem). I have experience with designing big and
+            scalable applications.
           </p>
           <p>
             As a Teacher, I have been lecturing and mentoring more than 50

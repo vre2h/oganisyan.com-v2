@@ -3,6 +3,7 @@ import { NextSeo } from "next-seo";
 import Layout from "../components/Layout";
 import Image from "next/image";
 import cn from "classnames";
+import confImg from "../assets/img/general/conf.jpg";
 
 const ProjectTypes = {
   All: "All",
@@ -187,7 +188,8 @@ export default function Projects() {
             width="960"
             height="640"
             alt="Vrezh Oganisyan"
-            src="/images/conf.jpg"
+            src={confImg}
+            placeholder="blur"
           />
         </div>
         <h3

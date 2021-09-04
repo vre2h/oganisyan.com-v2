@@ -2,10 +2,10 @@ import Image from "next/image";
 import { parseISO, format } from "date-fns";
 import { useRouter } from "next/router";
 
+import avatarImg from "../assets/img/general/avatar.jpg";
 import Layout from "../components/Layout";
 import ViewCounter from "../components/ViewCounter";
 import BlogSeo from "../components/BlogSeo";
-import Bio from "../components/Bio";
 
 const siteUrl = "https://oganisyan.com";
 
@@ -27,9 +27,10 @@ export default function BlogLayout({ children, frontMatter }) {
           <div className="flex items-center">
             <Image
               alt="Vrezh Oganisyan"
-              height={24}
-              width={24}
-              src="/images/avatar.jpg"
+              height={30}
+              width={30}
+              src={avatarImg}
+              placeholder="blur"
               className="rounded-full"
             />
             <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">

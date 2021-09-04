@@ -75,7 +75,7 @@ export default function Container({ children }) {
 
   const Menu = ({ classNames }) => {
     return (
-      <div ref={mobileMenuRef} className={cn(classNames, "overflow-visible")}>
+      <div className={cn(classNames, "overflow-visible")}>
         {links.map(({ href, text }, idx) => {
           const isActiveLink =
             href === "/"
@@ -200,24 +200,26 @@ export default function Container({ children }) {
         </a>
       </div>
       <nav className="flex justify-between items-center max-w-3xl w-full py-4 pt-2 pb-8 my-0 mx-auto bg-white dark:bg-black bg-opacity-60">
-        <button
-          onClick={toggleMenuVisibility}
-          type="button"
-          className="sm:hidden bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded p-2 h-10 w-10"
-          aria-expanded="false"
-        >
-          <span className="sr-only">Open main menu</span>
-          {isMenuVisible ? <Close /> : <Burger />}
-        </button>
-
         <Menu classNames={cn("hidden sm:block")} />
-        {isMenuVisible && (
-          <Menu
-            classNames={cn(
-              "flex flex-col z-30 rounded-lg shadow-md bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 overflow-hidden absolute top-0 inset-x-0 mt-24 mx-8 p-1 transition transform origin-top-right"
-            )}
-          />
-        )}
+
+        <div ref={mobileMenuRef}>
+          <button
+            onClick={toggleMenuVisibility}
+            type="button"
+            className="sm:hidden bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded p-2 h-10 w-10"
+            aria-label="Open Main Menu"
+          >
+            <span className="sr-only">Open main menu</span>
+            {isMenuVisible ? <Close /> : <Burger />}
+          </button>
+          {isMenuVisible && (
+            <Menu
+              classNames={cn(
+                "flex flex-col z-30 rounded-lg shadow-md bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 overflow-hidden absolute top-0 inset-x-0 mt-24 mx-8 p-1 transition transform origin-top-right"
+              )}
+            />
+          )}
+        </div>
 
         <button
           aria-label="Toggle Dark Mode"
