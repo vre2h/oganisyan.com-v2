@@ -30,7 +30,6 @@ export default function BlogLayout({ children, frontMatter }) {
               height={30}
               width={30}
               src={avatarImg}
-              placeholder="blur"
               className="rounded-full"
             />
             <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">

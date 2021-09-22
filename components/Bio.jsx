@@ -21,7 +21,6 @@ export default function Bio() {
           height={110}
           width={110}
           src={avatarImg}
-          placeholder="blur"
           className="rounded-full cursor-pointer"
         />
       </div>
