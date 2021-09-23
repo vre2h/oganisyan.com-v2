@@ -251,6 +251,9 @@ export default function Slides({ isCheckListVisible }) {
               July 3-5: How to become an engineer: most common mistakes by
               learners.
             </BasicLink>
+            <BasicLink download href="/static/slides/talks/100-days.pdf">
+              Aug 18: First 100 days as a Junior. How to survive?
+            </BasicLink>
           </div>
 
           <div className="mt-8">
