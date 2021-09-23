@@ -247,11 +247,19 @@ export default function Slides({ isCheckListVisible }) {
             <h3 className="text-lg md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
               Talks (2021)
             </h3>
-            <BasicLink download href="/static/slides/talks/how-to-become.pdf">
+            <BasicLink
+              className="inline-block mb-2"
+              download
+              href="/static/slides/talks/how-to-become.pdf"
+            >
               July 3-5: How to become an engineer: most common mistakes by
               learners.
             </BasicLink>
-            <BasicLink download href="/static/slides/talks/100-days.pdf">
+            <BasicLink
+              className="inline-block mb-2"
+              download
+              href="/static/slides/talks/100-days.pdf"
+            >
               Aug 18: First 100 days as a Junior. How to survive?
             </BasicLink>
           </div>
