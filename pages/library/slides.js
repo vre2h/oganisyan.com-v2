@@ -262,6 +262,13 @@ export default function Slides({ isCheckListVisible }) {
             >
               Aug 18: First 100 days as a Junior. How to survive?
             </BasicLink>
+            <BasicLink
+              className="inline-block mb-2"
+              download
+              href="/static/slides/talks/burnout.pdf"
+            >
+              Aug 26: Burnout vs IT. How we suffer in comfortable offices.
+            </BasicLink>
           </div>
 
           <div className="mt-8">

@@ -28,6 +28,36 @@ export default function Talks() {
         <section id="my-slides" className="mt-4">
           <div className="flex flex-col md:flex-row mt-8">
             <iframe
+              src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Farmcodeacademy%2Fvideos%2F610528963271454%2F&show_text=false&width=267&t=0"
+              width="320"
+              height="476"
+              style={{ border: "none", overflow: "hidden" }}
+              scrolling="no"
+              frameBorder="0"
+              allowFullScreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+            <div className="mt-4 md:ml-4 md:mt-0">
+              <h3 className="text-2xl md:text-xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
+                Gyumri BarCamp 2021
+              </h3>
+              <h3 className="text-xl md:text-xl mb-4 tracking-tight text-gray-900 dark:text-gray-100">
+                Burnout vs IT. <br /> How we suffer in comfortable offices.
+              </h3>
+              <BasicLink
+                className="text-base"
+                download
+                href="/static/slides/talks/burnout.pdf"
+              >
+                Slides
+              </BasicLink>
+            </div>
+          </div>
+        </section>
+
+        <section id="my-slides" className="mt-4">
+          <div className="flex flex-col md:flex-row mt-8">
+            <iframe
               src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fvre2h%2Fposts%2F3108448829480669&show_text=false&width=500"
               width="320"
               height="476"
