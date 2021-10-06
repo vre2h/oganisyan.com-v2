@@ -26,7 +26,7 @@ export async function getStaticPaths() {
         slug: post.filename.replace(/\.mdx/, ""),
         locale,
       },
-      locale: Locales.en,
+      locale,
     };
   };
   const paths = [
