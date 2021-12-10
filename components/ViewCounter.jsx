@@ -18,5 +18,7 @@ export default function ViewCounter({ slug }) {
     registerView();
   }, [slug]);
 
-  return `${views ? format(views) : "–––"} views`;
+  return `${
+    views ? `${views > 300 ? "🔥" : ""} ${format(views)}` : "–––"
+  } views`;
 }

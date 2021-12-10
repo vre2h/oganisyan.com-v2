@@ -5,8 +5,9 @@ import { parseISO, format } from "date-fns";
 import { useRouter } from "next/router";
 
 import fetcher from "../lib/fetcher";
+import ColoredTag from "./ColoredTag";
 
-const BlogPost = ({ title, summary, slug, date }) => {
+const BlogPost = ({ title, summary, slug, date, tags }) => {
   const { data } = useSWR(`/api/views?slug=${slug}`, fetcher);
   const views = data?.total;
   const { locale } = useRouter();
@@ -20,16 +21,25 @@ const BlogPost = ({ title, summary, slug, date }) => {
               {title}
             </h4>
             <p className="text-gray-400 text-left text-sm sm:text-right hidden sm:block w-32 mb-4 sm:mb-0">
-              {`${views ? formatNumber(views) : "–––"} views`}
+              {views ? `${views > 300 ? "🔥" : ""} ${views}` : "–––"} views
             </p>
           </div>
           <p className="text-gray-600 dark:text-gray-400">{summary}</p>
           <p className="text-gray-400 text-sm text-left mt-2 sm:mb-0">
             <span className="text-left">
-              Published on {format(parseISO(date), "MMMM dd, yyyy")}
+              Published on {format(parseISO(date), "MMMM dd, yyyy")}{" "}
+              {tags && ` • `}{" "}
+              {tags &&
+                tags
+                  .split(", ")
+                  .map((t) => <ColoredTag key={t}>{t}</ColoredTag>)}
             </span>
             <span className="sm:hidden">
-              {` • `} {`${views ? formatNumber(views) : "–––"} views`}
+              {` • `}{" "}
+              {views
+                ? `${views > 300 ? "🔥" : ""} ${formatNumber(views)}`
+                : "–––"}
+              views
             </span>
           </p>
         </div>

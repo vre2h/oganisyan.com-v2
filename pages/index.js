@@ -7,8 +7,8 @@ import { getAllFilesFrontMatter } from "../lib/mdx";
 import { useMemo, useState } from "react";
 
 const ArticleTypes = {
-  NonTech: "Non-Tech First",
-  Technical: "Technical First",
+  NonTech: "🤩 Non-Tech First",
+  Technical: "👨🏻‍💻 Technical First",
 };
 
 export default function Home({ posts, technicalPosts }) {
@@ -34,9 +34,9 @@ export default function Home({ posts, technicalPosts }) {
           ],
         }}
       />
-      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-0 sm:mb-2 text-black dark:text-white">
-          Hey, I’m Vrezh
+      <div className="flex mt-4 flex-col justify-center items-start max-w-3xl mx-auto mb-16">
+        <h1 className="font-bold text-xl md:text-3xl tracking-tight mb-0 sm:mb-2 text-black dark:text-white">
+          👋 Hey, I’m Vrezh
         </h1>
         <Bio />{" "}
         <div className="w-full sm:flex mb-12 justify-between">
@@ -64,7 +64,7 @@ export default function Home({ posts, technicalPosts }) {
             ))}
           </div>
         </div>
-        {allPosts.map(({ title, description, slug, date }) => {
+        {allPosts.map(({ title, description, slug, date, tags }) => {
           return (
             <BlogPost
               key={title}
@@ -72,6 +72,7 @@ export default function Home({ posts, technicalPosts }) {
               summary={description}
               slug={slug}
               date={date}
+              tags={tags || ""}
             />
           );
         })}
