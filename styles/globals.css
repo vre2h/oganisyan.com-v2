@@ -42,6 +42,16 @@ html {
   @apply m-0;
 }
 
+article .prose h1 a,
+article .prose h2 a,
+article .prose h3 a,
+article .prose h4 a,
+article .prose h5 a,
+article .prose h6 a {
+  display: inline-block;
+  margin-right: 5px;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,
