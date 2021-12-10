@@ -4,8 +4,9 @@ module.exports = {
   purge: [
     "./pages/**/*.js",
     "./components/**/*.jsx",
-    "./layouts/**/*.jsx",
     "./content/**/*.mdx",
+    "./layouts/**/*.jsx",
+    "./fictive",
   ],
   darkMode: "class",
   theme: {
