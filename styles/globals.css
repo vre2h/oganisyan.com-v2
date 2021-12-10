@@ -153,3 +153,13 @@ input[type="email"] {
   grid-template-columns: max-content 1fr;
   grid-gap: 10px 25px;
 }
+
+a > span.icon-link::before {
+  @apply text-gray-300;
+  content: "#";
+  transition: 400ms;
+}
+
+a > span.icon-link:hover::before {
+  @apply text-gray-800;
+}

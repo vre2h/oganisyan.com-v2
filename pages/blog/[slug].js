@@ -1,4 +1,4 @@
-import hydrate from "next-mdx-remote/hydrate";
+import { MDXRemote } from "next-mdx-remote";
 import Link from "next/link";
 import Image from "next/image";
 import { Locales } from "../../helpers/locale.helpers";
@@ -12,9 +12,11 @@ const components = {
 };
 
 export default function Blog({ mdxSource, frontMatter }) {
-  const content = hydrate(mdxSource, { components });
-
-  return <BlogLayout frontMatter={frontMatter}>{content}</BlogLayout>;
+  return (
+    <BlogLayout frontMatter={frontMatter}>
+      <MDXRemote {...mdxSource} components={components} />
+    </BlogLayout>
+  );
 }
 
 export async function getStaticPaths() {
