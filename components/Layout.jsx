@@ -254,7 +254,7 @@ export default function Container({ children }) {
           )}
         </button>
       </nav>
-      <main className="flex flex-col max-w-3xl mx-auto w-full bg-white dark:bg-black min-h-screen">
+      <main className="flex flex-col mx-auto w-full bg-white dark:bg-black min-h-screen">
         {children}
         <Footer />
       </main>

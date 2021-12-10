@@ -197,7 +197,7 @@ export default function Projects() {
             "font-bold text-xl md:text-2xl tracking-tight mb-8 dark:text-white"
           )}
         >
-          Ahoooy!
+          👋 Ahoooy!
         </h3>
         <p className="dark:text-white">
           I’m Vrezh, Software Engineer with a huge experience in education,

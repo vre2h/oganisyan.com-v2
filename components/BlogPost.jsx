@@ -28,17 +28,19 @@ const BlogPost = ({ title, summary, slug, date, tags }) => {
           <p className="text-gray-400 text-sm text-left mt-2 sm:mb-0">
             <span className="text-left">
               Published on {format(parseISO(date), "MMMM dd, yyyy")}{" "}
-              {tags && ` • `}{" "}
-              {tags &&
-                tags
-                  .split(", ")
-                  .map((t) => <ColoredTag key={t}>{t}</ColoredTag>)}
+              <div className="hidden sm:inline-block">
+                {tags && ` • `}{" "}
+                {tags &&
+                  tags
+                    .split(", ")
+                    .map((t) => <ColoredTag key={t}>{t}</ColoredTag>)}
+              </div>
             </span>
             <span className="sm:hidden">
               {` • `}{" "}
               {views
                 ? `${views > 300 ? "🔥" : ""} ${formatNumber(views)}`
-                : "–––"}
+                : "–––"}{" "}
               views
             </span>
           </p>
