@@ -25,7 +25,7 @@ export default function ColoredTag({ children }) {
       style={{
         backgroundColor: colors[idx],
       }}
-      className="text-sm text-white px-1 mr-1 rounded-sm"
+      className="inline-block text-sm text-white px-1 mr-1 rounded-sm"
     >
       {children}
     </span>
