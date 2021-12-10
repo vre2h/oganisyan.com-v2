@@ -9,7 +9,8 @@ const talks = [
     video: function video() {
       return (
         <iframe
-          className="rounded-md grow"
+          className="rounded-md grow w-full"
+          style={{ maxWidth: 560 }}
           width="560"
           height="315"
           src="https://www.youtube.com/embed/aujkYpEPmxI"
@@ -33,7 +34,8 @@ const talks = [
     video: function video() {
       return (
         <iframe
-          className="rounded-md grow"
+          className="rounded-md grow w-full"
+          style={{ maxWidth: 560 }}
           width="560"
           height="315"
           src="https://www.youtube.com/embed/blxpW_4ZjJg"
@@ -56,7 +58,8 @@ const talks = [
     video: function video() {
       return (
         <iframe
-          className="rounded-md grow"
+          className="rounded-md grow w-full"
+          style={{ maxWidth: 560 }}
           width="560"
           height="315"
           src="https://www.youtube.com/embed/vNC_0n9Nl1k"
@@ -132,8 +135,8 @@ export default function Talks() {
         {talks.map(
           ({ title, video: Video, description, links, date, tags }) => {
             return (
-              <section key={title} id="my-slides" className="w-auto mt-4">
-                <div className="w-auto flex flex-col md:flex-row mt-8">
+              <section key={title} id="my-slides" className="w-full mt-4">
+                <div className="w-full flex flex-col md:flex-row mt-8">
                   <Video />
                   <div
                     style={{ flexShrink: 10 }}
