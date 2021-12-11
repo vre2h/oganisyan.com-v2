@@ -10,6 +10,7 @@ const ProjectTypes = {
   Courses: "Courses",
   Projects: "Projects",
   Jobs: "Jobs",
+  openSource: "Open-Source Contribution",
 };
 
 const projects = [
@@ -103,6 +104,19 @@ const projects = [
     type: ProjectTypes.Courses,
   },
   {
+    title: "use-react-countries",
+    description:
+      "A tiny fully customizable react hook which gives you full list of countries with their flags, emojis and descriptions",
+    link: "https://github.com/vre2h/use-react-countries",
+    image: "",
+    role: "Creator",
+    period: "December 2021",
+    status: "Ongoing",
+    customer: "",
+    stack: "HTML/CSS, JS (React)",
+    type: ProjectTypes.openSource,
+  },
+  {
     title: "use-react-screenshot",
     description:
       "React hook which allows you to make component screenshot and get an image in different extensions.      ",
@@ -113,6 +127,7 @@ const projects = [
     status: "Ongoing",
     customer: "",
     stack: "HTML/CSS, JS (React)",
+    type: ProjectTypes.openSource,
   },
   {
     title: "Building Products @ Simply Technologies",
@@ -145,6 +160,7 @@ const allProjects = projects;
 const jobs = projects.filter((p) => p.type === ProjectTypes.Jobs);
 const courses = projects.filter((p) => p.type === ProjectTypes.Courses);
 const myProjects = projects.filter((p) => p.type === ProjectTypes.Projects);
+const openSource = projects.filter((p) => p.type === ProjectTypes.openSource);
 
 export default function Projects() {
   const [projectType, setProjectType] = useState(ProjectTypes.All);
@@ -160,6 +176,9 @@ export default function Projects() {
       break;
     case ProjectTypes.Projects:
       filteredProjects = myProjects;
+      break;
+    case ProjectTypes.openSource:
+      filteredProjects = openSource;
       break;
     default:
       filteredProjects = allProjects;
