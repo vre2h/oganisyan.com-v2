@@ -182,7 +182,7 @@ export default function Projects() {
           ],
         }}
       />
-      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
+      <div className="flex flex-col justify-center items-start max-w-xl mx-auto mb-16">
         <div className="flex justify-center w-full mb-8">
           <Image
             width="960"

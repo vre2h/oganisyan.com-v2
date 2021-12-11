@@ -34,7 +34,7 @@ export default function Home({ posts, technicalPosts }) {
           ],
         }}
       />
-      <div className="flex mt-4 flex-col justify-center items-start max-w-3xl mx-auto mb-16">
+      <div className="flex mt-4 flex-col justify-center items-start max-w-xl mx-auto mb-16">
         <h1 className="font-bold text-xl md:text-3xl tracking-tight mb-0 sm:mb-2 text-black dark:text-white">
           👋 Hey, I’m Vrezh
         </h1>

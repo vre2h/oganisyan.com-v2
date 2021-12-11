@@ -19,8 +19,8 @@ export default function BlogLayout({ children, frontMatter }) {
         url={`https://oganisyan.com/blog/${frontMatter.slug}`}
         {...frontMatter}
       />
-      <article className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+      <article className="flex flex-col justify-center items-start max-w-xl mx-auto mb-16 w-full">
+        <h1 className="font-bold text-3xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
           {frontMatter.title}
         </h1>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mt-2 mb-4">

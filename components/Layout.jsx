@@ -172,7 +172,7 @@ export default function Container({ children }) {
 
   return (
     <div className="bg-white dark:bg-black py-2 px-8">
-      <div className="flex justify-end items-center max-w-3xl w-full mx-auto bg-white dark:bg-black">
+      <div className="flex justify-end items-center max-w-xl w-full mx-auto bg-white dark:bg-black">
         <a
           className={cn(
             "p-1 duration-300 text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer",
@@ -199,7 +199,7 @@ export default function Container({ children }) {
           հայ
         </a>
       </div>
-      <nav className="flex justify-between items-center max-w-3xl w-full py-4 pt-2 pb-8 my-0 mx-auto bg-white dark:bg-black bg-opacity-60">
+      <nav className="flex justify-between items-center max-w-xl w-full py-4 pt-2 pb-8 my-0 mx-auto bg-white dark:bg-black bg-opacity-60">
         <Menu classNames={cn("hidden sm:block")} />
 
         <div ref={mobileMenuRef}>

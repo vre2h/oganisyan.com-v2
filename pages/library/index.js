@@ -19,7 +19,7 @@ export default function Library() {
           ],
         }}
       />
-      <div className="w-full flex flex-col max-w-3xl mb-16 mx-auto">
+      <div className="w-full flex flex-col max-w-xl mb-16 mx-auto">
         <h1 className="font-bold text-3xl md:text-5xl w-2xl tracking-tight mb-4 text-black dark:text-white">
           Library
         </h1>
