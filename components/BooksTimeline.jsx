@@ -217,6 +217,44 @@ const books2020 = [
   },
 ];
 
+const books2021 = [
+  {
+    title: "The Hard Thing About Hard Things",
+    author: "Ben Horowitz",
+    review: "5",
+  },
+  {
+    title: "A Mom Test",
+    author: "Rob FitzPatrick",
+    review: "5",
+  },
+  {
+    title: "Making of a manager",
+    author: "Julie Zhuo",
+    review: "5",
+  },
+  {
+    title: "Burnout Survival Kit",
+    author: "Inogen Dal",
+    review: "3",
+  },
+  {
+    title: "javascript.info",
+    author: "Ilya Kantor and team",
+    review: "4",
+  },
+  {
+    title: "The miracle morning",
+    author: "Hal Elrod",
+    review: "3",
+  },
+  {
+    title: "Man's search for meaning",
+    author: "Viktor Frankl",
+    review: "3",
+  },
+];
+
 const Divider = () => {
   return (
     <div className="border border-gray-200 dark:border-gray-600 w-full my-8" />
@@ -286,6 +324,15 @@ export default function Timeline() {
       <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
         Timeline
       </h3>
+      <Year>2021</Year>
+      <ul>
+        {books2021.map((b) => (
+          <Step key={b.title} title={b.title}>
+            {b.author}
+          </Step>
+        ))}
+      </ul>
+      <Divider />
       <Year>2020</Year>
       <ul>
         {books2020.map((b) => (
