@@ -6,7 +6,7 @@ module.exports = {
     "./components/**/*.jsx",
     "./content/**/*.mdx",
     "./layouts/**/*.jsx",
-    "./another-fictive",
+    "./final-fictive",
   ],
   darkMode: "class",
   theme: {

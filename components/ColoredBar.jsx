@@ -9,7 +9,7 @@ export default function ColoredBar({ children }) {
       style={{
         backgroundColor: colors[idx],
       }}
-      className="py-1 inline-block text-sm text-center text-white px-1 mr-1 rounded-sm"
+      className="py-1 inline-block text-sm text-center text-white px-1 rounded-sm"
     >
       {children}
     </span>
