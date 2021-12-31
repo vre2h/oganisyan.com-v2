@@ -174,7 +174,7 @@ export default function Container({ children }) {
   return (
     <>
       {locale === Locales.am && (
-        <ColoredBar>Հայերեն թարգմանությունները դեռ պատրաստ չեն։</ColoredBar>
+        <ColoredBar>🇦🇲 Հայերեն թարգմանությունները դեռ պատրաստ չեն։</ColoredBar>
       )}
       <div className="bg-white dark:bg-black py-2 px-8">
         <div className="flex justify-end items-center max-w-xl w-full mx-auto bg-white dark:bg-black">
