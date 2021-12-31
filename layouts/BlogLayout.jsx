@@ -47,6 +47,7 @@ export default function BlogLayout({ children, frontMatter }) {
         <div className="prose dark:prose-dark max-w-none w-full">
           {children}
         </div>
+
         <div className="mt-4 text-sm text-gray-700 dark:text-gray-300">
           <a
             className="inline-block mx-1 ml-0 mt-4 transition duration-500 text-sm text-gray-900 hover:text-gray-900 dark:text-gray-100 border-b-2 p-b-4 dark:border-gray-700 dark:hover:border-gray-100 border-gray-300 hover:border-gray-900"
@@ -56,9 +57,7 @@ export default function BlogLayout({ children, frontMatter }) {
           >
             Tweet
           </a>
-
           {` • `}
-
           <a
             className="inline-block mx-1 mt-4 transition duration-500 text-sm text-gray-900 hover:text-gray-900 dark:text-gray-100 border-b-2 p-b-4 dark:border-gray-700 dark:hover:border-gray-100 border-gray-300 hover:border-gray-900"
             target="_blank"
@@ -68,7 +67,6 @@ export default function BlogLayout({ children, frontMatter }) {
             Share on FB
           </a>
           {` • `}
-
           <a
             className="inline-block mx-1 mt-4 transition duration-500 text-sm text-gray-900 hover:text-gray-900 dark:text-gray-100 border-b-2 p-b-4 dark:border-gray-700 dark:hover:border-gray-100 border-gray-300 hover:border-gray-900"
             target="_blank"
@@ -78,7 +76,6 @@ export default function BlogLayout({ children, frontMatter }) {
             Post on Linkedin
           </a>
           {` • `}
-
           <a
             className="inline-block mx-1 mt-4 transition duration-500 text-sm text-gray-900 hover:text-gray-900 dark:text-gray-100 border-b-2 p-b-4 dark:border-gray-700 dark:hover:border-gray-100 border-gray-300 hover:border-gray-900"
             target="_blank"
@@ -88,6 +85,14 @@ export default function BlogLayout({ children, frontMatter }) {
             Discuss on Telegram
           </a>
         </div>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://www.buymeacoffee.com/vre2h"
+          className="mt-8 flex border hover:border-black duration-200 items-center text-base mx-auto px-4 py-2 rounded-md font-medium text-gray-900 dark:text-gray-100"
+        >
+          🎗 Support Author
+        </a>
       </article>
     </Layout>
   );
