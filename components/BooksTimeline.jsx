@@ -234,6 +234,11 @@ const books2021 = [
     review: "5",
   },
   {
+    title: "From 0 to 1",
+    author: "Peter Thiele",
+    review: "5",
+  },
+  {
     title: "Burnout Survival Kit",
     author: "Inogen Dal",
     review: "3",
@@ -286,9 +291,11 @@ const Step = ({ title, children }) => {
             <path d="M22 4L12 14.01l-3-3" />
           </g>
         </svg>
-        <p className="font-medium text-gray-900 dark:text-gray-100">{title}</p>
+        <div className="font-medium text-gray-900 dark:text-gray-100">
+          {title}
+        </div>
       </div>
-      <p className="text-gray-700 dark:text-gray-400 ml-6">{children}</p>
+      <div className="text-gray-700 dark:text-gray-400 ml-6">{children}</div>
     </li>
   );
 };
@@ -316,6 +323,21 @@ const FullTimeline = () => (
   </>
 );
 
+export function Books2021() {
+  return (
+    <>
+      <ul>
+        {books2021.map((b) => (
+          <Step key={b.title} title={b.title}>
+            {b.author}
+          </Step>
+        ))}
+      </ul>
+      <Divider />
+    </>
+  );
+}
+
 export default function Timeline() {
   const [isShowingFullTimeline, showFullTimeline] = useState(false);
 
@@ -325,14 +347,7 @@ export default function Timeline() {
         Timeline
       </h3>
       <Year>2021</Year>
-      <ul>
-        {books2021.map((b) => (
-          <Step key={b.title} title={b.title}>
-            {b.author}
-          </Step>
-        ))}
-      </ul>
-      <Divider />
+      <Books2021 />
       <Year>2020</Year>
       <ul>
         {books2020.map((b) => (
@@ -350,7 +365,6 @@ export default function Timeline() {
           </Step>
         ))}
       </ul>
-
       {isShowingFullTimeline ? (
         <FullTimeline />
       ) : (

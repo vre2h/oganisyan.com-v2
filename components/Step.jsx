@@ -1,6 +1,6 @@
 export const Step = ({ title, children, renderHeader }) => {
   return (
-    <div className="mb-4 ml-2">
+    <div className="mb-8">
       <div className="flex items-center mb-2 text-green-700 dark:text-green-300">
         {renderHeader ? (
           <>
@@ -24,9 +24,11 @@ export const Step = ({ title, children, renderHeader }) => {
             </svg>
           </>
         )}
-        <p className="font-medium text-gray-900 dark:text-gray-100">{title}</p>
+        <div className="font-medium text-gray-900 dark:text-gray-100">
+          {title}
+        </div>
       </div>
-      <p className="text-gray-700 dark:text-gray-400 ml-6">{children}</p>
+      <div className="text-gray-700 dark:text-gray-400 ml-6">{children}</div>
     </div>
   );
 };

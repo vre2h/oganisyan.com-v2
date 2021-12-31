@@ -21,7 +21,7 @@ const talks = [
         ></iframe>
       );
     },
-    title: "BarCamp",
+    title: "BarCamp Gyumri",
     description:
       "🔥 Burnout vs IT. <br /> How we suffer in comfortable offices.",
     links: [
@@ -46,7 +46,7 @@ const talks = [
         ></iframe>
       );
     },
-    title: "BarCamp",
+    title: "BarCamp Dilijan",
     description: "🏄🏻‍♂️ First 100 days as a Junior. <br /> How to survive?",
     links: [
       { title: "Download Slides", link: "/static/slides/talks/100-days.pdf" },
@@ -70,7 +70,7 @@ const talks = [
         ></iframe>
       );
     },
-    title: "BarCamp",
+    title: "BarCamp Vanadzor",
     description: "👶 How to become an Engineer?",
     links: [
       {
@@ -135,7 +135,11 @@ export default function Talks() {
         {talks.map(
           ({ title, video: Video, description, links, date, tags }) => {
             return (
-              <section key={title} id="my-slides" className="w-full mt-4">
+              <section
+                key={title}
+                id={title.toLowerCase().split(" ").join("-")}
+                className="w-full mt-4"
+              >
                 <div className="w-full flex flex-col md:flex-row mt-8">
                   <Video />
                   <div

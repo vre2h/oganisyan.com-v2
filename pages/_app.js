@@ -5,7 +5,8 @@ import { ThemeProvider } from "next-themes";
 import { DefaultSeo } from "next-seo";
 import Head from "next/head";
 import Tag from "../components/Tag";
-
+import { Timeline2021 } from "../components/Timeline";
+import { Books2021 } from "../components/BooksTimeline";
 import SEO from "../next-seo.config";
 
 if (!String.prototype.replaceAll) {
@@ -24,6 +25,8 @@ if (!String.prototype.replaceAll) {
 
 const mdxComponents = {
   Tag,
+  Timeline2021,
+  Books2021,
 };
 
 export default function App({ Component, pageProps }) {
