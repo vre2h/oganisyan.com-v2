@@ -231,7 +231,7 @@ export default function Projects() {
           Projects (newest to oldest)
         </h1>
 
-        <div className="w-full flex items-center justify-center mb-4">
+        <div className="w-full flex flex-wrap items-center justify-center mb-4">
           {Object.values(ProjectTypes).map((type) => (
             <button
               key={type}
