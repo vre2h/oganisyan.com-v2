@@ -1,0 +1,713 @@
+---
+title: How to learn JS
+date: "2022-01-07"
+description: Past two years, I have been asked a lot about articles, resources, books, and courses that help me to learn JavaScript. Here's my answer.
+
+---
+
+I've been teaching JavaScript for the past two years during different
+internship programs, bootcamps, and courses.
+
+I have been mentoring juniors and helping them to grow into better developers.
+
+And the most popular question I've been asked is what articles,
+resources, books, and courses I'd recommend for people who are starting
+their journey. Here's my answer ⤵️
+
+<Image
+  alt={`Preview`}
+  src={`/images/blog/how-to-js/preview.png`}
+  priority
+  width="1920"
+  height="1080"
+  class="border"
+/>
+
+## Table of Contents
+
+- [Books](#books)
+- [Courses](#courses)
+- [Context](#context-matters)
+  - [Bloggers](#bloggers)
+  - [Twitter Accounts](#twitter-accounts)
+  - [Newsletter](#newsletters)
+  - [Confs](#confs)
+
+## Books
+
+I think it's obvious that books are the most important attributes in
+mastering the language or technology. They are helping to form the right
+mindset for working with hard, big, and sometimes vague material.
+
+I re-read these books a lot of times, and every time I was exploring
+new ideas and become a better engineer.
+
+1️⃣ At first, I recommend combining two books at the same time: one of them should be more
+theoretical (e.g. YDKJS), and the other one should be more practical (e.g. javascript.info).
+
+2️⃣ It's important to write down all the code examples from the book.
+I recommend opening a repository for the book and work with every chunk of code you see.
+
+🚫 Avoid jumping from one book to another. Pick one or two and read them to the end.
+
+### Newbie / Intern
+
+<table>
+  <tbody>
+    {[
+      {
+        title: '"You Don\'t Know JavaScript"',
+        tags: ["en", "ru"],
+        author: "Kyle Simpson",
+        link: "https://www.amazon.com/You-Dont-Know-JS-Closures/dp/1449335586",
+      },
+      {
+        title: "javascript.info",
+        tags: ["en", "ru"],
+        link: "https://javascript.info/",
+      },
+      {
+        title: "The Definitive Guide",
+        tags: ["en", "ru"],
+        link: "https://www.scribd.com/book/461623773/JavaScript-The-Definitive-Guide-Master-the-World-s-Most-Used-Programming-Language?utm_medium=cpc&utm_source=google_search&utm_campaign=3Q_Google_DSA_NB_RoW&utm_device=c&gclid=Cj0KCQiAw9qOBhC-ARIsAG-rdn7H-BlEa7dKlQ8WBz5zP8cwb-QjfUEYj1kd8cjTOkdUl_aI7rS1B2AaAmyoEALw_wcB",
+        author: "David Flanagan",
+      },
+      {
+        title: "Just Javascript",
+        tags: ["en"],
+        link: "https://justjavascript.com/",
+        author: "Dan Abramov",
+      },
+    ].map(({ title, author, link, tags, renderTitle: Component }) => (
+      <tr>
+        <td>
+          {Component ? (
+            <Component />
+          ) : link ? (
+            <a href={link} target="blank">
+              {title}
+            </a>
+          ) : (
+            title
+          )}{" "}
+          {author && `by ${author}`}
+        </td>
+        <td style={{ textAlign: "right" }}>
+          {tags &&
+            tags.map((tag) => {
+              return <ColoredTag>{tag}</ColoredTag>;
+            })}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+### Juniors
+
+<table>
+  <tbody>
+    {[
+      {
+        title: '"Eloquent Javascript"',
+        tags: ["en", "ru"],
+        author: "Marijn Haverbeke",
+        link: "https://eloquentjavascript.net/",
+      },
+      {
+        title: "Grokking Algorithms",
+        tags: ["en", "ru"],
+        link: "https://www.manning.com/books/grokking-algorithms",
+      },
+      {
+        title: "Refactoring Guru",
+        tags: ["en", "ru"],
+        link: "https://refactoring.guru/",
+        author: "Alexander Shvets",
+      },
+    ].map(({ title, author, link, tags, renderTitle: Component }) => (
+      <tr>
+        <td>
+          {Component ? (
+            <Component />
+          ) : link ? (
+            <a href={link} target="blank">
+              {title}
+            </a>
+          ) : (
+            title
+          )}{" "}
+          {author && `by ${author}`}
+        </td>
+        <td style={{ textAlign: "right" }}>
+          {tags &&
+            tags.map((tag) => {
+              return <ColoredTag>{tag}</ColoredTag>;
+            })}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+## Courses
+
+🚫 I recommend watching courses or videos only after trying
+to work with books, documentations, and articles.
+If you tried everything mentioned above and still have questions, then ⤵️
+
+📝 Watch a video and code alongside
+the blogger making sure to question every line of code.
+
+
+### Newbie / Intern
+
+<table>
+  <tbody>
+    {[
+      {
+        title: "Code Basics",
+        tags: ["en", "ru"],
+        author: "Hexlet",
+        link: "https://code-basics.com/",
+      },
+      {
+        renderTitle: () => (
+          <>
+            <a href="javascript.ninja" target="_blank">
+              javascript.ninja
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://www.youtube.com/channel/UCW9pyonagDWGMCy7V_Kro6g"
+              target="_blank"
+            >
+              youtube channel
+            </a>{" "}
+            by Ilya Klimov
+          </>
+        ),
+        tags: ["en", "ru", "online"],
+      },
+      {
+        title: "Armenian Code Academy",
+        tags: ["am", "online/offline"],
+        link: "https://aca.am",
+        author: "Oganisyan Vrezh",
+      },
+      {
+        title: "Codecademy",
+        tags: ["en", "online"],
+        link: "https://www.codecademy.com/learn/learn-javascript",
+      },
+      {
+        title: "Yandex",
+        tags: ["ru", "online"],
+        link: "https://www.youtube.com/c/%D0%A4%D1%80%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D0%B4",
+      },
+      {
+        title: "HTML Academy",
+        tags: ["ru", "online"],
+        link: "https://htmlacademy.ru/",
+      },
+    ].map(({ title, author, link, tags, renderTitle: Component }) => (
+      <tr>
+        <td>
+          {Component ? (
+            <Component />
+          ) : link ? (
+            <a href={link} target="blank">
+              {title}
+            </a>
+          ) : (
+            title
+          )}{" "}
+          {author && `by ${author}`}
+        </td>
+        <td style={{ textAlign: "right" }}>
+          {tags &&
+            tags.map((tag) => {
+              return <ColoredTag>{tag}</ColoredTag>;
+            })}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+### Juniors
+
+<table>
+  <tbody>
+    {[
+      {
+        title: "Frontend Masters",
+        tags: ["en", "online"],
+        link: "https://frontendmasters.com/",
+      },
+      {
+        title: "Testing Javascript",
+        tags: ["en", "online"],
+        link: "https://testingjavascript.com/",
+        author: "Kent C. Dodds",
+      },
+      {
+        title: "Hexlet",
+        tags: ["ru", "online"],
+        link: "https://hexlet.io",
+      },
+      {
+        title: "ACA",
+        tags: ["am", "online/offline"],
+        link: "https://aca.am",
+      },
+    ].map(({ title, author, link, tags, renderTitle: Component }) => (
+      <tr>
+        <td>
+          {Component ? (
+            <Component />
+          ) : link ? (
+            <a href={link} target="blank">
+              {title}
+            </a>
+          ) : (
+            title
+          )}{" "}
+          {author && `by ${author}`}
+        </td>
+        <td style={{ textAlign: "right" }}>
+          {tags &&
+            tags.map((tag) => {
+              return <ColoredTag>{tag}</ColoredTag>;
+            })}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+## Articles
+
+Some of these articles helped me to re-learn JavaScript and dive deeper
+into the language.
+
+<table>
+  <tbody>
+    {[
+      {
+        title: "From Zero To Hero (Both parts)",
+        tags: ["en"],
+        link: "https://www.freecodecamp.org/news/from-zero-to-front-end-hero-part-1-7d4f7f0bff02/",
+      },
+      {
+        title: "JavaScript naming conventions",
+        tags: ["en"],
+        link: "https://robinwieruch.de/javascript-naming-conventions",
+        author: "Robin Wieruch",
+      },
+      {
+        title: "Tasks and Microtasks",
+        tags: ["en"],
+        link: "https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/",
+        author: "Jake Archibald",
+      },
+      {
+        title: "Collection of articles about asynchronous JS",
+        tags: ["en"],
+        link: "https://github.com/vre2h/async-tasks",
+        author: "Vrezh Oganisyan",
+      },
+      {
+        title: "Understanding the Event Loop",
+        tags: ["en"],
+        link: "https://hackernoon.com/understanding-js-the-event-loop-959beae3ac40",
+      },
+      {
+        title: "Background Compilation",
+        tags: ["en"],
+        link: "https://v8.dev/blog/background-compilation",
+      },
+      {
+        title: "IEEE754 standard",
+        tags: ["en"],
+        link: "https://people.eecs.berkeley.edu/~wkahan/ieee754status/IEEE754.PDF",
+      },
+    ].map(({ title, author, link, tags, renderTitle: Component }) => (
+      <tr>
+        <td>
+          {Component ? (
+            <Component />
+          ) : link ? (
+            <a href={link} target="blank">
+              {title}
+            </a>
+          ) : (
+            title
+          )}{" "}
+          {author && `by ${author}`}
+        </td>
+        <td style={{ textAlign: "right" }}>
+          {tags &&
+            tags.map((tag) => {
+              return <ColoredTag>{tag}</ColoredTag>;
+            })}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+## Context Matters
+
+There are things in life one learns lifelong. For example, nobody can
+ever say that she's mastered English. We learn languages our whole life, making them better and better, learning new words, phrases and constructions.
+The same with programming languages ⤵️
+
+If you want to grow, surround your environment with
+videos, articles, and even TikTok (sorry) about programming so you will stay on top.
+Bloggers are here to help you with that.
+
+### Bloggers
+
+🚫 Don't forget to code alongside the blogger.
+
+<table>
+  <tbody>
+    {[
+      {
+        title: "Ben Awad",
+        tags: ["en", "youtube"],
+        link: "https://www.youtube.com/c/benawad97",
+      },
+      {
+        title: "Wes Bos",
+        tags: ["en", "youtube"],
+        link: "https://www.youtube.com/c/WesBos",
+      },
+      {
+        title: "Adam Wathan",
+        tags: ["en", "youtube"],
+        link: "https://www.youtube.com/c/AdamWathan",
+      },
+      {
+        title: "The Tech Lead",
+        tags: ["en", "youtube"],
+        link: "https://www.youtube.com/c/TechLead",
+      },
+      {
+        title: "Ilya Klimov",
+        tags: ["ru", "youtube"],
+        link: "https://www.youtube.com/channel/UCW9pyonagDWGMCy7V_Kro6g",
+      },
+      {
+        title: "Dan Abramov",
+        tags: ["en", "website"],
+        link: "https://overreacted.io/",
+      },
+      {
+        title: "Robin Wieruch",
+        tags: ["en", "website"],
+        link: "https://www.robinwieruch.de/",
+      },
+      {
+        title: "Lee Robinson",
+        tags: ["en", "website"],
+        link: "https://leerob.io/",
+      },
+      {
+        title: "Fun Fun Function",
+        link: "https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q",
+        tags: ["en", "youtube"],
+      },
+      {
+        title: "Kent C. Dodds",
+        tags: ["en", "website"],
+        link: "https://leerob.io/",
+        renderTitle: () => (
+          <>
+            {" "}
+            Kent C. Dodds <a
+              href="https://www.youtube.com/c/KentCDodds-vids"
+              target="_blank"
+            >
+              - vids
+            </a> and <a
+              href="https://kentcdodds.com/"
+              target="_blank"
+            >
+              - articles
+            </a>
+          </>
+        ),
+      },
+    ].map(({ title, author, link, tags, renderTitle: Component }) => (
+      <tr>
+        <td>
+          {Component ? (
+            <Component />
+          ) : link ? (
+            <a href={link} target="blank">
+              {title}
+            </a>
+          ) : (
+            title
+          )}{" "}
+          {author && `by ${author}`}
+        </td>
+        <td style={{ textAlign: "right" }}>
+          {tags &&
+            tags.map((tag) => {
+              return <ColoredTag>{tag}</ColoredTag>;
+            })}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+### Twitter Accounts
+
+It's nearly impossible to imagine one's life without Twitter if you want
+to be at the top of the news.
+
+JS world is growing fast, and the only way to stay updated is to
+follow some of the most popular accounts. The people who design and create the future
+of JS, share their knowledge on Twitter.
+
+<table>
+  <tbody>
+    {[
+      {
+        title: "Ben Awad",
+        tags: ["en"],
+        link: "https://twitter.com/benawad97",
+      },
+      {
+        title: "Wes Bos",
+        tags: ["en"],
+        link: "https://twitter.com/wesbos",
+      },
+      {
+        title: "Adam Wathan",
+        tags: ["en"],
+        link: "https://twitter.com/adamwathan",
+      },
+      {
+        title: "Lee Robinson",
+        tags: ["en"],
+        link: "https://twitter.com/leerob",
+      },
+      {
+        title: "Ilya Klimov",
+        tags: ["ru"],
+        link: "https://twitter.com/klimov_ilya",
+      },
+      {
+        title: "Dan Abramov",
+        tags: ["en"],
+        link: "https://twitter.com/dan_abramov",
+      },
+      {
+        title: "Andrey Sitnik",
+        tags: ["en", "ru"],
+        link: "https://twitter.com/andreysitnik",
+      },
+      {
+        title: "Jonathan Z. White",
+        tags: ["en"],
+        link: "https://twitter.com/JonathanZWhite",
+      },
+      {
+        title: "Tim Neutkens",
+        tags: ["en"],
+        link: "https://twitter.com/timneutkens",
+      },
+      {
+        title: "Mark Grabanski",
+        tags: ["en"],
+        link: "https://twitter.com/markgrabanski",
+      },
+      {
+        title: "DHH",
+        tags: ["en"],
+        link: "https://twitter.com/dhh",
+      },
+      {
+        title: "Maggie Appleton",
+        tags: ["en"],
+        link: "https://twitter.com/maggieappleton",
+      },
+      {
+        title: "Guillermo Rauch",
+        tags: ["en"],
+        link: "https://twitter.com/rauchg",
+      },
+      {
+        title: "Vrezh Oganisyan",
+        tags: ["en", "ru"],
+        link: "https://twitter.com/vre2h",
+      },
+      {
+        title: "Evan You",
+        tags: ["en", "ru"],
+        link: "https://twitter.com/youyuxi",
+      },
+      {
+        title: "Rakhim Davletkaliev",
+        tags: ["en", "ru"],
+        link: "https://twitter.com/davletkaliev",
+      },
+      {
+        title: "Kirill Mokevnin",
+        tags: ["en", "ru"],
+        link: "https://twitter.com/mokevnin",
+      },
+      {
+        title: "Vadim Makeev",
+        tags: ["en", "ru"],
+        link: "https://twitter.com/pepelsbey_",
+      },
+    ].map(({ title, author, link, tags, renderTitle: Component }) => (
+      <tr>
+        <td>
+          {Component ? (
+            <Component />
+          ) : link ? (
+            <a href={link} target="blank">
+              {title}
+            </a>
+          ) : (
+            title
+          )}{" "}
+          {author && `by ${author}`}
+        </td>
+        <td style={{ textAlign: "right" }}>
+          {tags &&
+            tags.map((tag) => {
+              return <ColoredTag>{tag}</ColoredTag>;
+            })}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+### Newsletters
+
+<table>
+  <tbody>
+    {[
+      {
+        title: "Smashing Magazine",
+        tags: ["en"],
+        link: "https://smashingmagazine.com",
+      },
+      {
+        title: "Just Javascript",
+        tags: ["en"],
+        link: "https://JustJavaScript.com",
+      },
+      {
+        title: "CSS Weekly",
+        tags: ["en"],
+        link: "https://css-weekly.com",
+      },
+      {
+        title: "Javascript Weekly",
+        tags: ["en"],
+        link: "https://jsweekly.com",
+      },
+      {
+        title: "Josh Comeau",
+        tags: ["en"],
+        link: "https://joshcomeau.com",
+      },
+    ].map(({ title, author, link, tags, renderTitle: Component }) => (
+      <tr>
+        <td>
+          {Component ? (
+            <Component />
+          ) : link ? (
+            <a href={link} target="blank">
+              {title}
+            </a>
+          ) : (
+            title
+          )}{" "}
+          {author && `by ${author}`}
+        </td>
+        <td style={{ textAlign: "right" }}>
+          {tags &&
+            tags.map((tag) => {
+              return <ColoredTag>{tag}</ColoredTag>;
+            })}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+### Confs
+
+<table>
+  <tbody>
+    {[
+      {
+        title: "Next.js Conf",
+        tags: ["en"],
+        link: "https://nextjs.org/conf",
+      },
+      {
+        title: "Holy JS",
+        tags: ["en", "ru"],
+        link: "https://holyjs.ru",
+      },
+      {
+        title: "React Conf",
+        tags: ["en"],
+        link: "https://conf.reactjs.org/",
+      },
+      {
+        title: "Web Standards Conf",
+        tags: ["en"],
+        link: "https://www.w3.org/conf/",
+      },
+      {
+        title: "JS World Conference",
+        tags: ["en"],
+        link: "https://jsworldconference.com",
+      },
+      {
+        title: "Vue.js Amsterdam",
+        tags: ["en"],
+        link: "https://vuejs.org/vuejs-amsterdam-2019",
+      },
+      {
+        title: "Smashing Conference",
+        tags: ["en"],
+        link: "https://smashingmagazine.com/conference",
+      },
+    ].map(({ title, author, link, tags, renderTitle: Component }) => (
+      <tr>
+        <td>
+          {Component ? (
+            <Component />
+          ) : link ? (
+            <a href={link} target="blank">
+              {title}
+            </a>
+          ) : (
+            title
+          )}{" "}
+          {author && `by ${author}`}
+        </td>
+        <td style={{ textAlign: "right" }}>
+          {tags &&
+            tags.map((tag) => {
+              return <ColoredTag>{tag}</ColoredTag>;
+            })}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
