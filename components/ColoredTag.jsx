@@ -8,6 +8,8 @@ export default function ColoredTag({ children }) {
     <span
       style={{
         backgroundColor: colors[idx],
+        marginTop: "2px",
+        marginBottom: "2px",
       }}
       className="inline-block text-gray-700 text-dark px-1 mr-1 rounded"
     >
