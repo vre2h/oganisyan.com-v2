@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { DefaultSeo } from "next-seo";
 import Head from "next/head";
 import Tag from "../components/Tag";
+import ColoredTag from "../components/ColoredTag";
 import { Timeline2021 } from "../components/Timeline";
 import { Books2021 } from "../components/BooksTimeline";
 import SEO from "../next-seo.config";
@@ -27,6 +28,7 @@ const mdxComponents = {
   Tag,
   Timeline2021,
   Books2021,
+  ColoredTag,
 };
 
 export default function App({ Component, pageProps }) {
