@@ -4,6 +4,9 @@ import { MDXProvider } from "@mdx-js/react";
 import { ThemeProvider } from "next-themes";
 import { DefaultSeo } from "next-seo";
 import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
+
 import Tag from "../components/Tag";
 import ColoredTag from "../components/ColoredTag";
 import { Timeline2021 } from "../components/Timeline";
@@ -24,11 +27,13 @@ if (!String.prototype.replaceAll) {
   };
 }
 
-const mdxComponents = {
+export const mdxComponents = {
   Tag,
   Timeline2021,
   Books2021,
   ColoredTag,
+  Link,
+  Image,
 };
 
 export default function App({ Component, pageProps }) {

@@ -91,7 +91,7 @@ export async function getStaticProps() {
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
-  generateRSSFeed(
+  await generateRSSFeed(
     [...posts, ...technicalPosts].sort(
       (a, b) => new Date(b.date) - new Date(a.date)
     )
