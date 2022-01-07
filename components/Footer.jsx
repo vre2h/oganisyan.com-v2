@@ -34,6 +34,9 @@ export default function Footer() {
           <Link locale={locale} href="/uses" passHref>
             <BasicLink>Uses</BasicLink>
           </Link>
+          <Link locale={locale} href="/rss.xml" passHref>
+            <BasicLink>RSS</BasicLink>
+          </Link>
         </div>
         <div className="flex items-start flex-col space-y-4">
           <ExternalLink href="https://twitter.com/vre2h">Twitter</ExternalLink>

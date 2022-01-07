@@ -10,7 +10,11 @@ export const Step = ({ title, children, renderHeader }) => {
         ) : (
           <>
             <span className="sr-only">Check</span>
-            <svg className="h-4 w-4 mr-2" viewBox="0 0 24 24">
+            <svg
+              style={{ height: "20px" }}
+              className="h-4 w-4 mr-2"
+              viewBox="0 0 24 24"
+            >
               <g
                 fill="none"
                 stroke="currentColor"
