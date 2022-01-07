@@ -5,6 +5,7 @@ import BlogPost from "../components/BlogPost";
 import Bio from "../components/Bio";
 import { getAllFilesFrontMatter } from "../lib/mdx";
 import { useMemo, useState } from "react";
+import { generateRSSFeed } from "../lib/rss";
 
 const ArticleTypes = {
   NonTech: "🤩 Non-Tech First",
@@ -88,6 +89,12 @@ export async function getStaticProps() {
   const sortedPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
   const sortedTechPosts = technicalPosts.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
+  );
+
+  generateRSSFeed(
+    [...posts, ...technicalPosts].sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    )
   );
 
   return {
