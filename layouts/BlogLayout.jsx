@@ -108,12 +108,14 @@ export default function BlogLayout({ children, frontMatter, popularPosts }) {
                 key={post.slug}
                 className="w-full p-4 mb-4 bg-gray-100 transition duration-200 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-800 rounded-lg cursor-pointer"
               >
-                <h3 className="font-medium text-xl md:text-xl tracking-tight mb-1 text-black dark:text-white">
+                <h3 className="font-medium text-lg sm:text-xl tracking-tight mb-1 text-black dark:text-white">
                   {post.title}
                 </h3>
-                <p className="dark:text-white text-base">{post.description}</p>
+                <p className="dark:text-white text-sm sm:text-base">
+                  {post.description}
+                </p>
                 <div className="flex justify-between items-center text-gray-400 text-sm text-left mt-2 sm:mb-0">
-                  <p>
+                  <p className="hidden md:block">
                     Published on {format(parseISO(post.date), "MMMM dd, yyyy")}
                   </p>
                   <div className="">
