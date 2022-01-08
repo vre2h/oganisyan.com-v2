@@ -1,9 +1,14 @@
 import { MDXRemote } from "next-mdx-remote";
 import Link from "next/link";
 import Image from "next/image";
+import { shuffle } from "lodash";
 import { Locales } from "../../helpers/locale.helpers";
 
-import { getFileBySlug, getPostsFolders } from "../../lib/mdx";
+import {
+  getAllFilesFrontMatter,
+  getFileBySlug,
+  getPostsFolders,
+} from "../../lib/mdx";
 import BlogLayout from "../../layouts/BlogLayout";
 
 const components = {
@@ -11,9 +16,13 @@ const components = {
   Image,
 };
 
-export default function Blog({ mdxSource, frontMatter }) {
+export default function Blog({
+  post: { mdxSource, frontMatter },
+  popularPosts,
+}) {
+  console.log(popularPosts);
   return (
-    <BlogLayout frontMatter={frontMatter}>
+    <BlogLayout popularPosts={popularPosts} frontMatter={frontMatter}>
       <MDXRemote {...mdxSource} components={components} />
     </BlogLayout>
   );
@@ -49,6 +58,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, locale }) {
+  const posts = await getAllFilesFrontMatter("blog");
+  const technicalPosts = await getAllFilesFrontMatter("technical-blog");
+
   let post;
   try {
     post = await getFileBySlug("blog", params.slug, locale);
@@ -60,5 +72,9 @@ export async function getStaticProps({ params, locale }) {
     }
   }
 
-  return { props: post };
+  const randomPosts = shuffle(
+    [...posts, ...technicalPosts].filter((p) => p.slug !== params.slug)
+  ).slice(0, 3);
+
+  return { props: { post, popularPosts: randomPosts } };
 }

@@ -6,10 +6,11 @@ import avatarImg from "../assets/img/general/avatar.jpg";
 import Layout from "../components/Layout";
 import ViewCounter from "../components/ViewCounter";
 import BlogSeo from "../components/BlogSeo";
+import ColoredTag from "../components/ColoredTag";
 
 const siteUrl = "https://oganisyan.com";
 
-export default function BlogLayout({ children, frontMatter }) {
+export default function BlogLayout({ children, frontMatter, popularPosts }) {
   const router = useRouter();
   const pageUrl = router.asPath;
 
@@ -93,6 +94,39 @@ export default function BlogLayout({ children, frontMatter }) {
         >
           🎗 Support Author
         </a>
+
+        <div className="mt-16">
+          <h3 className="font-normal text-xl md:text-2xl tracking-tight mb-6 dark:text-white">
+            You might also like
+          </h3>
+          <div className="flex flex-wrap">
+            {popularPosts.map((post) => (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={`/blog/${post.slug}`}
+                key={post.slug}
+                className="w-full p-4 mb-4 bg-gray-100 transition duration-200 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-800 rounded-lg cursor-pointer"
+              >
+                <h3 className="font-medium text-xl md:text-xl tracking-tight mb-1 text-black dark:text-white">
+                  {post.title}
+                </h3>
+                <p className="dark:text-white text-base">{post.description}</p>
+                <div className="flex justify-between items-center text-gray-400 text-sm text-left mt-2 sm:mb-0">
+                  <p>
+                    Published on {format(parseISO(post.date), "MMMM dd, yyyy")}
+                  </p>
+                  <div className="">
+                    {post.tags &&
+                      post.tags.split(", ").map((tag) => {
+                        return <ColoredTag key={tag}>{tag}</ColoredTag>;
+                      })}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       </article>
     </Layout>
   );

@@ -38,7 +38,7 @@ const BlogPost = ({ title, summary, slug, date, tags }) => {
             </span>
             <span className="sm:hidden">
               {` • `}{" "}
-              {views
+              {views && views > 2
                 ? `${views > 300 ? "🔥" : ""} ${formatNumber(views)}`
                 : "–––"}{" "}
               views
