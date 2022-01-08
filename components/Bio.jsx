@@ -32,7 +32,7 @@ export default function Bio() {
         <ExternalLink href="https://t.me/oganisyancom">
           Telegram
         </ExternalLink>{" "}
-        or <ExternalLink href="https://t.me/oganisyancom">Twitter</ExternalLink>
+        or <ExternalLink href="https://twitter.com/vre2h">Twitter</ExternalLink>
       </h2>
     </div>
   );
