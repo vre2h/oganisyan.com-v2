@@ -28,9 +28,11 @@ export default function Bio() {
         I’m a software engineer, lecturer, and rebel. Here I write about
         education, management, and the art of non-conformity.
         <br />
+        Subscribe in{" "}
         <ExternalLink href="https://t.me/oganisyancom">
-          Follow Telegram channel
-        </ExternalLink>
+          Telegram
+        </ExternalLink>{" "}
+        or <ExternalLink href="https://t.me/oganisyancom">Twitter</ExternalLink>
       </h2>
     </div>
   );
