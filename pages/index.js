@@ -27,8 +27,8 @@ export default function Home({ posts }) {
           👋 Hey, I’m Vrezh
         </h1>
         <Bio />{" "}
-        <div className="w-full sm:flex mb-12 justify-between">
-          <h3 className="font-bold text-2xl md:text-4xl tracking-tight  text-black dark:text-white">
+        <div className="w-full sm:flex mb-8 justify-between">
+          <h3 className="font-medium text-3xl tracking-tight text-black dark:text-white">
             Articles
           </h3>
         </div>
