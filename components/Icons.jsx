@@ -14,6 +14,7 @@ export function ExternalIcon() {
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
+      width="20"
     >
       <path
         strokeLinecap="round"
@@ -33,6 +34,7 @@ export function Bottom() {
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
+      width="20"
     >
       <path
         strokeLinecap="round"
