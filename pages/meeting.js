@@ -6,6 +6,7 @@ const initialState = {
   stopped: "",
   timeout: "",
   deadline: "",
+  title: "Meeting Notes | Blog",
 };
 
 export default function Meeting() {
@@ -32,12 +33,6 @@ export default function Meeting() {
 
   useEffect(() => {
     if (!isServer()) {
-      localStorage.setItem("meeting", JSON.stringify(state));
-    }
-  }, [state.tasks, state.stopped, state.timeout, state.deadline, state]);
-
-  useEffect(() => {
-    if (!isServer()) {
       const syncedData = JSON.parse(localStorage.getItem("meeting"));
 
       if (syncedData) {
@@ -46,22 +41,26 @@ export default function Meeting() {
     }
   }, []);
 
+  useEffect(() => {
+    if (!isServer()) {
+      localStorage.setItem("meeting", JSON.stringify(state));
+    }
+  }, [state.tasks, state.stopped, state.timeout, state.deadline, state]);
+
   return (
-    <main className="max-w-sm sm:max-w-l md:max-w-2xl mx-auto my-8">
+    <main className="w-full xs:max-w-sm sm:max-w-xl md:max-w-2xl mx-auto my-8">
       <div className="mx-4">
         <header>
-          <h1 className="text-2xl">Meeting checklist</h1>
-
-          <section className="mt-4 flex">
+          <section className="mb-6 flex">
             <button
-              className="border hover:bg-gray-100 p-1 rounded cursor-pointer mr-2"
+              className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-l mr-2"
               onClick={handleReset}
             >
               🧻 clean all fields
             </button>
 
             <button
-              className=" border hover:bg-gray-100 p-1 rounded cursor-pointer"
+              className=" bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-l"
               onClick={toggleBeautifulTextViewer}
             >
               💅 {isOpenBeautifulText ? "hide" : "see"} beautiful text
@@ -69,10 +68,10 @@ export default function Meeting() {
           </section>
         </header>
         {isOpenBeautifulText && (
-          <section className="mt-8">
-            <div className="border p-4">
+          <section className="my-8 rounded-lg bg-gray-50">
+            <div className="p-4">
               <header className="">
-                <h2 className="text-2xl">Meeting Notes </h2>
+                <h2 className="text-2xl">{state.title}</h2>
                 <span className="text-sm text-gray-400">
                   ({new Date().toUTCString()})
                 </span>
@@ -82,44 +81,47 @@ export default function Meeting() {
 
               <section className="mb-4">
                 <h2 className="text-xl font-medium mb-2">Tasks to be done:</h2>
-                {state.tasks.split("\n").map((t) => (
-                  <>
-                    <p key={t}>{t}</p>
-                    <br />
-                  </>
-                ))}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: state.tasks.replaceAll("\n", "<br />"),
+                  }}
+                />
               </section>
               <section className="mb-4">
                 <h2 className="text-xl font-medium mb-2">Don't doing:</h2>
-                {state.stopped.split("\n").map((t) => (
-                  <>
-                    <p key={t}>{t}</p>
-                    <br />
-                  </>
-                ))}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: state.stopped.replaceAll("\n", "<br />"),
+                  }}
+                />
               </section>
               <section className="mb-4">
                 <h2 className="text-xl font-medium mb-2">Timeout:</h2>
-                {state.timeout.split("\n").map((t) => (
-                  <>
-                    <p key={t}>{t}</p>
-                    <br />
-                  </>
-                ))}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: state.timeout.replaceAll("\n", "<br />"),
+                  }}
+                />
               </section>
               <section className="mb-4">
                 <h2 className="text-xl font-medium mb-2">Deadline:</h2>
-                {state.deadline.split("\n").map((t) => (
-                  <>
-                    <p key={t}>{t}</p>
-                    <br />
-                  </>
-                ))}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: state.deadline.replaceAll("\n", "<br />"),
+                  }}
+                />
               </section>
             </div>
           </section>
         )}
-        <section className="max-w-sm sm:max-w-l md:max-w-2xl">
+        <section className="max-w-sm sm:max-w-xl md:max-w-2xl mt-8">
+          <input
+            value={state.title}
+            name="title"
+            onChange={handleChange}
+            className="text-3xl border p-1 w-full"
+            autoFocus
+          />
           <section className="my-8">
             <h2>Tasks to be done:</h2>
             <textarea
@@ -179,13 +181,6 @@ export default function Meeting() {
               <li>Ask for commitment or next steps</li>
             </ul>
           </p>
-        </section>
-
-        <section className="my-8 mt-16">
-          <h3 className="text-lg">Coming features:</h3>
-          <ul className="ml-8 list-disc">
-            <li>Send to email/telegram</li>
-          </ul>
         </section>
       </div>
     </main>
