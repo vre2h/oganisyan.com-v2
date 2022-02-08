@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "deploy": "npx vercel --prod",
-    "lint": "next lint --fix"
+    "lint": "next lint --fix",
+    "prepush": "yarn lint && yarn build",
+    "precommit": "yarn lint"
   },
   "dependencies": {
     "autoprefixer": "^10.2.3",
