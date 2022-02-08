@@ -1,6 +1,5 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { isServer } from "../helpers/helpers";
-// import {} from "use-react-screenshot";
 
 const initialState = {
   tasks: "",

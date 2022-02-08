@@ -3,6 +3,8 @@
   "rules": {
     "react/no-unescaped-entities": "off",
     "no-undef": "error",
-    "no-unused-vars": "error"
+    "no-unused-vars": "error",
+    "import/no-unresolved": "error",
+    "sort-imports": "error"
   }
 }
