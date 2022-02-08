@@ -37,7 +37,7 @@ export default function Meeting() {
     }
   }, [state.tasks, state.stopped, state.timeout, state.deadline, state]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isServer()) {
       const syncedData = JSON.parse(localStorage.getItem("meeting"));
 
@@ -48,7 +48,7 @@ export default function Meeting() {
   }, []);
 
   return (
-    <main className="max-w-2xl mx-auto my-8">
+    <main className="max-w-sm sm:max-w-l md:max-w-2xl mx-auto my-8">
       <div className="mx-4">
         <header>
           <h1 className="text-2xl">Meeting checklist</h1>
@@ -120,7 +120,7 @@ export default function Meeting() {
             </div>
           </section>
         )}
-        <section className="">
+        <section className="max-w-sm sm:max-w-l md:max-w-2xl">
           <section className="my-8">
             <h2>Tasks to be done:</h2>
             <textarea
@@ -129,7 +129,7 @@ export default function Meeting() {
               name="tasks"
               rows={3}
               cols={48}
-              className="border p-1"
+              className="border p-1 w-full"
             />
           </section>
 
@@ -141,7 +141,7 @@ export default function Meeting() {
               name="stopped"
               rows={3}
               cols={48}
-              className="border p-1"
+              className="border p-1 w-full"
             />
             <p className=" text-sm text-gray-400">We decided not to do. </p>
           </section>
@@ -154,7 +154,7 @@ export default function Meeting() {
               name="timeout"
               rows={3}
               cols={48}
-              className="border p-1"
+              className="border p-1 w-full"
             />
             <p className="text-sm text-gray-400">
               We are taking some time to think.
@@ -169,7 +169,7 @@ export default function Meeting() {
               name="deadline"
               rows={3}
               cols={48}
-              className="border p-1"
+              className="border p-1 w-full"
             />
           </section>
 
