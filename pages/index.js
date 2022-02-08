@@ -1,9 +1,10 @@
 import { NextSeo } from "next-seo";
-import Layout from "../components/Layout";
-import BlogPost from "../components/BlogPost";
+
 import Bio from "../components/Bio";
-import { getAllFilesFrontMatter } from "../lib/mdx";
+import BlogPost from "../components/BlogPost";
+import Layout from "../components/Layout";
 import { generateRSSFeed } from "../lib/rss";
+import { getAllFilesFrontMatter } from "../lib/mdx";
 
 export default function Home({ posts }) {
   return (

@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import Image from "next/image";
+
 import Layout from "../components/Layout";
 import notFoundImg from "../assets/img/general/additional-avatar.jpg";
 

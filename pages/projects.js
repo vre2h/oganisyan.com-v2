@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { NextSeo } from "next-seo";
-import Layout from "../components/Layout";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
 import cn from "classnames";
+
+import Layout from "../components/Layout";
 import confImg from "../assets/img/general/conf.jpg";
 
 const ProjectTypes = {

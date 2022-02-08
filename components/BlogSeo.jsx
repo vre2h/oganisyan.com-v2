@@ -1,4 +1,4 @@
-import { NextSeo, ArticleJsonLd } from "next-seo";
+import { ArticleJsonLd, NextSeo } from "next-seo";
 
 const BlogSeo = ({ title, description, date, url, featuredImage }) => {
   const isoDate = new Date(date).toISOString();

@@ -1,11 +1,11 @@
+import { format, parseISO } from "date-fns";
 import Link from "next/link";
-import useSWR from "swr";
 import formatNumber from "comma-number";
-import { parseISO, format } from "date-fns";
 import { useRouter } from "next/router";
+import useSWR from "swr";
 
-import fetcher from "../lib/fetcher";
 import ColoredTag from "./ColoredTag";
+import fetcher from "../lib/fetcher";
 
 const BlogPost = ({ title, summary, slug, date, tags }) => {
   const { data } = useSWR(`/api/views?slug=${slug}`, fetcher);

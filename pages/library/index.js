@@ -1,4 +1,5 @@
 import { NextSeo } from "next-seo";
+
 import Layout from "../../components/Layout";
 import ProjectCard from "../../components/ProjectCard";
 

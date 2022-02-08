@@ -1,5 +1,6 @@
-import { NextSeo } from "next-seo";
 import Image from "next/image";
+import { NextSeo } from "next-seo";
+
 import Layout from "../components/Layout";
 import Timeline from "../components/Timeline";
 import burnoutImg from "../assets/img/general/burnout.jpg";

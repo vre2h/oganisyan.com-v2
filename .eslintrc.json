@@ -5,6 +5,15 @@
     "no-undef": "error",
     "no-unused-vars": "error",
     "import/no-unresolved": "error",
-    "sort-imports": "error"
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+        "allowSeparatedGroups": true
+      }
+    ]
   }
 }

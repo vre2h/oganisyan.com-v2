@@ -1,7 +1,8 @@
-import { NextSeo } from "next-seo";
 import Image from "next/image";
-import Layout from "../../components/Layout";
+import { NextSeo } from "next-seo";
+
 import BooksTimeline from "../../components/BooksTimeline";
+import Layout from "../../components/Layout";
 import booksImg from "../../assets/img/general/books.jpg";
 
 export default function Books() {

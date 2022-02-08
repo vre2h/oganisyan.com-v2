@@ -1,7 +1,8 @@
-import { MDXRemote } from "next-mdx-remote";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { MDXRemote } from "next-mdx-remote";
 import { shuffle } from "lodash";
+
 import { Locales } from "../../helpers/locale.helpers";
 
 import {

@@ -1,13 +1,15 @@
-import { useState, useEffect, useRef } from "react";
-import { useTheme } from "next-themes";
-import NextLink from "next/link";
-import { useRouter } from "next/router";
-import cn from "classnames";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import NextLink from "next/link";
+import cn from "classnames";
+import { useRouter } from "next/router";
+import { useTheme } from "next-themes";
+
+import ColoredBar from "../components/ColoredBar";
+import { Locales } from "../helpers/locale.helpers";
 import useOutsideClick from "../lib/useOutsideClick";
 import useWindowSize from "../lib/useWindowSize";
-import { Locales } from "../helpers/locale.helpers";
-import ColoredBar from "../components/ColoredBar";
+
 import { Burger, Close, ExternalIcon } from "./Icons";
 import Footer from "./Footer";
 

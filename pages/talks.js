@@ -1,8 +1,9 @@
-import React from "react";
 import { NextSeo } from "next-seo";
-import Layout from "../components/Layout";
+import React from "react";
+
 import BasicLink from "../components/BasicLink";
 import ColoredTag from "../components/ColoredTag";
+import Layout from "../components/Layout";
 
 const talks = [
   {
