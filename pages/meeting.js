@@ -49,7 +49,7 @@ export default function Meeting() {
     }
 
     ref.current.focus();
-  }, [ref]);
+  }, []);
 
   useEffect(() => {
     if (!isServer()) {
