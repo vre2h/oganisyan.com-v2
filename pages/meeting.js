@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import { isServer } from "../helpers/helpers";
 
 const initialState = {
@@ -10,6 +10,7 @@ const initialState = {
 };
 
 export default function Meeting() {
+  const ref = createRef();
   const [state, setState] = useState(initialState);
   const [isOpenBeautifulText, setIsOpenBeautifulText] = useState(false);
 
@@ -27,6 +28,12 @@ export default function Meeting() {
     }));
   };
 
+  const handleFocus = (e) => {
+    const val = e.target.value;
+    e.target.value = "";
+    e.target.value = val;
+  };
+
   const toggleBeautifulTextViewer = () => {
     setIsOpenBeautifulText(!isOpenBeautifulText);
   };
@@ -39,6 +46,8 @@ export default function Meeting() {
         setState(syncedData);
       }
     }
+
+    ref.current.focus();
   }, []);
 
   useEffect(() => {
@@ -119,8 +128,10 @@ export default function Meeting() {
             value={state.title}
             name="title"
             onChange={handleChange}
-            className="text-3xl border p-1 w-full"
-            autoFocus
+            className="text-3xl border p-2 w-full"
+            autoFocus="true"
+            ref={ref}
+            onFocus={handleFocus}
           />
           <section className="my-8">
             <h2>Tasks to be done:</h2>
