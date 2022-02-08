@@ -1,4 +1,5 @@
 import { createRef, useEffect, useState } from "react";
+import MetaHeader from "../components/MetaHeader";
 import { isServer } from "../helpers/helpers";
 
 const initialState = {
@@ -58,6 +59,9 @@ export default function Meeting() {
 
   return (
     <main className="w-full xs:max-w-sm sm:max-w-xl md:max-w-2xl mx-auto my-8">
+      <header>
+        <MetaHeader />
+      </header>
       <div className="mx-4">
         <header>
           <section className="mb-6 flex">
