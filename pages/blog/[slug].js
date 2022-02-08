@@ -21,7 +21,6 @@ export default function Blog({
   post: { mdxSource, frontMatter },
   popularPosts,
 }) {
-  console.log(popularPosts);
   return (
     <BlogLayout popularPosts={popularPosts} frontMatter={frontMatter}>
       <MDXRemote {...mdxSource} components={components} />
