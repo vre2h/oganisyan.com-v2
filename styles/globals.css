@@ -173,3 +173,16 @@ a > span.icon-link::before {
 a > span.icon-link:hover::before {
   @apply text-gray-800;
 }
+
+.prose sup a {
+  padding-bottom: 0;
+  border-bottom: 0;
+  @apply text-gray-400;
+}
+
+.prose sup a:hover {
+  padding-bottom: 0;
+  border-bottom: 0;
+  @apply text-gray-800;
+  text-decoration: none;
+}
