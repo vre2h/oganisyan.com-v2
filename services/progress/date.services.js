@@ -29,10 +29,11 @@ export class CustomDate {
   }
 
   static getStrictDate(date = new Date()) {
+    const normalizedDate = typeof date !== "object" ? new Date(date) : date;
     return new Intl.DateTimeFormat("en-US", {
       year: "numeric",
       month: "numeric",
       day: "numeric",
-    }).format(date);
+    }).format(normalizedDate);
   }
 }
