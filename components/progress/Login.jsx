@@ -38,6 +38,7 @@ export default function Login() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="border p-1 w-full"
+          placeholder="email"
         />
         <input
           label="Password"
@@ -46,6 +47,7 @@ export default function Login() {
           style={{ margin: "10px 0" }}
           onChange={(e) => setPass(e.target.value)}
           className="border p-1 w-full"
+          placeholder="password"
         />
         <div
           style={{

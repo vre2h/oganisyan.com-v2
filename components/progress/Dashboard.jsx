@@ -41,14 +41,10 @@ export default function Dashboard() {
 
   return (
     <div className="m-4">
-      <header className="my-4 flex justify-between items-center">
+      <header className="my-4 flex flex-wrap justify-between items-center">
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <p>Ahoy, {user.email}</p>
       </header>
-
-      <nav className="mb-4">
-        <a href="">Graphic</a>
-      </nav>
 
       <div className="mb-4">
         <h2>Today</h2>
