@@ -98,7 +98,7 @@ export default function Card(props) {
 
   const totalCalories = useMemo(() => {
     return event.meals.reduce((acc, meal) => acc + Number(meal.calories), 0);
-  }, []);
+  }, [event.meals]);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg">
