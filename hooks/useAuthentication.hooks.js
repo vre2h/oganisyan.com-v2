@@ -5,7 +5,7 @@ import firebase from "../lib/firebase.client";
 
 const { auth } = firebase;
 
-const authContext = createContext();
+const authContext = createContext({});
 
 // Provider component that wraps your app and makes auth object ...
 // ... available to any child component that calls useAuth().
