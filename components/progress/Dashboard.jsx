@@ -166,11 +166,14 @@ export default function Dashboard() {
         <div>
           <Statistics events={events} />
 
-          <div className="mb-4">
-            <Card onSave={saveEvent} {...defaultEvent} />
-          </div>
-
-          <hr className="mb-8" />
+          {selectedMonth.activeMonthIdx === currentMonthIdx && (
+            <section>
+              <div className="mb-4">
+                <Card onSave={saveEvent} {...defaultEvent} />
+              </div>
+              <hr className="mb-8" />
+            </section>
+          )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredEvents.map((event) => {
