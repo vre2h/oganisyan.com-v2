@@ -1,4 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
 import { addEvent, getEvents } from "../../services/progress/events.services";
 import { CustomDate } from "../../services/progress/date.services";
@@ -6,6 +16,17 @@ import { useAuthentication } from "../../hooks/useAuthentication.hooks";
 import Card from "./Card";
 import MetaHeader from "../MetaHeader";
 import Loading from "../Loading";
+import Statistics from "./Statistics";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export default function Dashboard() {
   const { user } = useAuthentication();
@@ -58,7 +79,7 @@ export default function Dashboard() {
       };
 
   const filteredEvents = useMemo(() => {
-    return events.data.filter((e) => e.date !== today);
+    return events?.data?.filter((e) => e.date !== today);
   }, [events.data, today]);
 
   if (events.loading) {
@@ -73,8 +94,9 @@ export default function Dashboard() {
         <p>Ahoy, {user.email}</p>
       </header>
 
+      <Statistics events={events} />
+
       <div className="mb-4">
-        <h2>Today</h2>
         <Card onSave={saveEvent} {...defaultEvent} />
       </div>
 

@@ -47,7 +47,7 @@ const AddMealForm = ({ onSave }) => {
       />
       <input
         onChange={handleChange}
-        className="border p-1 mr-2 mb-1"
+        className="border p-1 mr-2 mb-1 w-20"
         placeholder="date"
         name="date"
         value={meal["date"]}
