@@ -30,7 +30,14 @@ const AddMealForm = ({ onSave }) => {
   };
 
   return (
-    <div className="mt-2">
+    <div className="mt-2 flex flex-wrap items-center">
+      <input
+        onChange={handleChange}
+        className="border p-1 mr-2 mb-1 w-20"
+        placeholder="date"
+        name="date"
+        value={meal["date"]}
+      />
       <input
         onChange={handleChange}
         className="border p-1 mr-2 mb-1"
@@ -40,19 +47,12 @@ const AddMealForm = ({ onSave }) => {
       />
       <input
         onChange={handleChange}
-        className="border p-1 mr-2 mb-1 w-20"
-        placeholder="calories"
+        className="border p-1 mr-2 mb-1 w-10"
+        placeholder="cal"
         name="calories"
         value={meal["calories"]}
       />
-      <input
-        onChange={handleChange}
-        className="border p-1 mr-2 mb-1 w-20"
-        placeholder="date"
-        name="date"
-        value={meal["date"]}
-      />
-      <span onClick={handleSave} className="cursor-pointer hover:underline">
+      <span onClick={handleSave} className="cursor-pointer">
         ➕
       </span>
     </div>
@@ -119,7 +119,7 @@ export default function Card(props) {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg">
-      <div className="flex">
+      <div className="flex mb-4">
         {isEditing ? (
           <input
             placeholder="Date"
@@ -143,29 +143,42 @@ export default function Card(props) {
             </span>
           </div>
         ) : (
-          <span onClick={toggleStatus} className="ml-auto cursor-pointer">
+          <span
+            onClick={toggleStatus}
+            className="ml-auto cursor-pointer transform rotate-90"
+          >
+            {" "}
             ✏️
           </span>
         )}
       </div>
 
-      <ul className="mt-1 p-l-4">
+      <hr />
+
+      <table className="my-4 p-l-4 w-full">
         {event.meals.map(({ date, calories, food }, idx) => (
-          <li key={date}>
-            <span>{food} — </span>
-            <span name="calories" className="text-gray-600 text-sm">
-              {calories} kcal
-            </span>{" "}
-            / <span className="text-gray-500 text-sm">{date}</span>{" "}
-            {isEditing && (
-              <span onClick={handleDeleteMeal(idx)} className="cursor-pointer">
-                🪓
+          <tr className="py-2" key={date}>
+            <td className="text-gray-500 text-sm w-20">🕧 {date}</td>{" "}
+            <td className="text-gray-600">
+              {food}{" "}
+              <span className="bg-gray-100 rounded text-gray-600 text-xs p-1">
+                {calories} cal
               </span>
+            </td>
+            {isEditing && (
+              <td onClick={handleDeleteMeal(idx)} className="cursor-pointer">
+                ✖️
+              </td>
             )}
-          </li>
+          </tr>
         ))}
+      </table>
+
+      <div className="mb-2">
         {isEditing && <AddMealForm onSave={handleSaveMeal} />}
-      </ul>
+      </div>
+
+      <hr />
 
       <div className="flex flex-wrap items-center mt-4">
         {isEditing ? (
