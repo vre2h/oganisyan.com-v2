@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuthentication } from "../../hooks/useAuthentication.hooks";
+import Loading from "../Loading";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ export default function Login() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

@@ -55,7 +55,8 @@ export default function Meeting() {
     if (!isServer()) {
       localStorage.setItem("meeting", JSON.stringify(state));
     }
-  }, [state.tasks, state.stopped, state.timeout, state.deadline, state]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.tasks, state.stopped, state.timeout, state.deadline]);
 
   return (
     <main className="w-full xs:max-w-sm sm:max-w-xl md:max-w-2xl mx-auto my-8">

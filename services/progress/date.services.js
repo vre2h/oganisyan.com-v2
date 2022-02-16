@@ -32,8 +32,8 @@ export class CustomDate {
     const normalizedDate = typeof date !== "object" ? new Date(date) : date;
     return new Intl.DateTimeFormat("en-US", {
       year: "numeric",
-      month: "numeric",
-      day: "numeric",
+      month: "2-digit",
+      day: "2-digit",
     }).format(normalizedDate);
   }
 }

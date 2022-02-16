@@ -7,13 +7,26 @@ const statuses = {
 };
 
 const AddMealForm = ({ onSave }) => {
-  const [meal, setMeal] = useState({});
+  const [meal, setMeal] = useState({
+    food: "",
+    calories: "",
+    date: "",
+  });
 
   const handleChange = (evt) => {
     setMeal((m) => ({
       ...m,
       [evt.target.name]: evt.target.value,
     }));
+  };
+
+  const handleSave = () => {
+    onSave(meal);
+    setMeal({
+      food: "",
+      calories: "",
+      date: "",
+    });
   };
 
   return (
@@ -39,11 +52,8 @@ const AddMealForm = ({ onSave }) => {
         name="date"
         value={meal["date"]}
       />
-      <span
-        onClick={() => onSave(meal)}
-        className="cursor-pointer hover:underline"
-      >
-        Save
+      <span onClick={handleSave} className="cursor-pointer hover:underline">
+        ➕
       </span>
     </div>
   );
@@ -79,19 +89,26 @@ export default function Card(props) {
   };
 
   const handleSaveMeal = (meal) => {
-    setEvent((e) => ({
-      ...e,
-      meals: e.meals.concat(meal),
-    }));
-    onSave(event);
+    setEvent((e) => {
+      const updEvent = {
+        ...e,
+        meals: e.meals.concat(meal),
+      };
+      onSave(updEvent);
+      return updEvent;
+    });
   };
 
   const handleDeleteMeal = (idx) => () => {
-    setEvent((e) => ({
-      ...e,
-      meals: e.meals.filter((_, iIdx) => iIdx !== idx),
-    }));
-    onSave(event);
+    setEvent((e) => {
+      const updEvent = {
+        ...e,
+        meals: e.meals.filter((_, iIdx) => iIdx !== idx),
+      };
+
+      onSave(updEvent);
+      return updEvent;
+    });
   };
 
   const isEditing = status === statuses.editing;
@@ -160,18 +177,18 @@ export default function Card(props) {
             value={event.weight}
           />
         ) : (
-          <span className="bg-blue-200 text-blue-800 text-xs px-2 inline-block rounded-full mr-1 uppercase font-semibold tracking-wide">
+          <span className="bg-blue-200 text-blue-800 text-xs mb-1 px-2 inline-block rounded-full mr-1 uppercase font-semibold tracking-wide">
             {event.weight} kg
           </span>
         )}
         {!isEditing && (
-          <span className="bg-blue-100 text-blue-600 text-xs px-2 inline-block rounded-full mr-1 uppercase font-semibold tracking-wide">
+          <span className="bg-blue-100 text-blue-600 text-xs mb-1 px-2 inline-block rounded-full mr-1 uppercase font-semibold tracking-wide">
             {event.meals.length} meals / {totalCalories} kcal
           </span>
         )}
         {!isEditing ? (
           event.workout && (
-            <span className="bg-red-200 text-red-800 text-xs px-2 inline-block rounded-full mr-1 uppercase font-semibold tracking-wide">
+            <span className="bg-red-200 text-red-800 text-xs mb-1 px-2 inline-block rounded-full mr-1 uppercase font-semibold tracking-wide">
               Workout
             </span>
           )

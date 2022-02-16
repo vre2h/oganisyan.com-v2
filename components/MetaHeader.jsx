@@ -15,6 +15,10 @@ const links = [
     text: "Estimation",
     href: "/estimation",
   },
+  {
+    text: "Tracker",
+    href: "/progress",
+  },
 ];
 
 export default function MetaHeader() {

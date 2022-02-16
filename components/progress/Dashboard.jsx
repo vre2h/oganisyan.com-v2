@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { addEvent, getEvents } from "../../services/progress/events.services";
-
+import { CustomDate } from "../../services/progress/date.services";
 import { useAuthentication } from "../../hooks/useAuthentication.hooks";
 import Card from "./Card";
+import MetaHeader from "../MetaHeader";
+import Loading from "../Loading";
 
 export default function Dashboard() {
   const { user } = useAuthentication();
@@ -13,8 +15,8 @@ export default function Dashboard() {
     error: "",
   });
 
-  useEffect(() => {
-    getEvents()
+  const loadEvents = () => {
+    return getEvents()
       .then((e) => {
         setEvents((events) => ({
           ...events,
@@ -29,18 +31,43 @@ export default function Dashboard() {
           e: e.message,
         }));
       });
+  };
+
+  useEffect(() => {
+    loadEvents();
   }, []);
 
   const saveEvent = (event) => {
-    addEvent(event);
+    event.date = CustomDate.getStrictDate(event.date);
+
+    addEvent(event).then(() => {
+      loadEvents();
+    });
   };
 
+  const today = CustomDate.getStrictDate();
+  const hasToday = events?.data[0]?.date === today;
+
+  const defaultEvent = hasToday
+    ? events.data[0]
+    : {
+        meals: [],
+        date: new Date().toString(),
+        workout: false,
+        weight: "",
+      };
+
+  const filteredEvents = useMemo(() => {
+    return events.data.filter((e) => e.date !== today);
+  }, [events.data, today]);
+
   if (events.loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
     <div className="m-4">
+      <MetaHeader />
       <header className="my-4 flex flex-wrap justify-between items-center">
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <p>Ahoy, {user.email}</p>
@@ -48,21 +75,13 @@ export default function Dashboard() {
 
       <div className="mb-4">
         <h2>Today</h2>
-        <Card
-          onSave={saveEvent}
-          {...{
-            meals: [],
-            date: new Date().toString(),
-            workout: false,
-            weight: "",
-          }}
-        />
+        <Card onSave={saveEvent} {...defaultEvent} />
       </div>
 
       <hr className="mb-8" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {events.data.map((event) => {
+        {filteredEvents.map((event) => {
           return (
             <div className="" key={event.date}>
               <Card
