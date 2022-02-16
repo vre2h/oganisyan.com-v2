@@ -22,8 +22,38 @@ export default function Statistics({ events }) {
 
   const toggleVisibility = () => setVisibility((v) => !v);
 
+  const reversedData = useMemo(() => [...events?.data].reverse(), [events]);
+
+  const totalCalories = useMemo(
+    () =>
+      reversedData.reduce((acc, event) => {
+        return (
+          acc +
+          event.meals.reduce((iAcc, meal) => iAcc + Number(meal.calories), 0)
+        );
+      }, 0),
+    [reversedData]
+  );
+
+  const totalMeals = useMemo(
+    () =>
+      reversedData.reduce((acc, event) => {
+        return acc + event.meals.length;
+      }, 0),
+    [reversedData]
+  );
+
+  const averageWeight = useMemo(
+    () =>
+      (
+        reversedData.reduce((acc, event) => {
+          return acc + Number(event.weight.replace(",", "."));
+        }, 0) / reversedData.length
+      ).toFixed(2),
+    [reversedData]
+  );
+
   const weightData = useMemo(() => {
-    const reversedData = [...events?.data].reverse();
     const labels = reversedData?.map((e) => CustomDate.getDate(e.date));
     return {
       labels,
@@ -52,7 +82,7 @@ export default function Statistics({ events }) {
         },
       ],
     };
-  }, [events?.data]);
+  }, [reversedData]);
 
   return (
     <div className="mb-8">
@@ -80,9 +110,34 @@ export default function Statistics({ events }) {
         </svg>
       </button>
       {visibility && (
-        <div className="w-full md:w-1/2">
-          <Line options={options} data={weightData} />
-        </div>
+        <section>
+          <div className="flex flex-wrap">
+            <div className="w-full md:w-1/2">
+              <Line options={options} data={weightData} />
+            </div>
+            <div className="w-full md:w-1/2 lg:pl-8">
+              <h2 className="text-2xl mt-8 mb-8">Monthly Report</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="rounded-md bg-red-200 text-red-600 flex flex-col p-4 justify-center items-center text-center">
+                  Total Calories{" "}
+                  <div className="text-2xl">{totalCalories} kcal</div>{" "}
+                </div>
+                <div className="rounded-md bg-blue-200 text-blue-600 flex flex-col p-4 justify-center items-center text-center">
+                  Average Weight
+                  <div className="text-2xl">{averageWeight} kg</div>
+                </div>
+                <div className="rounded-md bg-yellow-200 text-yellow-600 flex flex-col p-4 justify-center items-center text-center">
+                  Total Meals
+                  <div className="text-2xl">{totalMeals}</div>
+                </div>
+                <div className="rounded-md bg-indigo-200 text-indigo-600 flex flex-col p-4 justify-center items-center text-center">
+                  Tracked
+                  <div className="text-2xl">{reversedData?.length} days</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       )}
     </div>
   );
