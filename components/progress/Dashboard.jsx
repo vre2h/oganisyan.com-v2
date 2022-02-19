@@ -59,7 +59,7 @@ const getMonth = (idx) => ({
 
 export default function Dashboard() {
   const [selectedMonth, setSelectedMonth] = useState(getMonth(currentMonthIdx));
-  const { user } = useAuthentication();
+  const { signout } = useAuthentication();
   const [events, setEvents] = useState({
     data: [],
     loading: true,
@@ -132,7 +132,12 @@ export default function Dashboard() {
       <MetaHeader />
       <header className="my-4 flex flex-wrap justify-between items-center">
         <h1 className="text-2xl font-bold">Dashboard</h1>
-        <p>Ahoy, {user.email}</p>
+        <button
+          className="flex border items-center text-sm px-4 py-2 rounded-md font-medium text-gray-900 dark:text-gray-100"
+          onClick={signout}
+        >
+          Log Out
+        </button>
       </header>
       <section className="w-full overflow-scroll mb-4">
         Months:

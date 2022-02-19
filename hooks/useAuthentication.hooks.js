@@ -1,5 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 
 import firebase from "../lib/firebase.client";
 
@@ -32,11 +36,9 @@ function useProvideAuth() {
   };
 
   const signout = () => {
-    return auth()
-      .signOut()
-      .then(() => {
-        setUser(false);
-      });
+    return signOut(auth).then(() => {
+      setUser(false);
+    });
   };
 
   useEffect(() => {
