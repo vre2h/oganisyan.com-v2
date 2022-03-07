@@ -13,6 +13,7 @@ const AddMealForm = ({ onSave }) => {
     calories: "",
     date: CustomDate.getTime(new Date()),
     extra: false,
+    notes: "",
   });
 
   const handleChange = (evt) => {
@@ -40,41 +41,60 @@ const AddMealForm = ({ onSave }) => {
   };
 
   return (
-    <div className="mt-2 flex flex-wrap items-center">
-      <input
-        onChange={handleChange}
-        className="border p-1 mr-2 mb-1 w-20"
-        placeholder="date"
-        name="date"
-        value={meal["date"]}
-      />
-      <input
-        onChange={handleChange}
-        className="border p-1 mr-2 mb-1"
-        placeholder="food"
-        name="food"
-        value={meal["food"]}
-      />
-      <input
-        onChange={handleChange}
-        className="border p-1 mr-2 mb-1 w-10"
-        placeholder="cal"
-        name="calories"
-        value={meal["calories"]}
-      />
-      <label name="extra">
+    <div className="mt-2 flex flex-col flex-wrap w-full md:w-2/3 bg-gray-50 p-2 rounded">
+      <h3 className="text-xl mb-2">New meal</h3>
+      <div className="w-full mb-2">
         <input
-          type="checkbox"
-          onClick={handleChange}
-          className="cursor-pointer"
-          value={!meal.extra}
-          name="extra"
+          onChange={handleChange}
+          className="border p-1 mr-2 mb-1 w-20"
+          placeholder="date"
+          name="date"
+          value={meal["date"]}
         />
-        <span className="ml-1">Extra Food</span>
-      </label>
+        <input
+          onChange={handleChange}
+          className="border p-1 mr-2 mb-1 w-10"
+          placeholder="cal"
+          name="calories"
+          value={meal["calories"]}
+        />
+        <label name="extra">
+          <input
+            type="checkbox"
+            onClick={handleChange}
+            className="cursor-pointer"
+            value={!meal.extra}
+            name="extra"
+          />
+          <span className="ml-1 ">Extra</span>
+        </label>
+      </div>
 
-      <span onClick={handleSave} className="cursor-pointer ml-2">
-        ➕
+      <div className="w-full mb-2">
+        <input
+          onChange={handleChange}
+          className="border p-1 mr-2 mb-1 w-full"
+          placeholder="food"
+          name="food"
+          value={meal["food"]}
+        />
+      </div>
+
+      <div className="w-full mb-2">
+        <input
+          onChange={handleChange}
+          className="border p-1 mr-2 mb-1 w-full"
+          placeholder="notes"
+          name="notes"
+          value={meal["notes"]}
+        />
+      </div>
+
+      <span
+        onClick={handleSave}
+        className="text-center cursor-pointer p-2 rounded-md font-medium text-gray-900 dark:text-gray-100 bg-gray-100 hover:bg-gray-200 duration-200"
+      >
+        Add Meal
       </span>
     </div>
   );
@@ -84,8 +104,14 @@ export default function Card(props) {
   const { onSave, ...defaultEvent } = props;
   const [status, setStatus] = useState(statuses.idle);
   const [event, setEvent] = useState(defaultEvent);
+  const [addMealFormStatus, setAddMealFormStatus] = useState(statuses.idle);
+
   const toggleStatus = () =>
     setStatus(status === statuses.editing ? statuses.idle : statuses.editing);
+  const toggleAddMealFormVisibility = () =>
+    setAddMealFormStatus(
+      status === statuses.editing ? statuses.idle : statuses.editing
+    );
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -133,6 +159,7 @@ export default function Card(props) {
   };
 
   const isEditing = status === statuses.editing;
+  const isAddingMeal = addMealFormStatus === statuses.editing;
 
   const totalCalories = useMemo(() => {
     return event.meals.reduce((acc, meal) => acc + Number(meal.calories), 0);
@@ -158,64 +185,82 @@ export default function Card(props) {
           <div className="ml-auto">
             <span
               onClick={handleSave}
-              className="hover:underline cursor-pointer"
+              className="rounded p-2 cursor-pointer text-gray-900 dark:text-gray-100 bg-gray-100 hover:bg-gray-200 duration-200"
             >
               Save
             </span>
           </div>
         ) : (
-          <span
-            onClick={toggleStatus}
-            className="ml-auto cursor-pointer transform rotate-90"
-          >
-            {" "}
-            ✏️
-          </span>
+          <div className="ml-auto">
+            <span
+              onClick={toggleAddMealFormVisibility}
+              className="ml-auto mr-2 cursor-pointer p-2 rounded-md font-medium text-gray-900 dark:text-gray-100 bg-gray-100 hover:bg-gray-200 duration-200"
+            >
+              Add 🥗
+            </span>
+
+            <span
+              onClick={toggleStatus}
+              className="ml-auto cursor-pointer p-2 rounded-md font-medium text-gray-900 dark:text-gray-100 bg-gray-100 hover:bg-gray-200 duration-200"
+            >
+              <div className="inline-block transform rotate-90">✏️</div>
+            </span>
+          </div>
         )}
       </div>
 
       <hr />
 
       <table className="my-4 p-l-4 w-full">
-        {event.meals.map(({ date, calories, food, extra }, idx) => (
-          <tr className="py-2" key={date}>
-            <td
-              className={classNames("text-gray-500 text-sm w-22", {
-                "text-blue-300": extra,
-              })}
-            >
-              {extra ? "🙆🏻" : "🕧"} {date}
-            </td>
-            <td className="text-gray-600">
+        {event.meals.map(({ date, calories, food, extra, notes }, idx) => (
+          <div className="flex py-2 items-center" key={date}>
+            {
+              <div
+                onClick={handleDeleteMeal(idx)}
+                className="cursor-pointer mr-2"
+              >
+                ✖️
+              </div>
+            }
+            <div className="text-gray-600">
               {food}{" "}
               <span className="bg-gray-100 rounded text-gray-600 text-xs p-1">
                 {calories} cal
               </span>
-            </td>
-            {isEditing && (
-              <td onClick={handleDeleteMeal(idx)} className="cursor-pointer">
-                ✖️
-              </td>
-            )}
-          </tr>
+              <div className={classNames("text-gray-500 text-xs ")}>
+                <span
+                  className={classNames("w-22", {
+                    "text-blue-300": extra,
+                  })}
+                >
+                  {extra ? "🙆🏻" : "🕧"} {date}
+                </span>
+                {notes && " / "}
+                <span>{notes}</span>
+              </div>
+            </div>
+          </div>
         ))}
       </table>
 
       <div className="mb-2">
-        {isEditing && <AddMealForm onSave={handleSaveMeal} />}
+        {isAddingMeal && <AddMealForm onSave={handleSaveMeal} />}
       </div>
 
       <hr />
 
       <div className="flex flex-wrap items-center mt-4">
         {isEditing ? (
-          <input
-            placeholder="Weight"
-            className="border p-1"
-            name="weight"
-            onChange={handleChange}
-            value={event.weight}
-          />
+          <label>
+            <span className="mr-2">Weight:</span>
+            <input
+              placeholder="Weight"
+              className="border p-1 w-20"
+              name="weight"
+              onChange={handleChange}
+              value={event.weight}
+            />
+          </label>
         ) : (
           <span className="bg-blue-200 text-blue-800 text-xs mb-1 px-2 inline-block rounded-full mr-1 uppercase font-semibold tracking-wide">
             {event.weight} kg
@@ -223,7 +268,7 @@ export default function Card(props) {
         )}
         {!isEditing && (
           <span className="bg-blue-100 text-blue-600 text-xs mb-1 px-2 inline-block rounded-full mr-1 uppercase font-semibold tracking-wide">
-            {event.meals.length} meals / {totalCalories} kcal
+            {totalCalories} kcal
           </span>
         )}
         {!isEditing ? (

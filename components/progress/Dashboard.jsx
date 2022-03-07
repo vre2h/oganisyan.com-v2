@@ -190,7 +190,6 @@ export default function Dashboard() {
                     weight={event.weight}
                     date={event.date}
                     workout={event.workout}
-                    extra={event.extra}
                   />
                 </div>
               );

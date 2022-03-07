@@ -24,6 +24,11 @@ export default function Statistics({ events }) {
 
   const reversedData = useMemo(() => [...events?.data].reverse(), [events]);
 
+  const totalWorkouts = useMemo(
+    () => reversedData.reduce((acc, e) => acc + Boolean(e.workout) || 0, 0),
+    [reversedData]
+  );
+
   const totalCalories = useMemo(
     () =>
       reversedData.reduce((acc, event) => {
@@ -35,10 +40,12 @@ export default function Statistics({ events }) {
     [reversedData]
   );
 
-  const totalMeals = useMemo(
+  const totalBinging = useMemo(
     () =>
       reversedData.reduce((acc, event) => {
-        return acc + event.meals.length;
+        return (
+          acc + event.meals.reduce((acc, m) => acc + Number(m.extra) || 0, 0)
+        );
       }, 0),
     [reversedData]
   );
@@ -122,13 +129,17 @@ export default function Statistics({ events }) {
                   Total Calories{" "}
                   <div className="text-2xl">{totalCalories} kcal</div>{" "}
                 </div>
+                <div className="rounded-md bg-purple-200 text-purple-600 flex flex-col p-4 justify-center items-center text-center">
+                  Workouts
+                  <div className="text-2xl">{totalWorkouts} times</div>
+                </div>
                 <div className="rounded-md bg-blue-200 text-blue-600 flex flex-col p-4 justify-center items-center text-center">
                   Average Weight
                   <div className="text-2xl">{averageWeight} kg</div>
                 </div>
                 <div className="rounded-md bg-yellow-200 text-yellow-600 flex flex-col p-4 justify-center items-center text-center">
-                  Total Meals
-                  <div className="text-2xl">{totalMeals}</div>
+                  Total Binging
+                  <div className="text-2xl">{totalBinging}</div>
                 </div>
                 <div className="rounded-md bg-indigo-200 text-indigo-600 flex flex-col p-4 justify-center items-center text-center">
                   Tracked

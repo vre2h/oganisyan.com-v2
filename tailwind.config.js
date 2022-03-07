@@ -7,6 +7,7 @@ module.exports = {
     "./content/**/*.mdx",
     "./layouts/**/*.jsx",
     "./de-final-fictive-5",
+    "./de-final-fictive-6",
   ],
   darkMode: "class",
   theme: {
