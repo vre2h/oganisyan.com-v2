@@ -6,7 +6,7 @@ export class CustomDate {
 
   static getDate(date) {
     const normalizedDate = typeof date !== "object" ? new Date(date) : date;
-    return new Intl.DateTimeFormat(["hy"], {
+    return new Intl.DateTimeFormat(["en"], {
       day: "numeric",
       month: "short",
     }).format(normalizedDate);
@@ -14,7 +14,7 @@ export class CustomDate {
 
   static getDetailedDate(date) {
     const normalizedDate = typeof date !== "object" ? new Date(date) : date;
-    return new Intl.DateTimeFormat(["hy"], {
+    return new Intl.DateTimeFormat(["en"], {
       dateStyle: "long",
       timeStyle: "short",
     }).format(normalizedDate);
@@ -22,7 +22,7 @@ export class CustomDate {
 
   static getTime(date) {
     const normalizedDate = typeof date !== "object" ? new Date(date) : date;
-    return new Intl.DateTimeFormat(["hy"], {
+    return new Intl.DateTimeFormat(["en"], {
       hour: "numeric",
       minute: "numeric",
     }).format(normalizedDate);
