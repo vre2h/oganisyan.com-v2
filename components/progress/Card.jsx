@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useMemo, useState } from "react";
 import { CustomDate } from "../../services/progress/date.services";
 
@@ -10,10 +11,19 @@ const AddMealForm = ({ onSave }) => {
   const [meal, setMeal] = useState({
     food: "",
     calories: "",
-    date: "",
+    date: CustomDate.getTime(new Date()),
+    extra: false,
   });
 
   const handleChange = (evt) => {
+    if (evt.target.type === "checkbox") {
+      setMeal((e) => ({
+        ...e,
+        [evt.target.name]: evt.target.checked,
+      }));
+      return;
+    }
+
     setMeal((m) => ({
       ...m,
       [evt.target.name]: evt.target.value,
@@ -52,7 +62,18 @@ const AddMealForm = ({ onSave }) => {
         name="calories"
         value={meal["calories"]}
       />
-      <span onClick={handleSave} className="cursor-pointer">
+      <label name="extra">
+        <input
+          type="checkbox"
+          onClick={handleChange}
+          className="cursor-pointer"
+          value={!meal.extra}
+          name="extra"
+        />
+        <span className="ml-1">Extra Food</span>
+      </label>
+
+      <span onClick={handleSave} className="cursor-pointer ml-2">
         ➕
       </span>
     </div>
@@ -156,9 +177,15 @@ export default function Card(props) {
       <hr />
 
       <table className="my-4 p-l-4 w-full">
-        {event.meals.map(({ date, calories, food }, idx) => (
+        {event.meals.map(({ date, calories, food, extra }, idx) => (
           <tr className="py-2" key={date}>
-            <td className="text-gray-500 text-sm w-20">🕧 {date}</td>{" "}
+            <td
+              className={classNames("text-gray-500 text-sm w-22", {
+                "text-blue-300": extra,
+              })}
+            >
+              {extra ? "🙆🏻" : "🕧"} {date}
+            </td>
             <td className="text-gray-600">
               {food}{" "}
               <span className="bg-gray-100 rounded text-gray-600 text-xs p-1">
