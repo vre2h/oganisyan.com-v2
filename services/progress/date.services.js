@@ -1,3 +1,18 @@
+export const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 export class CustomDate {
   static getToday() {
     const date = new Date();
@@ -36,4 +51,37 @@ export class CustomDate {
       day: "2-digit",
     }).format(normalizedDate);
   }
+
+  static getYear() {
+    const year = new Date().getFullYear();
+    return year;
+  }
+
+  static getTwoDigitsMonthIdx(
+    idx,
+    currentMonthIdx = CustomDate.getCurrentMonthIdx()
+  ) {
+    return idx < 10 ? `0${idx}` : currentMonthIdx;
+  }
+
+  static getCurrentMonthIdx() {
+    const currentMonthIdx = new Date().getMonth() + 1;
+
+    return currentMonthIdx;
+  }
+
+  static getMonthInfoByIdx(idx) {
+    return {
+      activeMonthIdx: idx,
+      twoDigitsMonthIdx: CustomDate.getTwoDigitsMonthIdx(idx),
+    };
+  }
+
+  static getMonthRange(selectedMonthIdx) {
+    const start = `${selectedMonthIdx}/01/${CustomDate.getYear()}`;
+    const end = `${selectedMonthIdx}/31/${CustomDate.getYear()}`;
+    return { start, end };
+  }
+
+  static getWeekRange() {}
 }

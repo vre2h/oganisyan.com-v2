@@ -9,18 +9,18 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import classNames from "classnames";
 
 import {
   addEvent,
   getEventsByCondition,
 } from "../../services/progress/events.services";
-import { CustomDate } from "../../services/progress/date.services";
+import { CustomDate, months } from "../../services/progress/date.services";
 import { useAuthentication } from "../../hooks/useAuthentication.hooks";
 import Card from "./Card";
 import MetaHeader from "../MetaHeader";
 import Loading from "../Loading";
 import Statistics from "./Statistics";
-import classNames from "classnames";
 
 ChartJS.register(
   CategoryScale,
@@ -32,39 +32,17 @@ ChartJS.register(
   Legend
 );
 
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const currentMonthIdx = new Date().getMonth() + 1;
-const getTwoDigitsMonthIdx = (idx) => (idx < 10 ? `0${idx}` : currentMonthIdx);
-
-const year = new Date().getFullYear();
-
-const getMonth = (idx) => ({
-  activeMonthIdx: idx,
-  twoDigitsMonthIdx: getTwoDigitsMonthIdx(idx),
-});
-
 export default function Dashboard() {
-  const [selectedMonth, setSelectedMonth] = useState(getMonth(currentMonthIdx));
+  const [selectedMonth, setSelectedMonth] = useState(
+    CustomDate.getMonthInfoByIdx(CustomDate.getCurrentMonthIdx())
+  );
   const { signout } = useAuthentication();
   const [events, setEvents] = useState({
     data: [],
     loading: true,
     error: "",
   });
+  const [weight, setWeight] = useState(null);
 
   const loadEvents = () => {
     setEvents((events) => ({
@@ -75,12 +53,12 @@ export default function Dashboard() {
       startDate: {
         key: "date",
         condition: ">=",
-        value: `${selectedMonth.twoDigitsMonthIdx}/01/${year}`,
+        value: `${selectedMonth.twoDigitsMonthIdx}/01/${CustomDate.getYear()}`,
       },
       endDate: {
         key: "date",
         condition: "<=",
-        value: `${selectedMonth.twoDigitsMonthIdx}/31/${year}`,
+        value: `${selectedMonth.twoDigitsMonthIdx}/31/${CustomDate.getYear()}`,
       },
     })
       .then((e) => {
@@ -89,6 +67,7 @@ export default function Dashboard() {
           loading: false,
           data: e,
         }));
+        setWeight(e[e.length - 1].weight);
       })
       .catch((e) => {
         setEvents((events) => ({
@@ -139,12 +118,18 @@ export default function Dashboard() {
           Log Out
         </button>
       </header>
-      <section className="w-full overflow-scroll mb-4">
-        Months:
+      <div className="mt-4 mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+        <div className="rounded-md bg-blue-200 text-blue-600 flex flex-col p-4 justify-center items-center text-center">
+          Weight
+          {weight ? <div className="text-2xl">{weight} kg</div> : "😈"}
+        </div>
+      </div>
+      <Statistics events={events} />
+      <section className="w-full overflow-scroll mb-8">
         <div className="flex border-b">
           {months.map((month, index) => {
             const thisMonth = index + 1 === selectedMonth.activeMonthIdx;
-            const futureMonth = index + 1 > currentMonthIdx;
+            const futureMonth = index + 1 > CustomDate.getCurrentMonthIdx();
 
             return (
               <button
@@ -157,7 +142,9 @@ export default function Dashboard() {
                 )}
                 key={month}
                 disabled={futureMonth}
-                onClick={() => setSelectedMonth(getMonth(index + 1))}
+                onClick={() =>
+                  setSelectedMonth(CustomDate.getMonthInfoByIdx(index + 1))
+                }
               >
                 {month}
               </button>
@@ -169,9 +156,7 @@ export default function Dashboard() {
         <Loading style={{ height: "auto" }} />
       ) : (
         <div>
-          <Statistics events={events} />
-
-          {selectedMonth.activeMonthIdx === currentMonthIdx && (
+          {selectedMonth.activeMonthIdx === CustomDate.getCurrentMonthIdx() && (
             <section>
               <div className="mb-4">
                 <Card onSave={saveEvent} {...defaultEvent} />

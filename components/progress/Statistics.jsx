@@ -17,12 +17,28 @@ const options = {
   },
 };
 
-export default function Statistics({ events }) {
-  const [visibility, setVisibility] = useState(false);
+// const DatePickerStatuses = {
+//   month: "month",
+//   week: "week",
+//   whole: "whole",
+// };
 
+export default function Statistics({ events }) {
+  const [visibility, setVisibility] = useState(true);
+  // const [filters, setFilters] = useState({
+  //   datePicker: DatePickerStatuses.month,
+  // });
   const toggleVisibility = () => setVisibility((v) => !v);
 
-  const reversedData = useMemo(() => [...events?.data].reverse(), [events]);
+  // const handleFilters = (filters) => () => {
+  //   setFilters((f) => ({ ...f, ...filters }));
+  // };
+
+  const reversedData = useMemo(() => {
+    let filteredData = [...events?.data].reverse();
+
+    return filteredData;
+  }, [events]);
 
   const totalWorkouts = useMemo(
     () => reversedData.reduce((acc, e) => acc + Boolean(e.workout) || 0, 0),
@@ -40,11 +56,21 @@ export default function Statistics({ events }) {
     [reversedData]
   );
 
-  const totalBinging = useMemo(
+  const totalExtra = useMemo(
     () =>
       reversedData.reduce((acc, event) => {
         return (
           acc + event.meals.reduce((acc, m) => acc + Number(m.extra) || 0, 0)
+        );
+      }, 0),
+    [reversedData]
+  );
+
+  const totalBinging = useMemo(
+    () =>
+      reversedData.reduce((acc, event) => {
+        return (
+          acc + event.meals.reduce((acc, m) => acc + Number(m.binging) || 0, 0)
         );
       }, 0),
     [reversedData]
@@ -80,13 +106,6 @@ export default function Statistics({ events }) {
           backgroundColor: "rgba(53, 162, 235, 0.5)",
           hidden: true,
         },
-        {
-          label: "Meals",
-          data: reversedData?.map(({ meals }) => meals.length),
-          borderColor: "rgb(80, 192, 192)",
-          backgroundColor: "rgb(75, 192, 192)",
-          hidden: true,
-        },
       ],
     };
   }, [reversedData]);
@@ -118,6 +137,38 @@ export default function Statistics({ events }) {
       </button>
       {visibility && (
         <section>
+          {/* <header className="mt-4">
+            <div className="flex">
+              <button
+                onClick={handleFilters({
+                  datePicker: DatePickerStatuses.month,
+                })}
+                className={classNames(
+                  "flex border items-center text-sm px-4 py-2 font-medium text-gray-900 dark:text-gray-100",
+                  {
+                    "border-black border-2":
+                      filters.datePicker === DatePickerStatuses.month,
+                  }
+                )}
+              >
+                This Month
+              </button>
+              <button
+                onClick={handleFilters({
+                  datePicker: DatePickerStatuses.week,
+                })}
+                className={classNames(
+                  "flex border items-center text-sm px-4 py-2 font-medium text-gray-900 dark:text-gray-100",
+                  {
+                    "border-black border-2":
+                      filters.datePicker === DatePickerStatuses.week,
+                  }
+                )}
+              >
+                This Week
+              </button>
+            </div>
+          </header> */}
           <div className="flex flex-wrap">
             <div className="w-full md:w-1/2">
               <Line options={options} data={weightData} />
@@ -125,7 +176,7 @@ export default function Statistics({ events }) {
             <div className="w-full md:w-1/2 lg:pl-8">
               <h2 className="text-2xl mt-8 mb-8">Monthly Report</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div className="rounded-md bg-red-200 text-red-600 flex flex-col p-4 justify-center items-center text-center">
+                <div className="rounded-md bg-green-200 text-green-600 flex flex-col p-4 justify-center items-center text-center">
                   Total Calories{" "}
                   <div className="text-2xl">{totalCalories} kcal</div>{" "}
                 </div>
@@ -138,6 +189,10 @@ export default function Statistics({ events }) {
                   <div className="text-2xl">{averageWeight} kg</div>
                 </div>
                 <div className="rounded-md bg-yellow-200 text-yellow-600 flex flex-col p-4 justify-center items-center text-center">
+                  Total Extra
+                  <div className="text-2xl">{totalExtra}</div>
+                </div>
+                <div className="rounded-md bg-red-200 text-red-600 flex flex-col p-4 justify-center items-center text-center">
                   Total Binging
                   <div className="text-2xl">{totalBinging}</div>
                 </div>

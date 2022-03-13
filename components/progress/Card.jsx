@@ -13,6 +13,7 @@ const AddMealForm = ({ onSave }) => {
     calories: "",
     date: CustomDate.getTime(new Date()),
     extra: false,
+    binging: false,
     notes: "",
   });
 
@@ -67,6 +68,16 @@ const AddMealForm = ({ onSave }) => {
             name="extra"
           />
           <span className="ml-1 ">Extra</span>
+        </label>
+        <label name="binge">
+          <input
+            type="checkbox"
+            onClick={handleChange}
+            className="cursor-pointer"
+            value={!meal.binging}
+            name="binging"
+          />
+          <span className="ml-1 ">Binge</span>
         </label>
       </div>
 
@@ -212,35 +223,45 @@ export default function Card(props) {
       <hr />
 
       <table className="my-4 p-l-4 w-full">
-        {event.meals.map(({ date, calories, food, extra, notes }, idx) => (
-          <div className="flex py-2 items-center" key={date}>
-            {
-              <div
-                onClick={handleDeleteMeal(idx)}
-                className="cursor-pointer mr-2"
-              >
-                ✖️
-              </div>
-            }
-            <div className="text-gray-600">
-              {food}{" "}
-              <span className="bg-gray-100 rounded text-gray-600 text-xs p-1">
-                {calories} cal
-              </span>
-              <div className={classNames("text-gray-500 text-xs ")}>
-                <span
-                  className={classNames("w-22", {
-                    "text-blue-300": extra,
-                  })}
+        {event.meals.map(
+          ({ date, calories, food, extra, notes, binging }, idx) => (
+            <div className="flex py-2 items-center" key={date}>
+              {
+                <div
+                  onClick={handleDeleteMeal(idx)}
+                  className="cursor-pointer mr-2"
                 >
-                  {extra ? "🙆🏻" : "🕧"} {date}
+                  ✖️
+                </div>
+              }
+              <div className="text-gray-600">
+                {food}{" "}
+                <span className="bg-gray-100 rounded text-gray-600 text-xs p-1">
+                  {calories} cal
                 </span>
-                {notes && " / "}
-                <span>{notes}</span>
+                <div className={classNames("text-gray-500 text-xs ")}>
+                  <span
+                    className={classNames("w-22", {
+                      "text-red-300": binging,
+                      "text-blue-300": !binging && extra,
+                    })}
+                  >
+                    {binging ? (
+                      <span alt="binge">🌶</span>
+                    ) : extra ? (
+                      <span alt="binge">🙆🏻</span>
+                    ) : (
+                      "🕧"
+                    )}{" "}
+                    {date}
+                  </span>
+                  {notes && " / "}
+                  <span>{notes}</span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </table>
 
       <div className="mb-2">
