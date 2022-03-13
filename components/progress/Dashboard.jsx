@@ -53,12 +53,12 @@ export default function Dashboard() {
       startDate: {
         key: "date",
         condition: ">=",
-        value: `${selectedMonth.twoDigitsMonthIdx}/01/${CustomDate.getYear()}`,
+        value: CustomDate.getMonthRange(selectedMonth.twoDigitsMonthIdx).start,
       },
       endDate: {
         key: "date",
         condition: "<=",
-        value: `${selectedMonth.twoDigitsMonthIdx}/31/${CustomDate.getYear()}`,
+        value: CustomDate.getMonthRange(selectedMonth.twoDigitsMonthIdx).end,
       },
     })
       .then((e) => {
@@ -67,7 +67,7 @@ export default function Dashboard() {
           loading: false,
           data: e,
         }));
-        setWeight(e[e.length - 1].weight);
+        setWeight(e[0].weight);
       })
       .catch((e) => {
         setEvents((events) => ({
