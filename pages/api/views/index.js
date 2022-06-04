@@ -1,8 +1,10 @@
 import { cleanKey } from "../../../helpers/helpers";
 import db from "../../../lib/firebase";
 
+const isDisable = process.env.NEXT_PUBLIC_DISABLE_VIEWS;
+
 export default async function getViews(req, res) {
-  if (req.method === "POST") {
+  if (!isDisable && req.method === "POST") {
     const { slug } = req?.body ? JSON.parse(req.body) : {};
     const ref = db.ref("views").child(cleanKey(slug));
     const { snapshot } = await ref.transaction((currentViews) => {
