@@ -78,7 +78,9 @@ export default function Container({ children, pageUrl }) {
   useEffect(() => setMounted(true), []);
 
   const hasTranslation =
-    pageUrl.includes("how-to-learn-js") || pageUrl.includes("home");
+    pageUrl.includes("how-to-learn-js") ||
+    pageUrl.includes("home") ||
+    pageUrl.includes("generation-2.0");
 
   const Menu = ({ classNames }) => {
     return (
@@ -182,7 +184,12 @@ export default function Container({ children, pageUrl }) {
       {locale === Locales.am && !hasTranslation && (
         <ColoredBar>🇦🇲 Այս էջը դեռ թարգմանված չէ։</ColoredBar>
       )}
-      <div className="bg-white dark:bg-black py-2 px-8">
+      <div
+        className={cn("bg-white dark:bg-black py-2 px-8", {
+          "px-4": locale === Locales.am,
+          "px-8": locale === Locales.en,
+        })}
+      >
         <div
           className={cn(
             "flex justify-end items-center w-full mx-auto bg-white dark:bg-black",
