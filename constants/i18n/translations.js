@@ -43,7 +43,7 @@ export const CommonTranslations = {
     projects: "Նախագծեր",
     uses: "Իմ դեվայսները",
     support: "Աջակցել հեղինակին",
-    otherArticles: "Ձեզ դուր կգան՝",
+    otherArticles: "Ձեզ կհետաքրքրի նաև",
     readingTime: "րոպե ընթերցել",
     articlesWarning:
       "Հոդվածների մի մասը դեռ թարգմանվում են և հասանելի են միայն անգլերեն լեզվով։",
