@@ -40,9 +40,10 @@ export default function Bio({ description, social, socialDivider }) {
         </h2>
       </div>
       <div className="mt-4 md:hidden">
-        Subscribe in{" "}
+        {social}{" "}
         <ExternalLink href="https://t.me/oganisyancom">Telegram</ExternalLink>{" "}
-        or <ExternalLink href="https://twitter.com/vre2h">Twitter</ExternalLink>
+        {socialDivider}{" "}
+        <ExternalLink href="https://twitter.com/vre2h">Twitter</ExternalLink>
       </div>
     </div>
   );

@@ -49,7 +49,7 @@ const BlogPost = ({ title, summary, slug, date, tags }) => {
               {views && views > 2
                 ? `${views > 300 ? "🔥" : ""} ${formatNumber(views)}`
                 : "–––"}{" "}
-              {CommonTranslations[locale].views.toLowerCase}
+              {CommonTranslations[locale].views.toLowerCase()}
             </span>
           </p>
         </div>
