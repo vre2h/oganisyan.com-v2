@@ -44,7 +44,7 @@ export const CommonTranslations = {
     uses: "Իմ դեվայսները",
     support: "Աջակցել հեղինակին",
     otherArticles: "Ձեզ դուր կգան՝",
-    readingTime: "րոպե ընթերձել",
+    readingTime: "րոպե ընթերցել",
     articlesWarning:
       "Հոդվածների մի մասը դեռ թարգմանվում են և հասանելի են միայն անգլերեն լեզվով։",
     me: {
