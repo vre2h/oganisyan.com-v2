@@ -1,4 +1,3 @@
-import { format, parseISO } from "date-fns";
 import Link from "next/link";
 import formatNumber from "comma-number";
 import { useRouter } from "next/router";
@@ -6,6 +5,8 @@ import useSWR from "swr";
 
 import ColoredTag from "./ColoredTag";
 import fetcher from "../lib/fetcher";
+import { CommonTranslations } from "../constants/i18n/translations";
+import { Locales } from "../helpers/locale.helpers";
 
 const BlogPost = ({ title, summary, slug, date, tags }) => {
   const { data } = useSWR(`/api/views?slug=${slug}`, fetcher);
@@ -21,13 +22,20 @@ const BlogPost = ({ title, summary, slug, date, tags }) => {
               {title}
             </h4>
             <p className="text-gray-400 text-left text-sm sm:text-right hidden sm:block w-32 mb-4 sm:mb-0">
-              {views ? `${views > 300 ? "🔥" : ""} ${views}` : "–––"} views
+              {views ? `${views > 300 ? "🔥" : ""} ${views}` : "–––"}{" "}
+              {CommonTranslations[locale].views.toLowerCase()}
             </p>
           </div>
           <p className="text-gray-600 dark:text-gray-400">{summary}</p>
           <p className="text-gray-400 text-sm text-left mt-2 sm:mb-0">
             <span className="text-left">
-              Published on {format(parseISO(date), "MMMM dd, yyyy")}{" "}
+              {CommonTranslations[locale].published}{" "}
+              {new Intl.DateTimeFormat(
+                locale === Locales.am ? "hy-AM" : locale,
+                {
+                  dateStyle: "long",
+                }
+              ).format(new Date(date))}
               <div className="hidden sm:inline-block">
                 {tags && ` • `}{" "}
                 {tags &&
@@ -41,7 +49,7 @@ const BlogPost = ({ title, summary, slug, date, tags }) => {
               {views && views > 2
                 ? `${views > 300 ? "🔥" : ""} ${formatNumber(views)}`
                 : "–––"}{" "}
-              views
+              {CommonTranslations[locale].views.toLowerCase}
             </span>
           </p>
         </div>

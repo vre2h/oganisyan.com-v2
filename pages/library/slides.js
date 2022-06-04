@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import BasicLink from "../../components/BasicLink";
 import Layout from "../../components/Layout";
 import { Step } from "../../components/CheckBoxStep";
+import { Locales } from "../../helpers/locale.helpers";
 
 const tfnt2021slides = [
   {
@@ -60,7 +61,7 @@ export default function Slides({ isCheckListVisible }) {
   };
 
   return (
-    <Layout>
+    <Layout pageUrl="/slides">
       <NextSeo
         title="Slides – Vrezh Oganisyan"
         canonical="https://oganisyan.com/library/slides"
@@ -75,7 +76,15 @@ export default function Slides({ isCheckListVisible }) {
           ],
         }}
       />
-      <div className="flex w-full flex-col justify-center items-start max-w-xl mx-auto mb-16">
+      <div
+        className={cn(
+          "flex w-full flex-col justify-center items-start mx-auto mb-16",
+          {
+            "max-w-2xl": router.locale === Locales.am,
+            "max-w-xl": router.locale === Locales.en,
+          }
+        )}
+      >
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-8 text-black dark:text-white">
           Slides
         </h1>

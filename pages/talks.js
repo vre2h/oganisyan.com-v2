@@ -117,7 +117,7 @@ const talks = [
 
 export default function Talks() {
   return (
-    <Layout>
+    <Layout pageUrl="/talks">
       <NextSeo
         title="Talks – Vrezh Oganisyan"
         canonical="https://oganisyan.com/talks"

@@ -1,13 +1,16 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
+import cn from "classnames";
 
 import Layout from "../components/Layout";
 import Timeline from "../components/Timeline";
 import burnoutImg from "../assets/img/general/burnout.jpg";
+import { Locales } from "../helpers/locale.helpers";
+import router from "next/router";
 
 export default function About() {
   return (
-    <Layout>
+    <Layout pageUrl="/about">
       <NextSeo
         title="About Me – Vrezh Oganisyan"
         canonical="https://oganisyan.com/about"
@@ -22,7 +25,15 @@ export default function About() {
           ],
         }}
       />
-      <div className="flex flex-col justify-center items-start max-w-xl mx-auto mb-16">
+      <div
+        className={cn(
+          "flex flex-col justify-center items-start mx-auto mb-16",
+          {
+            "max-w-2xl": router.locale === Locales.am,
+            "max-w-xl": router.locale === Locales.en,
+          }
+        )}
+      >
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           About Me
         </h1>

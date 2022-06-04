@@ -78,7 +78,7 @@ const uses = [
 
 export default function Uses() {
   return (
-    <Layout>
+    <Layout pageUrl="/uses">
       <NextSeo
         title="Uses – Vrezh Oganisyan"
         canonical="https://oganisyan.com/uses"

@@ -16,7 +16,6 @@
     "chart.js": "^3.7.1",
     "classnames": "^2.2.6",
     "comma-number": "^2.0.1",
-    "date-fns": "^2.16.1",
     "feed": "^4.2.2",
     "firebase": "^9.6.6",
     "next": "^11.1.2",

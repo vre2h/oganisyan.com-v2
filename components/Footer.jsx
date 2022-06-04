@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { CommonTranslations } from "../constants/i18n/translations";
 
 import BasicLink from "./BasicLink";
 
@@ -24,16 +25,16 @@ export default function Footer() {
       <div className="w-full max-w-xl grid grid-cols-1 gap-4 pb-16 grid-cols-2 sm:grid-cols-3">
         <div className="flex justify-start items-start transition flex-col space-y-4">
           <Link locale={locale} href="/" passHref>
-            <BasicLink>Home</BasicLink>
+            <BasicLink>{CommonTranslations[locale].home}</BasicLink>
           </Link>
           <Link locale={locale} href="/about" passHref>
-            <BasicLink>About</BasicLink>
+            <BasicLink>{CommonTranslations[locale].about}</BasicLink>
           </Link>
           <Link locale={locale} href="/projects" passHref>
-            <BasicLink>Projects</BasicLink>
+            <BasicLink>{CommonTranslations[locale].projects}</BasicLink>
           </Link>
           <Link locale={locale} href="/uses" passHref>
-            <BasicLink>Uses</BasicLink>
+            <BasicLink>{CommonTranslations[locale].uses}</BasicLink>
           </Link>
           <Link locale={locale} href="/rss.xml" passHref>
             <BasicLink>RSS</BasicLink>

@@ -1,14 +1,17 @@
 import { NextSeo } from "next-seo";
+import cn from "classnames";
 
 import Bio from "../components/Bio";
 import BlogPost from "../components/BlogPost";
 import Layout from "../components/Layout";
 import { generateRSSFeed } from "../lib/rss";
 import { getAllFilesFrontMatter } from "../lib/mdx";
+import { CommonTranslations } from "../constants/i18n/translations";
+import { Locales } from "../helpers/locale.helpers";
 
-export default function Home({ posts }) {
+export default function Home({ posts, locale }) {
   return (
-    <Layout>
+    <Layout pageUrl="/home">
       <NextSeo
         title="Home – Vrezh Oganisyan"
         canonical="https://oganisyan.com"
@@ -23,14 +26,26 @@ export default function Home({ posts }) {
           ],
         }}
       />
-      <div className="flex mt-4 flex-col justify-center items-start max-w-xl mx-auto mb-16">
+      <div
+        className={cn(
+          "flex mt-4 flex-col justify-center items-start mx-auto mb-16",
+          {
+            "max-w-2xl": locale === Locales.am,
+            "max-w-xl": locale === Locales.en,
+          }
+        )}
+      >
         <h1 className="font-bold text-xl md:text-3xl tracking-tight mb-0 sm:mb-2 text-black dark:text-white">
-          👋 Hey, I’m Vrezh
+          {CommonTranslations[locale].me.title}
         </h1>
-        <Bio />{" "}
+        <Bio
+          description={CommonTranslations[locale].me.description}
+          social={CommonTranslations[locale].me.social}
+          socialDivider={CommonTranslations[locale].me.socialDivider}
+        />{" "}
         <div className="w-full sm:flex mb-8 justify-between">
           <h3 className="font-medium text-3xl tracking-tight text-black dark:text-white">
-            Articles
+            {CommonTranslations[locale].articles}
           </h3>
         </div>
         {posts.map(({ title, description, slug, date, tags }) => {
@@ -50,9 +65,9 @@ export default function Home({ posts }) {
   );
 }
 
-export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter("blog");
-  const technicalPosts = await getAllFilesFrontMatter("technical-blog");
+export async function getStaticProps({ locale }) {
+  const posts = await getAllFilesFrontMatter("blog", locale);
+  const technicalPosts = await getAllFilesFrontMatter("technical-blog", locale);
 
   const sortedPosts = [...posts, ...technicalPosts].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
@@ -68,6 +83,11 @@ export async function getStaticProps() {
     props: {
       posts: sortedPosts,
       technicalPosts: sortedPosts.filter((p) => p.date),
+      locale,
     },
   };
 }
+
+Home.defaultProps = {
+  locale: Locales.en,
+};

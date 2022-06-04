@@ -12,7 +12,7 @@ const ExternalLink = ({ href, children }) => (
   </a>
 );
 
-export default function Bio() {
+export default function Bio({ description, social, socialDivider }) {
   return (
     <div className="mb-16 mt-4">
       <div className="flex items-center">
@@ -26,15 +26,13 @@ export default function Bio() {
           />
         </div>
         <h2 className="ml-4 text-gray-600 dark:text-gray-400">
-          I’m a software engineer, lecturer, and rebel. Here I write about
-          education, management, and the art of non-conformity.
-          <br />
+          {description} <br />
           <div className="hidden md:block mt-4">
-            Subscribe in{" "}
+            {social}{" "}
             <ExternalLink href="https://t.me/oganisyancom">
               Telegram
             </ExternalLink>{" "}
-            or{" "}
+            {socialDivider}{" "}
             <ExternalLink href="https://twitter.com/vre2h">
               Twitter
             </ExternalLink>

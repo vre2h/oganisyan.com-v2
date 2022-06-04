@@ -4,7 +4,7 @@ import useSWR from "swr";
 
 import fetcher from "../lib/fetcher";
 
-export default function ViewCounter({ slug }) {
+export default function ViewCounter({ slug, postfix }) {
   const { data } = useSWR(`/api/views?slug=${slug}`, fetcher);
   const views = data?.total;
 
@@ -20,5 +20,5 @@ export default function ViewCounter({ slug }) {
 
   return `${
     views && views > 2 ? `${views > 300 ? "🔥" : ""} ${format(views)}` : "–––"
-  } views`;
+  } ${postfix.toLowerCase()}`;
 }

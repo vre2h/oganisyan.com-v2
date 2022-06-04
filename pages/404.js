@@ -7,7 +7,7 @@ import notFoundImg from "../assets/img/general/additional-avatar.jpg";
 
 export default function NotFound() {
   return (
-    <Layout>
+    <Layout pageUrl="/404">
       <NextSeo
         title="404 – Vrezh Oganisyan"
         canonical="https://oganisyan.com/404"

@@ -5,7 +5,7 @@ import ProjectCard from "../../components/ProjectCard";
 
 export default function Library() {
   return (
-    <Layout>
+    <Layout pageUrl="/library">
       <NextSeo
         title="Library – Vrezh Oganisyan"
         canonical="https://oganisyan.com/library"

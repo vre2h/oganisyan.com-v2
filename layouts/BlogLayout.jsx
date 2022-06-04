@@ -1,12 +1,14 @@
 import Image from "next/image";
-import { parseISO, format } from "date-fns";
 import { useRouter } from "next/router";
+import cn from "classnames";
 
 import avatarImg from "../assets/img/general/avatar.jpg";
 import Layout from "../components/Layout";
 import ViewCounter from "../components/ViewCounter";
 import BlogSeo from "../components/BlogSeo";
 import ColoredTag from "../components/ColoredTag";
+import { CommonTranslations } from "../constants/i18n/translations";
+import { Locales } from "../helpers/locale.helpers";
 
 const siteUrl = "https://oganisyan.com";
 
@@ -15,12 +17,20 @@ export default function BlogLayout({ children, frontMatter, popularPosts }) {
   const pageUrl = router.asPath;
 
   return (
-    <Layout>
+    <Layout pageUrl={pageUrl}>
       <BlogSeo
         url={`https://oganisyan.com/blog/${frontMatter.slug}`}
         {...frontMatter}
       />
-      <article className="flex flex-col justify-center items-start max-w-xl mx-auto mb-16 w-full">
+      <article
+        className={cn(
+          "flex flex-col justify-center items-start mx-auto mb-16 w-full",
+          {
+            "max-w-2xl": router.locale === Locales.am,
+            "max-w-xl": router.locale === Locales.en,
+          }
+        )}
+      >
         <h1 className="font-bold text-3xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
           {frontMatter.title}
         </h1>
@@ -35,14 +45,26 @@ export default function BlogLayout({ children, frontMatter, popularPosts }) {
             />
             <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
               {frontMatter.by}
-              {"Vrezh Oganisyan / "}
-              {format(parseISO(frontMatter.date), "MMMM dd, yyyy")}
+              {CommonTranslations[router.locale].me.name}
+              {" / "}
+              {new Intl.DateTimeFormat(
+                router.locale === Locales.am ? "hy-AM" : router.locale,
+                {
+                  dateStyle: "long",
+                }
+              ).format(new Date(frontMatter.date))}
             </p>
           </div>
           <p className="text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
-            {frontMatter.readingTime.text}
+            {frontMatter.readingTime.text.replace(
+              "min read",
+              CommonTranslations[router.locale].readingTime
+            )}
             {` • `}
-            <ViewCounter slug={frontMatter.slug} />
+            <ViewCounter
+              postfix={CommonTranslations[router.locale].views}
+              slug={frontMatter.slug}
+            />
           </p>
         </div>
         <div className="prose dark:prose-dark max-w-none w-full">
@@ -116,7 +138,13 @@ export default function BlogLayout({ children, frontMatter, popularPosts }) {
                 </p>
                 <div className="flex justify-between items-center text-gray-400 text-sm text-left mt-2 sm:mb-0">
                   <p className="hidden md:block">
-                    Published on {format(parseISO(post.date), "MMMM dd, yyyy")}
+                    {CommonTranslations[router.locale].published}{" "}
+                    {new Intl.DateTimeFormat(
+                      router.locale === Locales.am ? "hy-AM" : router.locale,
+                      {
+                        dateStyle: "long",
+                      }
+                    ).format(new Date(post.date))}
                   </p>
                   <div className="">
                     {post.tags &&

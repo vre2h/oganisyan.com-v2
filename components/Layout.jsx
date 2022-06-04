@@ -12,27 +12,28 @@ import useWindowSize from "../lib/useWindowSize";
 
 import { Burger, Close, ExternalIcon } from "./Icons";
 import Footer from "./Footer";
+import { CommonTranslations } from "../constants/i18n/translations";
 
-const links = [
+const getLinks = (locale) => [
   {
-    text: "Blog",
+    text: CommonTranslations[locale].blog,
     href: "/",
   },
   {
-    text: "Projects",
+    text: CommonTranslations[locale].projects,
     href: "/projects",
   },
   {
-    text: "Talks",
+    text: CommonTranslations[locale].talks,
     href: "/talks",
   },
   {
-    text: "About",
+    text: CommonTranslations[locale].about,
     href: "/about",
   },
 ];
 
-export default function Container({ children }) {
+export default function Container({ children, pageUrl }) {
   const [mounted, setMounted] = useState(false);
   const [isMenuVisible, setMenuVisibility] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -76,10 +77,13 @@ export default function Container({ children }) {
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
+  const hasTranslation =
+    pageUrl.includes("how-to-learn-js") || pageUrl.includes("home");
+
   const Menu = ({ classNames }) => {
     return (
       <div className={cn(classNames, "overflow-visible")}>
-        {links.map(({ href, text }, idx) => {
+        {getLinks(locale).map(({ href, text }, idx) => {
           const isActiveLink =
             href === "/"
               ? history.pathname === href || history.pathname.includes("blog")
@@ -126,7 +130,7 @@ export default function Container({ children }) {
               }
             )}
           >
-            Library
+            {CommonTranslations[locale].library}
           </span>
           {dropDown && (
             <div className="sm:shadow-2xl sm:absolute right-0 mt-2 py-2 w-32 w-full sm:w-48 sm:bg-white dark:bg-gray-700 sm:rounded-md sm:shadow-xl z-20">
@@ -135,7 +139,7 @@ export default function Container({ children }) {
                   className="block px-4 py-2 dark:prose-dark text-sm capitalize text-gray-700
                 hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
                 >
-                  Slides
+                  {CommonTranslations[locale].slides}
                 </a>
               </Link>
               <Link locale={locale} href="/library/books">
@@ -143,7 +147,7 @@ export default function Container({ children }) {
                   className="block px-4 py-2 dark:prose-dark text-sm capitalize text-gray-700
                 hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
                 >
-                  Books
+                  {CommonTranslations[locale].books}
                 </a>
               </Link>
               <a
@@ -153,7 +157,7 @@ export default function Container({ children }) {
                 className="flex justify-between px-4 dark:prose-dark py-2 text-sm capitalize text-gray-700
                   hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
               >
-                Movies
+                {CommonTranslations[locale].movies}
                 <ExternalIcon />
               </a>
               <a
@@ -163,7 +167,7 @@ export default function Container({ children }) {
                 className="flex justify-between px-4 dark:prose-dark py-2 text-sm capitalize text-gray-700
                   hover:bg-gray-500 dark:hover:bg-white dark:hover:text-black hover:text-white"
               >
-                TV Shows
+                {CommonTranslations[locale].tvShows}
                 <ExternalIcon />
               </a>
             </div>
@@ -175,11 +179,19 @@ export default function Container({ children }) {
 
   return (
     <>
-      {locale === Locales.am && (
-        <ColoredBar>🇦🇲 Հայերեն թարգմանությունները դեռ պատրաստ չեն։</ColoredBar>
+      {locale === Locales.am && !hasTranslation && (
+        <ColoredBar>🇦🇲 Այս էջը դեռ թարգմանված չէ։</ColoredBar>
       )}
       <div className="bg-white dark:bg-black py-2 px-8">
-        <div className="flex justify-end items-center max-w-xl w-full mx-auto bg-white dark:bg-black">
+        <div
+          className={cn(
+            "flex justify-end items-center w-full mx-auto bg-white dark:bg-black",
+            {
+              "max-w-2xl": locale === Locales.am,
+              "max-w-xl": locale === Locales.en,
+            }
+          )}
+        >
           <a
             className={cn(
               "p-1 duration-300 text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 cursor-pointer",
@@ -206,7 +218,15 @@ export default function Container({ children }) {
             հայ
           </a>
         </div>
-        <nav className="flex justify-between items-center max-w-xl w-full py-4 pt-2 pb-8 my-0 mx-auto bg-white dark:bg-black bg-opacity-60">
+        <nav
+          className={cn(
+            "flex justify-between items-center w-full py-4 pt-2 pb-8 my-0 mx-auto bg-white dark:bg-black bg-opacity-60",
+            {
+              "max-w-2xl": locale === Locales.am,
+              "max-w-xl": locale === Locales.en,
+            }
+          )}
+        >
           <Menu classNames={cn("hidden sm:block")} />
 
           <div ref={mobileMenuRef}>
@@ -269,3 +289,7 @@ export default function Container({ children }) {
     </>
   );
 }
+
+Container.defaultProps = {
+  pageUrl: "",
+};

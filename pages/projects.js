@@ -5,6 +5,8 @@ import cn from "classnames";
 
 import Layout from "../components/Layout";
 import confImg from "../assets/img/general/conf.jpg";
+import { Locales } from "../helpers/locale.helpers";
+import router from "next/router";
 
 const ProjectTypes = {
   All: "All",
@@ -187,7 +189,7 @@ export default function Projects() {
   }
 
   return (
-    <Layout>
+    <Layout pageUrl="/projects">
       <NextSeo
         title="Projects – Vrezh Oganisyan"
         canonical="https://oganisyan.com/about"
@@ -202,7 +204,15 @@ export default function Projects() {
           ],
         }}
       />
-      <div className="flex flex-col justify-center items-start max-w-xl mx-auto mb-16">
+      <div
+        className={cn(
+          "flex flex-col justify-center items-start mx-auto mb-16",
+          {
+            "max-w-2xl": router.locale === Locales.am,
+            "max-w-xl": router.locale === Locales.en,
+          }
+        )}
+      >
         <div className="flex justify-center w-full mb-8">
           <Image
             width="960"

@@ -1,13 +1,16 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
+import cn from "classnames";
 
 import BooksTimeline from "../../components/BooksTimeline";
 import Layout from "../../components/Layout";
 import booksImg from "../../assets/img/general/books.jpg";
+import { Locales } from "../../helpers/locale.helpers";
+import router from "next/router";
 
 export default function Books() {
   return (
-    <Layout>
+    <Layout pageUrl="/books">
       <NextSeo
         title="Books – Vrezh Oganisyan"
         canonical="https://oganisyan.com/library/books"
@@ -22,7 +25,15 @@ export default function Books() {
           ],
         }}
       />
-      <div className="flex w-full flex-col justify-center items-start max-w-xl mx-auto mb-16">
+      <div
+        className={cn(
+          "flex w-full flex-col justify-center items-start mx-auto mb-16",
+          {
+            "max-w-2xl": router.locale === Locales.am,
+            "max-w-xl": router.locale === Locales.en,
+          }
+        )}
+      >
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Books
         </h1>
