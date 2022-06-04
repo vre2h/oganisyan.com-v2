@@ -1,14 +1,15 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import cn from "classnames";
+import { useRouter } from "next/router";
 
 import BooksTimeline from "../../components/BooksTimeline";
 import Layout from "../../components/Layout";
 import booksImg from "../../assets/img/general/books.jpg";
 import { Locales } from "../../helpers/locale.helpers";
-import router from "next/router";
 
 export default function Books() {
+  const router = useRouter();
   return (
     <Layout pageUrl="/books">
       <NextSeo

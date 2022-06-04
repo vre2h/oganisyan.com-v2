@@ -43,10 +43,14 @@ export default function Home({ posts, locale }) {
           social={CommonTranslations[locale].me.social}
           socialDivider={CommonTranslations[locale].me.socialDivider}
         />{" "}
-        <div className="w-full sm:flex mb-8 justify-between">
+        <div className="w-full mb-8 justify-between">
           <h3 className="font-medium text-3xl tracking-tight text-black dark:text-white">
             {CommonTranslations[locale].articles}
           </h3>
+          <h4 className="text-gray-400 mt-2">
+            {locale === Locales.am &&
+              CommonTranslations[locale].articlesWarning}
+          </h4>
         </div>
         {posts.map(({ title, description, slug, date, tags }) => {
           return (

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import cn from "classnames";
+import { useRouter } from "next/router";
 
 import Layout from "../components/Layout";
 import confImg from "../assets/img/general/conf.jpg";
 import { Locales } from "../helpers/locale.helpers";
-import router from "next/router";
 
 const ProjectTypes = {
   All: "All",
@@ -166,8 +166,8 @@ const myProjects = projects.filter((p) => p.type === ProjectTypes.Projects);
 const openSource = projects.filter((p) => p.type === ProjectTypes.openSource);
 
 export default function Projects() {
+  const router = useRouter();
   const [projectType, setProjectType] = useState(ProjectTypes.All);
-
   let filteredProjects = allProjects;
 
   switch (projectType) {
