@@ -19,7 +19,10 @@ export default function Footer() {
   const { locale } = useRouter();
 
   return (
-    <footer className="flex flex-col justify-center items-start max-w-xl mx-auto w-full mb-8">
+    <footer
+      id="footer"
+      className="flex flex-col justify-center items-start max-w-xl mx-auto w-full mb-8"
+    >
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
       {/* <NowPlaying /> */}
       <div className="w-full max-w-xl grid grid-cols-1 gap-4 pb-16 grid-cols-2 sm:grid-cols-3">
