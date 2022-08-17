@@ -15,11 +15,12 @@ const siteUrl = "https://oganisyan.com";
 export default function BlogLayout({ children, frontMatter, popularPosts }) {
   const router = useRouter();
   const pageUrl = router.asPath;
+  const language = router.locale === Locales.am ? `${Locales.am}/` : "";
 
   return (
     <Layout pageUrl={pageUrl}>
       <BlogSeo
-        url={`https://oganisyan.com/blog/${frontMatter.slug}`}
+        url={`https://oganisyan.com/${language}blog/${frontMatter.slug}`}
         {...frontMatter}
       />
       <article
