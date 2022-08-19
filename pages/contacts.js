@@ -54,8 +54,8 @@ export default function About() {
             <ExternalLink href="https://twitter.com/vre2h">
               🐦 Twitter — https://twitter.com/vre2h
             </ExternalLink>
-            <ExternalLink href="https://t.me/oganisyancom">
-              📨 Telegram — https://t.me/oganisyancom
+            <ExternalLink href="https://t.me/vre2h">
+              📨 Telegram — https://t.me/vre2h
             </ExternalLink>
             <ExternalLink href="https://facebook.com/vre2h">
               🔵 Facebook — https://facebook.com/vre2h
