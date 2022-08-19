@@ -8,6 +8,7 @@ module.exports = {
     "./layouts/**/*.jsx",
     "./de-final-fictive-7",
     "./weird-tailwind",
+    "./weird-tailwind-2",
   ],
   darkMode: "class",
   theme: {
