@@ -8,21 +8,21 @@ import confImg from "../assets/img/general/conf.jpg";
 import { Locales } from "../helpers/locale.helpers";
 import { ExternalLink } from "../components/Footer";
 
-export default function About() {
+export default function Contacts() {
   const router = useRouter();
 
   return (
-    <Layout pageUrl="/about">
+    <Layout pageUrl="/contacts">
       <NextSeo
         title="Contact Me – Vrezh Oganisyan"
-        canonical="https://oganisyan.com/about"
+        canonical="https://oganisyan.com/contacts"
         openGraph={{
-          url: "https://oganisyan.com/about",
-          title: "About Me – Vrezh Oganisyan",
+          url: "https://oganisyan.com/contacts",
+          title: "Contact Me – Vrezh Oganisyan",
           images: [
             {
               url: `https://oganisyan.com/images/seo-image.png`,
-              alt: "About Me – Vrezh Oganisyan",
+              alt: "Contact Me – Vrezh Oganisyan",
             },
           ],
         }}
