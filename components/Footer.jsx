@@ -4,7 +4,7 @@ import { CommonTranslations } from "../constants/i18n/translations";
 
 import BasicLink from "./BasicLink";
 
-const ExternalLink = ({ href, children }) => (
+export const ExternalLink = ({ href, children }) => (
   <a
     className="transition duration-500 text-sm text-gray-900 hover:text-gray-900 dark:text-gray-100 border-b-2 p-b-4 dark:border-gray-700 dark:hover:border-gray-100 border-gray-300 hover:border-gray-900"
     target="_blank"

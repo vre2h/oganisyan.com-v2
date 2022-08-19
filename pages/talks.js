@@ -86,14 +86,11 @@ const talks = [
     video: function video() {
       return (
         <iframe
-          className="rounded-md grow"
-          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Farmcodeacademy%2Fvideos%2F163543322499386%2F&show_text=false&width=267&t=0"
-          width="320"
-          height="476"
-          style={{
-            border: "none",
-            overflow: "hidden",
-          }}
+          src="https://www.youtube.com/embed/z89QC3uj2ew"
+          className="rounded-md grow w-full"
+          style={{ maxWidth: 560 }}
+          width="560"
+          height="315"
           scrolling="no"
           frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
