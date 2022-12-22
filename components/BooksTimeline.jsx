@@ -260,6 +260,64 @@ const books2021 = [
   },
 ];
 
+const books2022 = [
+  {
+    title: "The happiness trap",
+    author: "Russ Harris",
+    review: "5",
+  },
+  {
+    title: "Управление проектами, людьми и собой",
+    author: "Николай Товеровский",
+    review: "5",
+  },
+  {
+    title: "The new one minute manager",
+    author: "Ken Blanchard",
+    review: "3",
+  },
+  {
+    title: "The Lean Startup",
+    author: "Eric Ries",
+    review: "4",
+  },
+  {
+    title: "Overcoming Binge Eating",
+    author: "Christopher Fairburn",
+    review: "5",
+  },
+  {
+    title: "When I say no, I feel Guilty",
+    author: "Manuel J. Smith",
+    review: "5",
+  },
+  {
+    title: "How to fail at almost anything and still win big",
+    author: "Scott Adams",
+    review: "5",
+  },
+  {
+    title: "Can’t hurt me",
+    author: "David Goggins",
+    review: "4",
+  },
+  {
+    title: "Anxiety Free",
+    author: "Robert L. Leahy",
+    review: "4",
+  },
+  {
+    title: "Хрупкие Люди",
+    author: "Юлия Пирумова",
+    review: "4",
+  },
+  {
+    title: "Glucose Revolution",
+    author: "Jessie Inchauspe",
+    review: "4",
+  },
+];
+
 const Divider = () => {
   return (
     <div className="border border-gray-200 dark:border-gray-600 w-full my-8" />
@@ -338,6 +396,21 @@ export function Books2021() {
   );
 }
 
+export function Books2022() {
+  return (
+    <>
+      <ul>
+        {books2022.map((b) => (
+          <Step key={b.title} title={b.title}>
+            {b.author}
+          </Step>
+        ))}
+      </ul>
+      <Divider />
+    </>
+  );
+}
+
 export default function Timeline() {
   const [isShowingFullTimeline, showFullTimeline] = useState(false);
 
@@ -346,6 +419,8 @@ export default function Timeline() {
       <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
         Timeline
       </h3>
+      <Year>2022</Year>
+      <Books2022 />
       <Year>2021</Year>
       <Books2021 />
       <Year>2020</Year>
