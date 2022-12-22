@@ -226,6 +226,62 @@ export function Timeline2021() {
   );
 }
 
+export function Timeline2022() {
+  return (
+    <>
+      <Year>2022</Year>
+      <ul>
+        <Step title="Left ACA and started Sabbatical 🏝">
+          After almost 2 years of exciting time, I decided to leave ACA and have
+          some rest.
+          <br />
+          <br />I always dreamt about sabbatical and my dream came true.
+        </Step>
+
+        <Step title="Joined TopTal 👨🏻‍💻">
+          I have joined TopTal<sup>1</sup> talents network through challenging 3
+          step interview process. You can read about my journey in the{" "}
+          <BasicLink
+            className="text-base"
+            target="_blank"
+            rel="noreferrer"
+            href="/blog/how-to-toptal"
+          >
+            following article.
+          </BasicLink>{" "}
+          <br />
+          <br /> <sup>1</sup> Toptal is an exclusive network of the top
+          freelance software developers, designers, finance experts, product
+          managers, and project managers in the world.
+        </Step>
+
+        <Step title="Started Weight Loss Challenge 🥑">
+          I lost ~15kg during 8 months of 2022 and:
+          <ul>
+            <li>- Brought my BMI index to healthy points</li>
+          </ul>
+          <ul>
+            <li>- Learnt a lot about nutrition and health</li>
+          </ul>
+        </Step>
+
+        <Step title="Sport as a habit 🏋🏻‍♂️">
+          I'm now visiting gym for 7 months (min 3 times per week) and I enjoy
+          it a lot. <br /> <br /> Recently I'm also taking tennis classes 🎾
+          (min 1 time per week).
+        </Step>
+
+        <Step title="Explored new places ✈️">
+          I visited major Armenian, Georgian (Tbilisi, Batumi), and Russian
+          (Moscow, Saint-Petersburg) cities and had really great experiences.
+        </Step>
+
+        <Divider />
+      </ul>
+    </>
+  );
+}
+
 export default function Timeline() {
   const [isShowingFullTimeline, showFullTimeline] = useState(false);
 
@@ -234,6 +290,8 @@ export default function Timeline() {
       <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
         Timeline
       </h3>
+      <Timeline2022 />
+
       <Timeline2021 />
 
       <Year>2020</Year>
