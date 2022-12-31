@@ -7,11 +7,11 @@ import Link from "next/link";
 import { MDXProvider } from "@mdx-js/react";
 import { ThemeProvider } from "next-themes";
 
-import { Books2021 } from "../components/BooksTimeline";
+import { Books2021, Books2022 } from "../components/BooksTimeline";
 import ColoredTag from "../components/ColoredTag";
 import SEO from "../next-seo.config";
 import Tag from "../components/Tag";
-import { Timeline2021 } from "../components/Timeline";
+import { Timeline2021, Timeline2022 } from "../components/Timeline";
 
 if (!String.prototype.replaceAll) {
   String.prototype.replaceAll = function (str, newStr) {
@@ -30,7 +30,9 @@ if (!String.prototype.replaceAll) {
 export const mdxComponents = {
   Tag,
   Timeline2021,
+  Timeline2022,
   Books2021,
+  Books2022,
   ColoredTag,
   Link,
   Image,
