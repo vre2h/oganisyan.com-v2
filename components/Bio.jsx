@@ -14,7 +14,7 @@ const ExternalLink = ({ href, children }) => (
 
 export default function Bio({ description, social, socialDivider }) {
   return (
-    <div className="mb-16 mt-4">
+    <div className="mb-4 mt-4">
       <div className="flex items-center">
         <div className="flex-shrink-0 w-16 sm:w-24">
           <Image

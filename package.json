@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3004",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider next dev --port 3004",
     "build": "next build",
     "start": "next start",
     "deploy": "npx vercel --prod",
@@ -18,7 +18,7 @@
     "comma-number": "^2.0.1",
     "feed": "^4.2.2",
     "firebase": "^9.6.6",
-    "next": "^11.1.2",
+    "next": "^12.0.2",
     "next-mdx-remote": "^3.0.8",
     "next-seo": "^4.17.0",
     "next-themes": "^0.0.10",
